@@ -13,9 +13,9 @@ public abstract class DisplayableObject {
 
     private Rectangle graphics;
 
-    public DisplayableObject(Pane root, GameObject go) {
+    public DisplayableObject(Pane root, GameObject go, String filename) {
         graphics = new Rectangle();
-        this.graphics.setFill(new ImagePattern(get_image("a")));
+        this.graphics.setFill(new ImagePattern(get_image(filename)));
         graphics.setX(go.getLeft());
         graphics.setY(go.getUp());
         graphics.setWidth(go.getW());
@@ -37,7 +37,7 @@ public abstract class DisplayableObject {
         go.getDirection().addListener(e -> graphics.setRotate(getRotateOfDirection(go.getdirection())));
     }
 
-    private double getRotateOfDirection(int direction) {
+    protected static double getRotateOfDirection(int direction) {
         int r = 0;
         switch (direction) {
             case 1 -> r = 180;
@@ -50,13 +50,12 @@ public abstract class DisplayableObject {
         return r;
     }
 
-    public static Image get_image(String file) {
+    protected static Image get_image(String file) {
+        System.out.println("file = " + file);
         Image img = new Image("file:src/main/resources/" + file + ".png");
-        if (!img.isError()) {
+        if (!img.isError())
             return img;
-        } else {
-            System.out.println("static get_image --------> ERROOOOOOOOOOOOOOOOOOOOOR");
-            return new Image("file:src/main/java/fr/uparis/informatique/cpoo5/jfxdemos/view/images/a.png");
-        }
+        else
+            return null;
     }
 }

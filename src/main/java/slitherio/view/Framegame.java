@@ -6,6 +6,7 @@ import slitherio.controller.*;
 import slitherio.model.*;
 
 // Import java packages
+import java.util.*;
 import javafx.stage.*;
 import javafx.application.*;
 import javafx.scene.*;
@@ -16,16 +17,6 @@ public class Framegame extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Pane root = new Pane();
-        // root.setBackground(new javafx.scene.layout.Background(new
-        // javafx.scene.layout.BackgroundImage(
-        // DisplayableObject.get_image("background"),
-        // javafx.scene.layout.BackgroundRepeat.NO_REPEAT,
-        // javafx.scene.layout.BackgroundRepeat.NO_REPEAT,
-        // javafx.scene.layout.BackgroundPosition.CENTER,
-        // new
-        // javafx.scene.layout.BackgroundSize(javafx.scene.layout.BackgroundSize.AUTO,
-        // 1, false, true, false,
-        // true))));
 
         root.setStyle("-fx-background-color: green;");
         Scene scene = new Scene(root, 1000, 600);
@@ -49,6 +40,9 @@ public class Framegame extends Application {
         stage.show(); // lancer l'affichage !
         for (Segment segment : arena.getSnake().getBody()) {
             controller.addDisp(segment);
+        }
+        for (Food food : arena.getFoods()) {
+            controller.addDisp(food);
         }
         arena.animate();
     }

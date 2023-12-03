@@ -4,10 +4,12 @@ package slitherio.model;
 import slitherio.gameobjects.*;
 
 // Import java packages
+import java.util.*;
 import javafx.scene.input.*;
 import javafx.animation.*;
 
 public class Arena {
+    private List<Food> foods = new ArrayList<>();
     private Snake snake;
     private double w, h;
 
@@ -15,16 +17,24 @@ public class Arena {
         this.w = w;
         this.h = h;
         snake = new Snake(100, 300, 50, 50, 50, 50, 2);
+        foods.add(new Food());
     }
 
     private void update(double dt) {
         snake.move(dt, w, h);
+        // Collides
+        Segment snake_head = snake.getBody().get(0);
+        if (snake_head.collides(foods.get(0), dt)) {
+            snake.addSegment();
+            // foods.remove(0);
+            foods.add(new Food());
+        }
     }
 
     public void animate() {
         new AnimationTimer() {
             long last = 0;
-            final double dt = 0.4; // update every 0.01s
+            final double dt = 0.1; // update every 0.01s
             double acc = 0.0;
 
             @Override
@@ -43,6 +53,10 @@ public class Arena {
                 }
             }
         }.start();
+    }
+
+    public List<Food> getFoods() {
+        return foods;
     }
 
     public Snake getSnake() {

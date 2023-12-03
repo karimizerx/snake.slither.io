@@ -10,11 +10,6 @@ public class Snake {
     public Snake(double fstx, double fsty, double fstw, double fsth, double fstdx, double fstdy, int direction) {
         this.direction = direction;
         body.add(new Segment(fstx, fsty, fstw, fsth, fstdx, fstdy, direction));
-        addSegment();
-        addSegment();
-        addSegment();
-        addSegment();
-        addSegment();
     }
 
     public void move(double dt, double maxX, double maxY) {
@@ -65,7 +60,7 @@ public class Snake {
         }
     }
 
-    private void addSegment() {
+    public void addSegment() {
         Segment previous = body.get(body.size() - 1);
         double nx = previous.getMiddleX(), ny = previous.getMiddleY();
         switch (previous.getdirection()) {
@@ -76,10 +71,8 @@ public class Snake {
             default -> {
             }
         }
-        System.out.println("dx:dy = " + previous.getDx() + ":" + previous.getDy());
         Segment newseg = new Segment(nx, ny, previous.getW(), previous.getH(), previous.getDx(), previous.getDy(),
                 direction);
-        System.out.println("ndx:ndy = " + newseg.getDx() + ":" + newseg.getDy());
         body.add(newseg);
     }
 

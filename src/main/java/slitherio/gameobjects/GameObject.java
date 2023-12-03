@@ -115,56 +115,17 @@ public abstract class GameObject {
         dy = value;
     }
 
-    public final boolean collides(GameObject o, double dt) {
+    public final boolean collides(GameObject go, double dt) {
         final double epsilon = 0.0000001;
-        final double a = getLeft() - o.getRight();
-        final double b = o.getDx() - getDx();
-        final double c = getRight() - o.getLeft();
-        final double d = getUp() - o.getDown();
-        final double e = o.getDy() - getDy();
-        final double f = getDown() - o.getUp();
-        double min_t;
-        double max_t;
-        if (b < -epsilon) {
-            if (a / b < c / b) {
-                return false;
-            }
-            min_t = c / b;
-            max_t = a / b;
-        } else if (epsilon < b) {
-            if (a / b > c / b) {
-                return false;
-            }
-            min_t = a / b;
-            max_t = c / b;
-        } else { // b is around about 0.
-            if (c < a || 0 < a || c < 0) {
-                return false;
-            }
-            min_t = -100000;
-            max_t = 100000;
-        }
-        if (e < -epsilon) {
-            if (d / e < f / e) {
-                return false;
-            }
-            min_t = Math.max(min_t, f / e);
-            max_t = Math.min(max_t, d / e);
-        } else if (epsilon < e) {
-            if (d / e > f / e) {
-                return false;
-            }
-            min_t = Math.max(min_t, d / e);
-            max_t = Math.min(max_t, f / e);
-        } else { // e is around about 0.
-            if (f < d || 0 < d || f < 0) {
-                return false;
-            }
-        }
-        if (max_t < 0 || min_t > dt) {
+        if (Math.abs(getUp() - go.getDown()) < epsilon)
+            return true;
+        else if (Math.abs(go.getUp() - getDown()) < epsilon)
+            return true;
+        else if (Math.abs(go.getLeft() - getRight()) < epsilon)
+            return true;
+        else if (Math.abs(getLeft() - go.getRight()) < epsilon)
+            return true;
+        else
             return false;
-        }
-        final double t = Math.max(0, min_t); // Unused for now, will be used later to calculate the collision point.
-        return true;
     }
 }

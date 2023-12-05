@@ -102,8 +102,8 @@ public class Arena {
 
     /* Other */
     public void on_key_pressed(KeyCode key) {
-        Segment head_snake = snake.getBodyValue().get(0);
-        int direction = head_snake.getdirection();
+        Segment head_snake = snake.getBody().get(0);
+        int direction = head_snake.getDirection();
         if (key == KeyCode.UP) {
             if (direction == 2 || direction == 4)
                 head_snake.setDirection(1);

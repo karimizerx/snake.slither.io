@@ -26,7 +26,7 @@ public class Controller {
 
     public void defautView() {
         Snake snake = arena.getSnake();
-        for (Segment segment : snake.getBodyValue()) {
+        for (Segment segment : snake.getBody()) {
             view.getToDisplay().add(new SegmentView(view.getRoot(), segment));
         }
         for (Food food : arena.getFoodsValue()) {

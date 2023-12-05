@@ -36,10 +36,12 @@ public class Controller {
 
     public void bind() {
         Snake snake = arena.getSnake();
+        // A chaque fois que la liste des segments du snake a changé
         snake.getBody().addListener(new ListChangeListener<Segment>() {
             @Override
             public void onChanged(Change<? extends Segment> change) {
                 while (change.next()) {
+                    // On récupère la liste des nouveaux segments, et on 
                     change.getAddedSubList().forEach(((Segment segment) -> {
                         view.getToDisplay().add(new SegmentView(view.getRoot(), segment));
                     }));

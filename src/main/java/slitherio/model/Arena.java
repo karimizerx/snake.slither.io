@@ -7,28 +7,33 @@ import slitherio.gameobjects.*;
 import java.util.*;
 import javafx.scene.input.*;
 import javafx.animation.*;
+import javafx.beans.property.*;
+import javafx.collections.*;
 
 public class Arena {
-    private List<Food> foods = new ArrayList<>();
+    private ListProperty<Food> foods = new SimpleListProperty<Food>(FXCollections.<Food>observableArrayList());
     private Snake snake;
     private double w, h;
 
     public Arena(double w, double h) {
         this.w = w;
         this.h = h;
-        snake = new Snake(100, 300, 50, 50, 50, 50, 2);
-        foods.add(new Food());
+        snake = new Snake(100, 300);
+        snake.addSegment();
+        snake.addSegment();
+        snake.addSegment();
+        foods.get().add(new Food());
     }
 
     private void update(double dt) {
         snake.move(dt, w, h);
         // Collides
         Segment snake_head = snake.getBody().get(0);
-        if (snake_head.collides(foods.get(0), dt)) {
-            snake.addSegment();
-            // foods.remove(0);
-            foods.add(new Food());
-        }
+        // if (snake_head.collides(foods.get(0), dt)) {
+        // snake.addSegment();
+        // // foods.remove(0);
+        // foods.add(new Food());
+        // }
     }
 
     public void animate() {
@@ -55,7 +60,14 @@ public class Arena {
         }.start();
     }
 
-    public List<Food> getFoods() {
+    // Getter & Setter
+
+    public final ObservableList<Food> getFoodsValue() {
+        return foods.get();
+    }
+
+    // Accès à la propriété.
+    public final ListProperty<Food> getFoods() {
         return foods;
     }
 
@@ -71,6 +83,11 @@ public class Arena {
         return h;
     }
 
+    // Setter.
+    public final void setFoodsValue(ObservableList<Food> value) {
+        foods.set(value);
+    }
+
     public void setW(double w) {
         this.w = w;
     }
@@ -79,6 +96,7 @@ public class Arena {
         this.h = h;
     }
 
+    // Other
     public void on_key_pressed(KeyCode key) {
         int direction = snake.getDirection();
         if (key == KeyCode.UP) {

@@ -38,12 +38,8 @@ public class Framegame extends Application {
         stage.setScene(scene); // définir la scène à afficher
         stage.setTitle("Snake Frame");
         stage.show(); // lancer l'affichage !
-        for (Segment segment : arena.getSnake().getBody()) {
-            controller.addDisp(segment);
-        }
-        for (Food food : arena.getFoods()) {
-            controller.addDisp(food);
-        }
+        controller.bind();
+        controller.defautView();
         arena.animate();
     }
 }

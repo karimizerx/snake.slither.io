@@ -10,6 +10,7 @@ public class Gameview {
 
     private Pane root;
     private List<DisplayableObject> toDisplay = new ArrayList<>();
+    private List<DisplayableObject> snakeDisplay = new ArrayList<>();
 
     public Gameview(Pane r) {
         root = r;

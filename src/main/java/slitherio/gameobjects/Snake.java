@@ -2,14 +2,16 @@ package slitherio.gameobjects;
 
 // Import java packages
 import java.util.*;
+import javafx.beans.property.*;
+import javafx.collections.*;
 
 public class Snake {
-    List<Segment> body = new ArrayList<>();
+    ListProperty<Segment> body = new SimpleListProperty<Segment>(FXCollections.<Segment>observableArrayList());
     private int direction;
 
-    public Snake(double fstx, double fsty, double fstw, double fsth, double fstdx, double fstdy, int direction) {
-        this.direction = direction;
-        body.add(new Segment(fstx, fsty, fstw, fsth, fstdx, fstdy, direction));
+    public Snake(double head_x, double head_y) {
+        this.direction = 2;
+        body.get().add(new Segment(head_x, head_y, direction));
     }
 
     public void move(double dt, double maxX, double maxY) {
@@ -91,7 +93,17 @@ public class Snake {
 
     }
 
-    public List<Segment> getBody() {
+    public final ObservableList<Segment> getBodyValue() {
+        return body.get();
+    }
+
+    // // Setter.
+    public final void setBodyValue(ObservableList<Segment> value) {
+        body.set(value);
+    }
+
+    // Accès à la propriété.
+    public final ListProperty<Segment> getBody() {
         return body;
     }
 }

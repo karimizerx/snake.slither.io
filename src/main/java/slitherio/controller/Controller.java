@@ -4,8 +4,8 @@ package slitherio.controller;
 import slitherio.model.*;
 import slitherio.gameobjects.*;
 import slitherio.view.*;
-import javafx.collections.*;
 // Import java packages
+import javafx.collections.*;
 import javafx.scene.input.*;
 
 public class Controller {
@@ -41,7 +41,7 @@ public class Controller {
             @Override
             public void onChanged(Change<? extends Segment> change) {
                 while (change.next()) {
-                    // On récupère la liste des nouveaux segments, et on 
+                    // On récupère la liste des nouveaux segments, et on
                     change.getAddedSubList().forEach(((Segment segment) -> {
                         view.getToDisplay().add(new SegmentView(view.getRoot(), segment));
                     }));

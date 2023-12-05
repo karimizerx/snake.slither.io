@@ -11,17 +11,21 @@ import javafx.scene.shape.*;
 
 public abstract class DisplayableObject {
 
+    // All GameObjects are displayed with a Rectangle.
     private Rectangle graphics;
 
     public DisplayableObject(Pane root, GameObject go, String filename) {
         graphics = new Rectangle();
-        this.graphics.setFill(new ImagePattern(get_image(filename)));
+        this.graphics.setFill(new ImagePattern(getImage(filename)));
+        // Default [graphics] values
         graphics.setX(go.getLeft());
         graphics.setY(go.getUp());
         graphics.setWidth(go.getW());
         graphics.setHeight(go.getH());
-        graphics.setRotate(getRotateOfDirection(go.getdirection()));
+        graphics.setRotate(getRotateOfDirection(go.getDirection()));
+        // Binding [go] values with [graphics] values
         bind(go);
+        // Adding [graphics] to the root frame game
         root.getChildren().add(graphics);
     }
 
@@ -30,13 +34,15 @@ public abstract class DisplayableObject {
     }
 
     private void bind(GameObject go) {
+        // Binding the differents [go] values with [graphics] values
         go.getX().addListener(e -> graphics.setX(go.getMiddleX()));
         go.getY().addListener(e -> graphics.setY(go.getMiddleY()));
         go.getWidth().addListener(e -> graphics.setWidth(go.getW()));
         go.getHeight().addListener(e -> graphics.setHeight(go.getH()));
-        go.getDirection().addListener(e -> graphics.setRotate(getRotateOfDirection(go.getdirection())));
+        go.getDirectionP().addListener(e -> graphics.setRotate(getRotateOfDirection(go.getDirection())));
     }
 
+    // Get Rectangle
     protected static double getRotateOfDirection(int direction) {
         int r = 0;
         switch (direction) {
@@ -50,7 +56,7 @@ public abstract class DisplayableObject {
         return r;
     }
 
-    protected static Image get_image(String file) {
+    protected static Image getImage(String file) {
         System.out.println("file = " + file);
         Image img = new Image("file:src/main/resources/" + file + ".png");
         if (!img.isError())

@@ -11,7 +11,7 @@ import javafx.beans.property.*;
 import javafx.collections.*;
 
 public class Arena {
-    private ListProperty<Food> foods = new SimpleListProperty<Food>(FXCollections.<Food>observableArrayList());
+    private ListProperty<Food> foods;
     private Snake snake;
     private double w, h;
 
@@ -19,6 +19,16 @@ public class Arena {
         this.w = w;
         this.h = h;
         snake = new Snake(100, 300);
+        // Init [foods] to an empty list
+        foods = new SimpleListProperty<Food>(FXCollections.<Food>observableArrayList());
+
+        // Adding some segments and foods for tests...
+        snake.addSegment();
+        snake.addSegment();
+        snake.addSegment();
+        snake.addSegment();
+        snake.addSegment();
+        snake.addSegment();
         snake.addSegment();
         snake.addSegment();
         snake.addSegment();
@@ -27,15 +37,10 @@ public class Arena {
 
     private void update(double dt) {
         snake.move(dt, w, h);
-        // Collides
-        Segment snake_head = snake.getBody().get(0);
-        // if (snake_head.collides(foods.get(0), dt)) {
-        // snake.addSegment();
-        // // foods.remove(0);
-        // foods.add(new Food());
-        // }
+        // Collides management...
     }
 
+    // Main thread, who manage the game
     public void animate() {
         new AnimationTimer() {
             long last = 0;
@@ -60,13 +65,17 @@ public class Arena {
         }.start();
     }
 
-    // Getter & Setter
+    /* Getter & Setter */
 
     public final ObservableList<Food> getFoodsValue() {
         return foods.get();
     }
 
-    // Accès à la propriété.
+    // public final void setFoodsValue(ObservableList<Food> value) {
+    // foods.set(value);
+    // }
+
+    // Acces to the property
     public final ListProperty<Food> getFoods() {
         return foods;
     }
@@ -79,42 +88,38 @@ public class Arena {
         return w;
     }
 
-    public double getH() {
-        return h;
-    }
-
-    // Setter.
-    public final void setFoodsValue(ObservableList<Food> value) {
-        foods.set(value);
-    }
-
     public void setW(double w) {
         this.w = w;
+    }
+
+    public double getH() {
+        return h;
     }
 
     public void setH(double h) {
         this.h = h;
     }
 
-    // Other
+    /* Other */
     public void on_key_pressed(KeyCode key) {
-        int direction = snake.getDirection();
+        Segment head_snake = snake.getBodyValue().get(0);
+        int direction = head_snake.getdirection();
         if (key == KeyCode.UP) {
             if (direction == 2 || direction == 4)
-                snake.setDirection(1);
+                head_snake.setDirection(1);
         }
         if (key == KeyCode.RIGHT) {
             if (direction == 1 || direction == 3)
-                snake.setDirection(2);
+                head_snake.setDirection(2);
 
         }
         if (key == KeyCode.DOWN) {
             if (direction == 2 || direction == 4)
-                snake.setDirection(3);
+                head_snake.setDirection(3);
         }
         if (key == KeyCode.LEFT) {
             if (direction == 1 || direction == 3)
-                snake.setDirection(4);
+                head_snake.setDirection(4);
         }
     }
 }

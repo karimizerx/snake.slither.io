@@ -57,7 +57,6 @@ public abstract class DisplayableObject {
     }
 
     protected static Image getImage(String file) {
-        System.out.println("file = " + file);
         Image img = new Image("file:src/main/resources/" + file + ".png");
         if (!img.isError())
             return img;

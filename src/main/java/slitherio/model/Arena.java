@@ -102,24 +102,24 @@ public class Arena {
 
     /* Other */
     public void on_key_pressed(KeyCode key) {
-        Segment head_snake = snake.getBody().get(0);
-        int direction = head_snake.getDirection();
+        Segment headSnake = snake.getBody().get(0);
+        int direction = headSnake.getDirection();
         if (key == KeyCode.UP) {
             if (direction == 2 || direction == 4)
-                head_snake.setDirection(1);
+                headSnake.setDirection(1);
         }
         if (key == KeyCode.RIGHT) {
             if (direction == 1 || direction == 3)
-                head_snake.setDirection(2);
+                headSnake.setDirection(2);
 
         }
         if (key == KeyCode.DOWN) {
             if (direction == 2 || direction == 4)
-                head_snake.setDirection(3);
+                headSnake.setDirection(3);
         }
         if (key == KeyCode.LEFT) {
             if (direction == 1 || direction == 3)
-                head_snake.setDirection(4);
+                headSnake.setDirection(4);
         }
     }
 }

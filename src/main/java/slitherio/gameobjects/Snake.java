@@ -1,59 +1,55 @@
 package slitherio.gameobjects;
 
-// Import java packages
 import javafx.beans.property.*;
 import javafx.collections.*;
 
 public class Snake {
-    private ListProperty<Segment> body;
+    private ListProperty<Segment> body = new SimpleListProperty<Segment>(FXCollections.<Segment>observableArrayList());
 
-    public Snake(double head_x, double head_y) {
-        // Init [body] to an empty list
-        body = new SimpleListProperty<Segment>(FXCollections.<Segment>observableArrayList());
-        // Snake sould always have a head.
-        getBody().add(new Segment(head_x, head_y, 2));
+    public Snake(double headX, double headY) {
+        getBody().add(new Segment(headX, headY));
     }
 
     public void move(double dt, double maxX, double maxY) {
-        Segment head_snake = body.getValue().get(0);
-        switch (head_snake.getDirection()) {
+        Segment headSnake = body.getValue().get(0);
+        switch (headSnake.getDirection()) {
             case 1 -> {
-                if (head_snake.getUp() < 0)
+                if (headSnake.getUp() < 0)
                     return;
             }
             case 2 -> {
-                if (maxX < head_snake.getRight())
+                if (maxX < headSnake.getRight())
                     return;
             }
             case 3 -> {
-                if (maxY < head_snake.getDown())
+                if (maxY < headSnake.getDown())
                     return;
             }
             case 4 -> {
-                if (head_snake.getLeft() < 0)
+                if (headSnake.getLeft() < 0)
                     return;
             }
             default -> {
                 return;
             }
         }
-        moveToDirection(dt, head_snake.getDirection());
+        moveToDirection(dt, headSnake.getDirection());
     }
 
     private void moveToDirection(double dt, int d) {
         for (int i = body.size() - 1; i > 0; --i) {
             Segment segment = body.getValue().get(i);
             Segment previous = body.getValue().get(i - 1);
-            segment.setMiddleX(previous.getMiddleX());
-            segment.setMiddleY(previous.getMiddleY());
+            segment.setCenterX(previous.getCenterX());
+            segment.setCenterY(previous.getCenterY());
             segment.setDirection(previous.getDirection());
         }
-        Segment head_snake = body.getValue().get(0);
+        Segment headSnake = body.getValue().get(0);
         switch (d) {
-            case 1 -> head_snake.setMiddleY(head_snake.getMiddleY() - head_snake.getDy()); // *dt
-            case 2 -> head_snake.setMiddleX(head_snake.getMiddleX() + head_snake.getDx());
-            case 3 -> head_snake.setMiddleY(head_snake.getMiddleY() + head_snake.getDy());
-            case 4 -> head_snake.setMiddleX(head_snake.getMiddleX() - head_snake.getDx());
+            case 1 -> headSnake.setCenterY(headSnake.getCenterY() - headSnake.getDy());
+            case 2 -> headSnake.setCenterX(headSnake.getCenterX() + headSnake.getDx());
+            case 3 -> headSnake.setCenterY(headSnake.getCenterY() + headSnake.getDy());
+            case 4 -> headSnake.setCenterX(headSnake.getCenterX() - headSnake.getDx());
             default -> {
                 return;
             }
@@ -61,15 +57,15 @@ public class Snake {
     }
 
     public void addSegment() {
-        // Adding a new [segment] behind the head [head_snake]
-        Segment head_snake = getBody().get(0);
-        double nx = head_snake.getMiddleX(), ny = head_snake.getMiddleY();
-        int nd = head_snake.getDirection();
+        Segment headSnake = getBody().get(0);
+        double hsx = headSnake.getCenterX(), hsy = headSnake.getCenterY(), nx = hsx, ny = hsy;
+        double hsw = headSnake.getWidth(), hsh = headSnake.getHeight();
+        int nd = headSnake.getDirection();
         switch (nd) {
-            case 1 -> ny = head_snake.getMiddleY() + head_snake.getH();
-            case 2 -> nx = head_snake.getMiddleX() - head_snake.getW();
-            case 3 -> ny = head_snake.getMiddleY() - head_snake.getH();
-            case 4 -> nx = head_snake.getMiddleX() + head_snake.getW();
+            case 1 -> ny = hsy + hsh;
+            case 2 -> nx = hsx - hsw;
+            case 3 -> ny = hsy - hsh;
+            case 4 -> nx = hsx + hsw;
             default -> {
             }
         }
@@ -77,18 +73,12 @@ public class Snake {
         getBody().add(1, newseg);
     }
 
-    /* Getter & Setter */
+    public final ListProperty<Segment> getBodyProperty() {
+        return body;
+    }
 
     public final ObservableList<Segment> getBody() {
         return body.getValue();
     }
 
-    // public final void setBody(ObservableList<Segment> value) {
-    // body.set(value);
-    // }
-
-    // Access to the property
-    public final ListProperty<Segment> getBodyP() {
-        return body;
-    }
 }

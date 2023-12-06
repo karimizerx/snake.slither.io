@@ -56,7 +56,7 @@ public class Controller {
                         view.getToDisplay().add(new FoodView(view.getRoot(), food));
                     }));
                     change.getRemoved().forEach((Food food) -> {
-                        System.out.printf("A food has been removed. Pos: %s,%s", food.getMiddleX(), food.getMiddleY())
+                        System.out.printf("A food has been removed. Pos: %s,%s", food.getCenterX(), food.getCenterY())
                                 .println();
                     });
                 }

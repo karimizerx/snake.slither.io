@@ -1,9 +1,6 @@
 package slitherio.view;
 
-// Import project packages
 import slitherio.gameobjects.*;
-
-// Import java packages
 import javafx.scene.image.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.*;
@@ -11,17 +8,11 @@ import javafx.scene.shape.*;
 
 public abstract class DisplayableObject {
 
-    // All GameObjects are displayed with a Rectangle.
     private Rectangle graphics;
 
     public DisplayableObject(Pane root, GameObject go, String filename) {
-        graphics = new Rectangle();
+        graphics = new Rectangle(go.getLeft(), go.getUp(), go.getWidth(), go.getHeight());
         this.graphics.setFill(new ImagePattern(getImage(filename)));
-        // Default [graphics] values
-        graphics.setX(go.getLeft());
-        graphics.setY(go.getUp());
-        graphics.setWidth(go.getW());
-        graphics.setHeight(go.getH());
         graphics.setRotate(getRotateOfDirection(go.getDirection()));
         // Binding [go] values with [graphics] values
         bind(go);
@@ -29,20 +20,14 @@ public abstract class DisplayableObject {
         root.getChildren().add(graphics);
     }
 
-    public Rectangle getGraphics() {
-        return graphics;
+    protected static Image getImage(String file) {
+        Image img = new Image("file:src/main/resources/" + file + ".png");
+        if (!img.isError())
+            return img;
+        else
+            return null;
     }
 
-    private void bind(GameObject go) {
-        // Binding the differents [go] values with [graphics] values
-        go.getX().addListener(e -> graphics.setX(go.getMiddleX()));
-        go.getY().addListener(e -> graphics.setY(go.getMiddleY()));
-        go.getWidth().addListener(e -> graphics.setWidth(go.getW()));
-        go.getHeight().addListener(e -> graphics.setHeight(go.getH()));
-        go.getDirectionP().addListener(e -> graphics.setRotate(getRotateOfDirection(go.getDirection())));
-    }
-
-    // Get Rectangle
     protected static double getRotateOfDirection(int direction) {
         int r = 0;
         switch (direction) {
@@ -56,11 +41,16 @@ public abstract class DisplayableObject {
         return r;
     }
 
-    protected static Image getImage(String file) {
-        Image img = new Image("file:src/main/resources/" + file + ".png");
-        if (!img.isError())
-            return img;
-        else
-            return null;
+    private void bind(GameObject go) {
+        // Binding the differents [go] values with [graphics] values
+        go.getX().addListener(e -> graphics.setX(go.getCenterX()));
+        go.getY().addListener(e -> graphics.setY(go.getCenterY()));
+        go.getWidth().addListener(e -> graphics.setWidth(go.getW()));
+        go.getHeight().addListener(e -> graphics.setHeight(go.getH()));
+        go.getDirectionP().addListener(e -> graphics.setRotate(getRotateOfDirection(go.getDirection())));
+    }
+
+    public Rectangle getGraphics() {
+        return graphics;
     }
 }

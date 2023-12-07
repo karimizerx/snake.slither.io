@@ -1,6 +1,6 @@
 package slitherio;
 
-import javafx.application.Application;
+import javafx.application.*;
 import slitherio.view.*;
 
 public class App {

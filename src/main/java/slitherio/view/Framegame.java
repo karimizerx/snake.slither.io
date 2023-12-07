@@ -1,11 +1,7 @@
 package slitherio.view;
 
-// Import project packages
-import slitherio.gameobjects.*;
 import slitherio.controller.*;
 import slitherio.model.*;
-
-// Import java packages
 import javafx.stage.*;
 import javafx.application.*;
 import javafx.scene.*;
@@ -15,41 +11,35 @@ public class Framegame extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+        // Pane [root] contains all graphics objects of the game
         Pane root = new Pane();
-        // root.setBackground(new javafx.scene.layout.Background(new
-        // javafx.scene.layout.BackgroundImage(
-        // DisplayableObject.get_image("background"),
-        // javafx.scene.layout.BackgroundRepeat.NO_REPEAT,
-        // javafx.scene.layout.BackgroundRepeat.NO_REPEAT,
-        // javafx.scene.layout.BackgroundPosition.CENTER,
-        // new
-        // javafx.scene.layout.BackgroundSize(javafx.scene.layout.BackgroundSize.AUTO,
-        // 1, false, true, false,
-        // true))));
-
+        // Set Background color
         root.setStyle("-fx-background-color: green;");
+        // Set [scene] dimensions arbitrary
         Scene scene = new Scene(root, 1000, 600);
 
+        // Init Model, View & Controller
         Arena arena = new Arena(scene.getWidth(), scene.getHeight());
         Gameview view = new Gameview(root);
         Controller controller = new Controller();
         controller.setArena(arena);
         controller.setView(view);
 
-        scene.setOnKeyPressed(ev -> controller.on_key_pressed(ev.getCode()));
+        // Adding [scene] listeners
+        scene.setOnKeyPressed(ev -> controller.onKeyPressed(ev.getCode()));
         scene.widthProperty().addListener((obs, oldVal, newVal) -> {
-            arena.setW((double) newVal);
+            arena.setWidth((double) newVal);
         });
         scene.heightProperty().addListener((obs, oldVal, newVal) -> {
-            arena.setH((double) newVal);
+            arena.setHeight((double) newVal);
         });
 
-        stage.setScene(scene); // définir la scène à afficher
+        stage.setScene(scene);
         stage.setTitle("Snake Frame");
-        stage.show(); // lancer l'affichage !
-        for (Segment segment : arena.getSnake().getBody()) {
-            controller.addDisp(segment);
-        }
+        stage.show();
+
+        controller.bind();
+        controller.defautView();
         arena.animate();
     }
 }

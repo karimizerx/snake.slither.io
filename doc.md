@@ -1,80 +1,163 @@
-# Documentation
+## gameobjects/
 
-- ## gameobjects/
+### GameObject.java
 
-  - ### GameObject.java
+```
 
-    ```
+```
 
-    ```
+### Food.java
 
-  - ### Food.java
-
-    ```t
+```t
     Default constructor is "private" because no one can change default values
-    ```
+```
 
-  - ### Segment.java
+### Segment.java
 
-    ```t
+```t
     Default constructor is "private" because no one can change default values
-    ```
+```
 
-  - ### Snake.java
+### Snake.java
 
-    ```java
-    public Snake(double head_x, double head_y) {
-        getBody().add(new Segment(head_x, head_y)); // Snake sould always have a head.
-    }
+```java
+public Snake(double head_x, double head_y) {
+    // Snake sould always have a head.
+    getBody().add(new Segment(head_x, head_y));
+}
+```
 
-    public void addSegment(); // Adding a new [segment] behind the head [headSnake]
+```java
+// Adding a new [segment] behind the head [headSnake]
+public void addSegment() {...}
+```
 
-    ```
+## view/
 
-- ## view/
+### DisplayableObject.java
 
-  - ### DisplayableObject.java
+```java
+// The Display of all GameObjects is a Rectangle
+private Rectangle graphics;
+```
 
-    ```t
-    All GameObjects are displayed with a Rectangle.
-    ```
+```java
+public DisplayableObject(Pane root, GameObject go, String filename) {
+    (...)
+    // Binding [go] values with [graphics] values
+    bind(go);
+    // Adding [graphics] to the root frame game
+    root.getChildren().add(graphics);
+}
+```
 
-  - ### FoodView.java
+```java
+// Binding the differents [go] values with [graphics] values
+private void bind(GameObject go) {...}
+```
 
-    ```
+### FoodView.java
 
-    ```
+```
 
-  - ### SegmentView.java
+```
 
-    ```
+### SegmentView.java
 
-    ```
+```
 
-  - ### GameView.java
+```
 
-    ```
+### GameView.java
 
-    ```
+```
 
-  - ### FrameGame.java
+```
 
-    ```
+### FrameGame.java
 
-    ```
+```java
+// Pane [root] contains all graphics objects of the game
+Pane root = new Pane();
+```
 
-- ## model/
+```java
+// Set [scene] dimensions arbitrary
+Scene scene = new Scene(root, 1000, 600);
+```
 
-  - ### Arena.java
+```java
+// Init Model, View & Controller
+Arena arena = new Arena
+(...)
+controller.setView(view);
+```
 
-    ```
+```java
+// Adding some [scene] listeners
+scene.setOnKeyPressed(ev -> controller.onKeyPressed(ev.getCode()));
+scene.widthProperty().addListener((obs, oldVal, newVal) -> {
+    arena.setWidth((double) newVal);
+});
+scene.heightProperty().addListener((obs, oldVal, newVal) -> {
+    arena.setHeight((double) newVal);
+});
+```
 
-    ```
+```java
+// Set scene to display
+stage.setScene(scene);
+(...)
+// Run the display
+stage.show();
+```
 
-- ## controller/
+```java
+// Binding graphics objects and game objects of the game
+controller.bind();
+// Setting graphics objects default values (and add thme to the root)
+controller.defautView();
+// Running game
+arena.animate();
+```
 
-  - ### Controller.java
+## model/
 
-    ```
+### Arena.java
 
-    ```
+```java
+// Init [foods] to an empty list
+private ListProperty<Food> foods = new SimpleListProperty<Food>(FXCollections.<Food>observableArrayList());
+```
+
+```java
+// Main thread, who manage the game
+public void animate() {
+    new AnimationTimer() {
+        long last = 0;
+        final double dt = 0.1; // update every 0.01s
+        double acc = 0.0;
+        @Override
+        public void handle(long now) {
+            if (last == 0) { // ignor€ the first tick, just compute the first dt
+                last = now;
+                return;
+            }
+            acc += (now - last) * 1.0e-9; // convert nanoseconds to seconds
+            last = now;
+            while (acc >= dt) {
+                update(dt);
+                acc -= dt;
+            }
+        }
+    }.start();
+}
+```
+
+## controller/
+
+### Controller.java
+
+```
+
+```

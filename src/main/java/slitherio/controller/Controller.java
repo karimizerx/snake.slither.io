@@ -1,64 +1,55 @@
 package slitherio.controller;
 
-// Import project packages
 import slitherio.model.*;
 import slitherio.gameobjects.*;
 import slitherio.view.*;
-// Import java packages
 import javafx.collections.*;
 import javafx.scene.input.*;
 
 public class Controller {
-    Gameview view;
-    Arena arena;
+    private Gameview view;
+    private Arena arena;
 
-    public void setArena(Arena a) {
-        arena = a;
+    public void setArena(Arena arena) {
+        this.arena = arena;
     }
 
-    public void setView(Gameview g) {
-        view = g;
+    public void setView(Gameview view) {
+        this.view = view;
     }
 
-    public void on_key_pressed(KeyCode key) {
-        arena.on_key_pressed(key);
+    public void onKeyPressed(KeyCode key) {
+        arena.onKeyPressed(key);
     }
 
     public void defautView() {
-        Snake snake = arena.getSnake();
-        for (Segment segment : snake.getBody()) {
+        for (Segment segment : arena.getSnake().getBody()) {
             view.getToDisplay().add(new SegmentView(view.getRoot(), segment));
         }
-        for (Food food : arena.getFoodsValue()) {
+        for (Food food : arena.getFoods()) {
             view.getToDisplay().add(new FoodView(view.getRoot(), food));
         }
     }
 
     public void bind() {
         Snake snake = arena.getSnake();
-        // A chaque fois que la liste des segments du snake a changé
-        snake.getBody().addListener(new ListChangeListener<Segment>() {
+        snake.getBodyProperty().addListener(new ListChangeListener<Segment>() {
             @Override
             public void onChanged(Change<? extends Segment> change) {
                 while (change.next()) {
-                    // On récupère la liste des nouveaux segments, et on
                     change.getAddedSubList().forEach(((Segment segment) -> {
                         view.getToDisplay().add(new SegmentView(view.getRoot(), segment));
                     }));
                 }
             }
         });
-        arena.getFoods().addListener(new ListChangeListener<Food>() {
+        arena.getFoodsProperty().addListener(new ListChangeListener<Food>() {
             @Override
             public void onChanged(Change<? extends Food> change) {
                 while (change.next()) {
                     change.getAddedSubList().forEach(((Food food) -> {
                         view.getToDisplay().add(new FoodView(view.getRoot(), food));
                     }));
-                    change.getRemoved().forEach((Food food) -> {
-                        System.out.printf("A food has been removed. Pos: %s,%s", food.getCenterX(), food.getCenterY())
-                                .println();
-                    });
                 }
             }
         });

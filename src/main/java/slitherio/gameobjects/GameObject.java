@@ -62,19 +62,19 @@ public abstract class GameObject {
     }
 
     public final double getLeft() {
-        return x.getValue() - w.getValue() / 2;
+        return x.getValue() - width.getValue() / 2;
     }
 
     public final double getRight() {
-        return x.getValue() + w.getValue() / 2;
+        return x.getValue() + width.getValue() / 2;
     }
 
     public final double getUp() {
-        return y.getValue() - h.getValue() / 2;
+        return y.getValue() - height.getValue() / 2;
     }
 
     public final double getDown() {
-        return y.getValue() + h.getValue() / 2;
+        return y.getValue() + height.getValue() / 2;
     }
 
     public final double getWidth() {
@@ -110,7 +110,7 @@ public abstract class GameObject {
     }
 
     public final boolean collides(GameObject go, double dt) {
-    return false;
+        return false;
     }
 
 }

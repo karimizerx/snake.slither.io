@@ -13,22 +13,17 @@ public abstract class DisplayableObject {
     public DisplayableObject(Pane root, GameObject go, String filename) {
         graphics = new Rectangle(go.getLeft(), go.getUp(), go.getWidth(), go.getHeight());
         this.graphics.setFill(new ImagePattern(getImage(filename)));
-        graphics.setRotate(getRotateOfDirection(go.getDirection()));
-        // Binding [go] values with [graphics] values
+        graphics.setRotate(getRotatationOfDirection(go.getDirection()));
         bind(go);
-        // Adding [graphics] to the root frame game
         root.getChildren().add(graphics);
     }
 
     protected static Image getImage(String file) {
-        Image img = new Image("file:src/main/resources/" + file + ".png");
-        if (!img.isError())
-            return img;
-        else
-            return null;
+        Image img = new Image("file:src/main/resources/" + file);
+        return !img.isError() ? img : null;
     }
 
-    protected static double getRotateOfDirection(int direction) {
+    protected static double getRotatationOfDirection(int direction) {
         int r = 0;
         switch (direction) {
             case 1 -> r = 180;
@@ -42,12 +37,11 @@ public abstract class DisplayableObject {
     }
 
     private void bind(GameObject go) {
-        // Binding the differents [go] values with [graphics] values
-        go.getX().addListener(e -> graphics.setX(go.getCenterX()));
-        go.getY().addListener(e -> graphics.setY(go.getCenterY()));
-        go.getWidth().addListener(e -> graphics.setWidth(go.getW()));
-        go.getHeight().addListener(e -> graphics.setHeight(go.getH()));
-        go.getDirectionP().addListener(e -> graphics.setRotate(getRotateOfDirection(go.getDirection())));
+        go.getXProperty().addListener(e -> graphics.setX(go.getCenterX()));
+        go.getYProperty().addListener(e -> graphics.setY(go.getCenterY()));
+        go.getWidthProperty().addListener(e -> graphics.setWidth(go.getWidth()));
+        go.getHeightProperty().addListener(e -> graphics.setHeight(go.getHeight()));
+        go.getDirectionProperty().addListener(e -> graphics.setRotate(getRotatationOfDirection(go.getDirection())));
     }
 
     public Rectangle getGraphics() {

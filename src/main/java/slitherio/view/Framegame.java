@@ -1,12 +1,7 @@
 package slitherio.view;
 
-// Import project packages
-import slitherio.gameobjects.*;
 import slitherio.controller.*;
 import slitherio.model.*;
-
-// Import java packages
-import java.util.*;
 import javafx.stage.*;
 import javafx.application.*;
 import javafx.scene.*;
@@ -31,24 +26,20 @@ public class Framegame extends Application {
         controller.setView(view);
 
         // Adding [scene] listeners
-        scene.setOnKeyPressed(ev -> controller.on_key_pressed(ev.getCode()));
+        scene.setOnKeyPressed(ev -> controller.onKeyPressed(ev.getCode()));
         scene.widthProperty().addListener((obs, oldVal, newVal) -> {
-            arena.setW((double) newVal);
+            arena.setWidth((double) newVal);
         });
         scene.heightProperty().addListener((obs, oldVal, newVal) -> {
-            arena.setH((double) newVal);
+            arena.setHeight((double) newVal);
         });
 
-        // Settings & displaying scene
-        stage.setScene(scene); // définir la scène à afficher
+        stage.setScene(scene);
         stage.setTitle("Snake Frame");
-        stage.show(); // lancer l'affichage !
+        stage.show();
 
-        // Binding graphics objects and game objects of the game
         controller.bind();
-        // Setting graphics objects default values;
         controller.defautView();
-        // Running game
         arena.animate();
     }
 }

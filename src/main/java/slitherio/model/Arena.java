@@ -1,60 +1,42 @@
 package slitherio.model;
 
-// Import project packages
 import slitherio.gameobjects.*;
-
-// Import java packages
-import java.util.*;
 import javafx.scene.input.*;
 import javafx.animation.*;
 import javafx.beans.property.*;
 import javafx.collections.*;
 
 public class Arena {
-    private ListProperty<Food> foods;
+    private ListProperty<Food> foods = new SimpleListProperty<Food>(FXCollections.<Food>observableArrayList());
     private Snake snake;
-    private double w, h;
+    private double width, height;
 
-    public Arena(double w, double h) {
-        this.w = w;
-        this.h = h;
+    public Arena(double width, double height) {
+        this.width = width;
+        this.height = height;
         snake = new Snake(100, 300);
-        // Init [foods] to an empty list
-        foods = new SimpleListProperty<Food>(FXCollections.<Food>observableArrayList());
-
-        // Adding some segments and foods for tests...
-        snake.addSegment();
-        snake.addSegment();
-        snake.addSegment();
-        snake.addSegment();
-        snake.addSegment();
-        snake.addSegment();
-        snake.addSegment();
-        snake.addSegment();
-        snake.addSegment();
-        foods.get().add(new Food());
+        getFoods().add(new Food());
     }
 
     private void update(double dt) {
-        snake.move(dt, w, h);
-        // Collides management...
+        snake.move(dt, width, height);
+        // TODO : Collides management...
     }
 
-    // Main thread, who manage the game
     public void animate() {
         new AnimationTimer() {
             long last = 0;
-            final double dt = 0.1; // update every 0.01s
+            final double dt = 0.1;
             double acc = 0.0;
 
             @Override
             public void handle(long now) {
-                if (last == 0) { // ignore the first tick, just compute the first dt
+                if (last == 0) {
                     last = now;
                     return;
                 }
 
-                acc += (now - last) * 1.0e-9; // convert nanoseconds to seconds
+                acc += (now - last) * 1.0e-9;
                 last = now;
 
                 while (acc >= dt) {
@@ -65,60 +47,46 @@ public class Arena {
         }.start();
     }
 
-    /* Getter & Setter */
-
-    public final ObservableList<Food> getFoodsValue() {
-        return foods.get();
+    public final ListProperty<Food> getFoodsProperty() {
+        return foods;
     }
 
-    // public final void setFoodsValue(ObservableList<Food> value) {
-    // foods.set(value);
-    // }
-
-    // Acces to the property
-    public final ListProperty<Food> getFoods() {
-        return foods;
+    public final ObservableList<Food> getFoods() {
+        return foods.get();
     }
 
     public Snake getSnake() {
         return snake;
     }
 
-    public double getW() {
-        return w;
+    public double getWidth() {
+        return width;
     }
 
-    public void setW(double w) {
-        this.w = w;
+    public void setWidth(double value) {
+        this.width = value;
     }
 
-    public double getH() {
-        return h;
+    public double getHeight() {
+        return height;
     }
 
-    public void setH(double h) {
-        this.h = h;
+    public void setHeight(double value) {
+        this.height = value;
     }
 
-    /* Other */
-    public void on_key_pressed(KeyCode key) {
+    public void onKeyPressed(KeyCode key) {
         Segment headSnake = snake.getBody().get(0);
         int direction = headSnake.getDirection();
-        if (key == KeyCode.UP) {
-            if (direction == 2 || direction == 4)
+        if (direction == 2 || direction == 4) {
+            if (key == KeyCode.UP)
                 headSnake.setDirection(1);
-        }
-        if (key == KeyCode.RIGHT) {
-            if (direction == 1 || direction == 3)
-                headSnake.setDirection(2);
-
-        }
-        if (key == KeyCode.DOWN) {
-            if (direction == 2 || direction == 4)
+            else if (key == KeyCode.DOWN)
                 headSnake.setDirection(3);
-        }
-        if (key == KeyCode.LEFT) {
-            if (direction == 1 || direction == 3)
+        } else if (direction == 1 || direction == 3) {
+            if (key == KeyCode.RIGHT)
+                headSnake.setDirection(2);
+            else if (key == KeyCode.LEFT)
                 headSnake.setDirection(4);
         }
     }

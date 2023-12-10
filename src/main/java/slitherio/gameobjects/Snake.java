@@ -12,27 +12,14 @@ public class Snake {
 
     public void move(double dt, double maxX, double maxY) {
         Segment headSnake = body.getValue().get(0);
-        switch (headSnake.getDirection()) {
-            case 1 -> {
-                if (headSnake.getUp() < 0)
-                    return;
-            }
-            case 2 -> {
-                if (maxX < headSnake.getRight())
-                    return;
-            }
-            case 3 -> {
-                if (maxY < headSnake.getDown())
-                    return;
-            }
-            case 4 -> {
-                if (headSnake.getLeft() < 0)
-                    return;
-            }
-            default -> {
-                return;
-            }
-        }
+        int dir = headSnake.getDirection();
+        double epsilon = 0.00001;
+        double left = headSnake.getLeft() - epsilon;
+        double right = headSnake.getRight() + epsilon;
+        double up = headSnake.getUp() - epsilon;
+        double down = headSnake.getDown() + epsilon;
+        if ((left < 0 && dir == 4) || (right > maxX && dir == 2) || (up < 0 && dir == 1) || (down > maxY && dir == 3))
+            return;
         moveToDirection(dt, headSnake.getDirection());
     }
 
@@ -44,33 +31,36 @@ public class Snake {
             segment.setCenterY(previous.getCenterY());
             segment.setDirection(previous.getDirection());
         }
+
         Segment headSnake = body.getValue().get(0);
+        double nx = headSnake.getDx() * dt, ny = headSnake.getDy() * dt;
         switch (d) {
-            case 1 -> headSnake.setCenterY(headSnake.getCenterY() - headSnake.getDy());
-            case 2 -> headSnake.setCenterX(headSnake.getCenterX() + headSnake.getDx());
-            case 3 -> headSnake.setCenterY(headSnake.getCenterY() + headSnake.getDy());
-            case 4 -> headSnake.setCenterX(headSnake.getCenterX() - headSnake.getDx());
+            case 1 -> headSnake.setCenterY(headSnake.getCenterY() - ny);
+            case 2 -> headSnake.setCenterX(headSnake.getCenterX() + nx);
+            case 3 -> headSnake.setCenterY(headSnake.getCenterY() + ny);
+            case 4 -> headSnake.setCenterX(headSnake.getCenterX() - nx);
             default -> {
                 return;
             }
         }
     }
 
-    public void addSegment() {
+    public void addSegment(double dt) {
         Segment headSnake = getBody().get(0);
-        double hsx = headSnake.getCenterX(), hsy = headSnake.getCenterY(), nx = hsx, ny = hsy;
-        double hsw = headSnake.getWidth(), hsh = headSnake.getHeight();
+        double hsx = headSnake.getCenterX(), hsy = headSnake.getCenterY();
+        double hdx = headSnake.getDx() * dt, hdy = headSnake.getDy() * dt;
+        double nx = hsx, ny = hsy;
         int nd = headSnake.getDirection();
         switch (nd) {
-            case 1 -> ny = hsy + hsh;
-            case 2 -> nx = hsx - hsw;
-            case 3 -> ny = hsy - hsh;
-            case 4 -> nx = hsx + hsw;
+            case 1 -> ny -= hdy;
+            case 2 -> nx += hdx;
+            case 3 -> ny += hdy;
+            case 4 -> nx -= hdy;
             default -> {
             }
         }
         Segment newseg = new Segment(nx, ny, nd);
-        getBody().add(1, newseg);
+        getBody().add(0, newseg);
     }
 
     public final ListProperty<Segment> getBodyProperty() {

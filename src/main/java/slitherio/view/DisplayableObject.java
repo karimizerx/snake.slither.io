@@ -18,7 +18,7 @@ public abstract class DisplayableObject {
         root.getChildren().add(graphics);
     }
 
-    protected static Image getImage(String file) {
+    public static Image getImage(String file) {
         Image img = new Image("file:src/main/resources/" + file);
         return !img.isError() ? img : null;
     }
@@ -37,8 +37,8 @@ public abstract class DisplayableObject {
     }
 
     private void bind(GameObject go) {
-        go.getXProperty().addListener(e -> graphics.setX(go.getCenterX()));
-        go.getYProperty().addListener(e -> graphics.setY(go.getCenterY()));
+        go.getXProperty().addListener(e -> graphics.setX(go.getLeft()));
+        go.getYProperty().addListener(e -> graphics.setY(go.getUp()));
         go.getWidthProperty().addListener(e -> graphics.setWidth(go.getWidth()));
         go.getHeightProperty().addListener(e -> graphics.setHeight(go.getHeight()));
         go.getDirectionProperty().addListener(e -> graphics.setRotate(getRotatationOfDirection(go.getDirection())));

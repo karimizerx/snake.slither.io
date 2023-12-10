@@ -15,18 +15,28 @@ public class Arena {
         this.width = width;
         this.height = height;
         snake = new Snake(100, 300);
-        getFoods().add(new Food());
+        getFoods().add(Food.FoodRandom(width, height));
     }
 
     private void update(double dt) {
+        Segment headSnake = snake.getBody().get(0);
+        for (Food food : getFoods()) {
+            if (headSnake.collides(food)) {
+                getFoods().remove(food);
+                snake.addSegment(dt);
+                snake.addSegment(dt);
+                snake.addSegment(dt);
+                getFoods().add(Food.FoodRandom(width, height));
+                break;
+            }
+        }
         snake.move(dt, width, height);
-        // TODO : Collides management...
     }
 
     public void animate() {
         new AnimationTimer() {
             long last = 0;
-            final double dt = 0.1;
+            final double dt = 0.01;
             double acc = 0.0;
 
             @Override

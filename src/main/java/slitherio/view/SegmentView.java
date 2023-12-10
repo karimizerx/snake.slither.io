@@ -2,6 +2,7 @@ package slitherio.view;
 
 import slitherio.gameobjects.*;
 import javafx.scene.layout.*;
+import javafx.scene.paint.*;
 
 public class SegmentView extends DisplayableObject {
 

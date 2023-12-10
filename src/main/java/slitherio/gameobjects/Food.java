@@ -16,9 +16,9 @@ public class Food extends GameObject {
         this(x, y, defaultWidth, defaultHeight, defaultDx, defaultDy, defaultDirection);
     }
 
-    public Food() {
-        this(0, 0);
-        this.setCenterX(Math.random() * this.getWidth() + this.getWidth());
-        this.setCenterY(Math.random() * this.getHeight() + this.getHeight());
+    public static Food FoodRandom(double maxWidth, double maxHeight) {
+        double rx = defaultWidth / 2 + Math.random() * (maxWidth - defaultWidth);
+        double ry = defaultHeight / 2 + Math.random() * (maxHeight - defaultHeight);
+        return new Food(rx, ry);
     }
 }

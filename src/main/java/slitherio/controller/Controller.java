@@ -5,6 +5,7 @@ import slitherio.gameobjects.*;
 import slitherio.view.*;
 import javafx.collections.*;
 import javafx.scene.input.*;
+import javafx.scene.paint.ImagePattern;
 
 public class Controller {
     private Gameview view;
@@ -23,22 +24,25 @@ public class Controller {
     }
 
     public void defautView() {
+        var root = view.getRoot();
         for (Segment segment : arena.getSnake().getBody()) {
-            view.getToDisplay().add(new SegmentView(view.getRoot(), segment));
+            view.getSnakeToDisplay().add(new SegmentView(root, segment));
         }
         for (Food food : arena.getFoods()) {
-            view.getToDisplay().add(new FoodView(view.getRoot(), food));
+            view.getFoodsToDisplay().add(new FoodView(root, food));
         }
     }
 
     public void bind() {
         Snake snake = arena.getSnake();
+        var root = view.getRoot();
         snake.getBodyProperty().addListener(new ListChangeListener<Segment>() {
             @Override
             public void onChanged(Change<? extends Segment> change) {
                 while (change.next()) {
                     change.getAddedSubList().forEach(((Segment segment) -> {
-                        view.getToDisplay().add(new SegmentView(view.getRoot(), segment));
+
+                        view.getSnakeToDisplay().add(new SegmentView(root, segment));
                     }));
                 }
             }
@@ -48,7 +52,11 @@ public class Controller {
             public void onChanged(Change<? extends Food> change) {
                 while (change.next()) {
                     change.getAddedSubList().forEach(((Food food) -> {
-                        view.getToDisplay().add(new FoodView(view.getRoot(), food));
+                        view.getFoodsToDisplay().add(new FoodView(root, food));
+                    }));
+                    change.getRemoved().forEach(((Food food) -> {
+                        DisplayableObject d = view.getFoodsToDisplay().remove(change.getFrom());
+                        view.getRoot().getChildren().remove(d.getGraphics());
                     }));
                 }
             }

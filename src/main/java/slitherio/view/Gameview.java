@@ -7,16 +7,26 @@ public class Gameview {
 
     private Pane root;
     private List<DisplayableObject> toDisplay = new ArrayList<>();
+    private List<DisplayableObject> foodsToDisplay = new ArrayList<>();
+    private List<DisplayableObject> snakeToDisplay = new ArrayList<>();
 
     public Gameview(Pane root) {
         this.root = root;
     }
 
-    public List<DisplayableObject> getToDisplay() {
+    private List<DisplayableObject> getToDisplay() {
         return toDisplay;
     }
 
     public Pane getRoot() {
         return root;
+    }
+
+    public List<DisplayableObject> getSnakeToDisplay() {
+        return snakeToDisplay;
+    }
+
+    public List<DisplayableObject> getFoodsToDisplay() {
+        return foodsToDisplay;
     }
 }

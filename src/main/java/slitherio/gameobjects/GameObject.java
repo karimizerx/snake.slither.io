@@ -109,8 +109,19 @@ public abstract class GameObject {
         dy = value;
     }
 
-    public final boolean collides(GameObject go, double dt) {
-        return false;
+    /*
+     * l = left, r = right, u = up, d = down
+     * collides when :
+     * [l1 < r2] ∧ [l2 < r1] ∧ [u1 < d2] ∧ [u2 < d1]
+     * <=> l1 - r2 < 0 < r1 - l2
+     * ∧ u1 - d2 < 0 < d1 - u2
+     */
+    public final boolean collides(GameObject go) {
+        double a = getLeft() - go.getRight();
+        double b = getRight() - go.getLeft();
+        double c = getUp() - go.getDown();
+        double d = getDown() - go.getUp();
+        return (a < 0) && (0 < b) && (c < 0) && (0 < d);
     }
 
 }

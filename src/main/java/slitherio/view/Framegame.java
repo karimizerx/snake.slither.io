@@ -40,6 +40,6 @@ public class Framegame extends Application {
 
         controller.bind();
         controller.defautView();
-        arena.animate();
+        controller.animate();
     }
 }

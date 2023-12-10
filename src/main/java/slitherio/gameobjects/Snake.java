@@ -12,14 +12,6 @@ public class Snake {
 
     public void move(double dt, double maxX, double maxY) {
         Segment headSnake = body.getValue().get(0);
-        int dir = headSnake.getDirection();
-        double epsilon = 0.00001;
-        double left = headSnake.getLeft() - epsilon;
-        double right = headSnake.getRight() + epsilon;
-        double up = headSnake.getUp() - epsilon;
-        double down = headSnake.getDown() + epsilon;
-        if ((left < 0 && dir == 4) || (right > maxX && dir == 2) || (up < 0 && dir == 1) || (down > maxY && dir == 3))
-            return;
         moveToDirection(dt, headSnake.getDirection());
     }
 

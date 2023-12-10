@@ -19,7 +19,7 @@
 - [ ] Etape 4: **gestion de la mort**
 
   - [ ] collision avec un obstacle tiers
-  - [ ] auto-collision
+  - [ ] auto-collision :arrow_right: <span style="color:red">On oublie ça</span>
 
 - [ ] Etape 5: **gestion de la croissance**
 

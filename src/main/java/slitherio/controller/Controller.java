@@ -56,7 +56,7 @@ public class Controller {
             view.getSnake2ToDisplay().add(new SegmentView(root, segment));
         }
         for (Food food : arena.getFoods()) {
-            view.getFoodsToDisplay().add(new FoodView(root, food));
+            view.getFoodsToDisplay().add(new FoodView(root, food)); 
         }
 
         System.out.println("SnakeToDisplay.size() " + view.getSnakeToDisplay().size());

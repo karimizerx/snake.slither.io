@@ -2,17 +2,30 @@ package slitherio.gameobjects;
 
 import javafx.beans.property.*;
 import javafx.collections.*;
+import javafx.scene.input.*;
 
 public class Snake {
     private ListProperty<Segment> body = new SimpleListProperty<Segment>(FXCollections.<Segment>observableArrayList());
+    private KeyCode keyUp = KeyCode.UP, keyDown = KeyCode.DOWN, keyLeft = KeyCode.LEFT, keyRight = KeyCode.RIGHT;
 
+    /* ******************************************************* */
+    // Constructeurs
     public Snake(double headX, double headY) {
         getBody().add(new Segment(headX, headY));
     }
 
+    public Snake(double headX, double headY, KeyCode keyUp, KeyCode keyDown, KeyCode keyLeft, KeyCode keyRight) {
+        getBody().add(new Segment(headX, headY));
+        this.keyUp = keyUp;
+        this.keyDown = keyDown;
+        this.keyLeft = keyLeft;
+        this.keyRight = keyRight;
+    }
+
+    /* ******************************************************* */
+    // Méthodes
     public void move(double dt, double maxX, double maxY) {
-        Segment headSnake = body.getValue().get(0);
-        moveToDirection(dt, headSnake.getDirection());
+        moveToDirection(dt, getHead().getDirection());
     }
 
     private void moveToDirection(double dt, int d) {
@@ -24,13 +37,12 @@ public class Snake {
             segment.setDirection(previous.getDirection());
         }
 
-        Segment headSnake = body.getValue().get(0);
-        double nx = headSnake.getDx() * dt, ny = headSnake.getDy() * dt;
+        double nx = getHead().getDx() * dt, ny = getHead().getDy() * dt;
         switch (d) {
-            case 1 -> headSnake.setCenterY(headSnake.getCenterY() - ny);
-            case 2 -> headSnake.setCenterX(headSnake.getCenterX() + nx);
-            case 3 -> headSnake.setCenterY(headSnake.getCenterY() + ny);
-            case 4 -> headSnake.setCenterX(headSnake.getCenterX() - nx);
+            case 1 -> getHead().setCenterY(getHead().getCenterY() - ny);
+            case 2 -> getHead().setCenterX(getHead().getCenterX() + nx);
+            case 3 -> getHead().setCenterY(getHead().getCenterY() + ny);
+            case 4 -> getHead().setCenterX(getHead().getCenterX() - nx);
             default -> {
                 return;
             }
@@ -38,11 +50,10 @@ public class Snake {
     }
 
     public void addSegment(double dt) {
-        Segment headSnake = getBody().get(0);
-        double hsx = headSnake.getCenterX(), hsy = headSnake.getCenterY();
-        double hdx = headSnake.getDx() * dt, hdy = headSnake.getDy() * dt;
+        double hsx = getHead().getCenterX(), hsy = getHead().getCenterY();
+        double hdx = getHead().getDx() * dt, hdy = getHead().getDy() * dt;
         double nx = hsx, ny = hsy;
-        int nd = headSnake.getDirection();
+        int nd = getHead().getDirection();
         switch (nd) {
             case 1 -> ny -= hdy;
             case 2 -> nx += hdx;
@@ -53,6 +64,29 @@ public class Snake {
         }
         Segment newseg = new Segment(nx, ny, nd);
         getBody().add(0, newseg);
+    }
+
+    public void onKeyPressed(KeyCode key) {
+        if (!getBody().isEmpty()) {
+            int direction = getHead().getDirection();
+            if (direction == 2 || direction == 4) {
+                if (key == keyUp)
+                    getHead().setDirection(1);
+                else if (key == keyDown)
+                    getHead().setDirection(3);
+            } else if (direction == 1 || direction == 3) {
+                if (key == keyRight)
+                    getHead().setDirection(2);
+                else if (key == keyLeft)
+                    getHead().setDirection(4);
+            }
+        }
+    }
+
+    /* ******************************************************* */
+    // Getter
+    public Segment getHead() {
+        return getBody().get(0);
     }
 
     public final ListProperty<Segment> getBodyProperty() {

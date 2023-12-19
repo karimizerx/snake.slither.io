@@ -111,7 +111,7 @@ public abstract class GameObject {
 
     /*
      * l = left, r = right, u = up, d = down
-     * collides when :
+     * collides with a GameObject when :
      * [l1 < r2] ∧ [l2 < r1] ∧ [u1 < d2] ∧ [u2 < d1]
      * <=> l1 - r2 < 0 < r1 - l2
      * ∧ u1 - d2 < 0 < d1 - u2
@@ -122,6 +122,11 @@ public abstract class GameObject {
         double c = getUp() - go.getDown();
         double d = getDown() - go.getUp();
         return (a < 0) && (0 < b) && (c < 0) && (0 < d);
+    }
+
+    // Return [true] if [this] is not strictly in the rectangle delimited by
+    public final boolean collides(double maxX, double maxY) {
+        return (getLeft() < 0) && (maxX < getRight()) && (getUp() < 0) && (maxY < getDown());
     }
 
 }

@@ -1,9 +1,11 @@
 package slitherio.model;
 
+import javafx.beans.property.ListProperty;
+import javafx.beans.property.SimpleListProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.input.KeyCode;
 import slitherio.gameobjects.*;
-import javafx.scene.input.*;
-import javafx.beans.property.*;
-import javafx.collections.*;
 
 public class Arena {
     private ListProperty<Food> foods = new SimpleListProperty<Food>(FXCollections.<Food>observableArrayList());
@@ -18,12 +20,13 @@ public class Arena {
         getFoods().add(Food.FoodRandom(width, height));
     }
 
+    /* aloo */
     private void updateOneSnake(Snake snake, double dt) {
-        Segment headSnake = snake.getBody().get(0);
 
+        getFoods().get(0);
         // Collides with Foods
         for (Food food : getFoods()) {
-            if (headSnake.collides(food)) {
+            if (snake.getHead().collides(food)) {
                 getFoods().remove(food);
                 for (int i = 0; i < 100; i++)
                     snake.addSegment(dt);
@@ -52,16 +55,14 @@ public class Arena {
             return;
         updateOneSnake(snake, dt);
         updateOneSnake(snake2, dt);
-        Segment headSnake = snake.getBody().get(0);
-        Segment headSnake2 = snake2.getBody().get(0);
 
         for (Segment seg : snake2.getBody()) {
-            if (headSnake.collides(seg))
+            if (snake.getHead().collides(seg))
                 snake.getBody().clear();
         }
         if (!snake.getBody().isEmpty()) {
             for (Segment seg : snake.getBody()) {
-                if (headSnake2.collides(seg))
+                if (snake2.getHead().collides(seg))
                     snake2.getBody().clear();
             }
         }
@@ -104,36 +105,7 @@ public class Arena {
     }
 
     public void onKeyPressed(KeyCode key) {
-        if (!snake.getBody().isEmpty()) {
-            Segment headSnake = snake.getBody().get(0);
-            int direction = headSnake.getDirection();
-            if (direction == 2 || direction == 4) {
-                if (key == KeyCode.UP)
-                    headSnake.setDirection(1);
-                else if (key == KeyCode.DOWN)
-                    headSnake.setDirection(3);
-            } else if (direction == 1 || direction == 3) {
-                if (key == KeyCode.RIGHT)
-                    headSnake.setDirection(2);
-                else if (key == KeyCode.LEFT)
-                    headSnake.setDirection(4);
-            }
-        }
-
-        if (!snake2.getBody().isEmpty()) {
-            Segment headSnake2 = snake2.getBody().get(0);
-            int d = headSnake2.getDirection();
-            if (d == 2 || d == 4) {
-                if (key == KeyCode.Z)
-                    headSnake2.setDirection(1);
-                else if (key == KeyCode.S)
-                    headSnake2.setDirection(3);
-            } else if (d == 1 || d == 3) {
-                if (key == KeyCode.D)
-                    headSnake2.setDirection(2);
-                else if (key == KeyCode.Q)
-                    headSnake2.setDirection(4);
-            }
-        }
+        snake.onKeyPressed(key);
+        snake2.onKeyPressed(key);
     }
 }

@@ -1,7 +1,5 @@
 package slitherio.view;
 
-import slitherio.controller.*;
-import slitherio.model.*;
 import javafx.stage.*;
 import javafx.application.*;
 import javafx.scene.*;
@@ -18,28 +16,18 @@ public class Framegame extends Application {
         // Set [scene] dimensions arbitrary
         Scene scene = new Scene(root, 1000, 600);
 
-        // Init Model, View & Controller
-        Arena arena = new Arena(scene.getWidth(), scene.getHeight());
-        Gameview view = new Gameview(root);
-        Controller controller = new Controller();
-        controller.setArena(arena);
-        controller.setView(view);
+        // Init Model, View & Controller (by initialisation of Controller)
+        Controller controller = new Controller(root, scene.getWidth(), scene.getHeight());
 
         // Adding [scene] listeners
         scene.setOnKeyPressed(ev -> controller.onKeyPressed(ev.getCode()));
-        scene.widthProperty().addListener((obs, oldVal, newVal) -> {
-            arena.setWidth((double) newVal);
-        });
-        scene.heightProperty().addListener((obs, oldVal, newVal) -> {
-            arena.setHeight((double) newVal);
-        });
+        scene.widthProperty().addListener((obs, oldVal, newVal) -> controller.getView().setWidth((double) newVal));
+        scene.heightProperty().addListener((obs, oldVal, newVal) -> controller.getView().setHeight((double) newVal));
 
         stage.setScene(scene);
-        stage.setTitle("Snake Frame");
+        stage.setTitle("Snake - Sliter.io");
         stage.show();
 
-        controller.bind();
-        controller.defautView();
-        controller.animate();
+        controller.startGame();
     }
 }

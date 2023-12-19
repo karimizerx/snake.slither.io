@@ -9,7 +9,7 @@ import slitherio.model.*;
 import slitherio.gameobjects.*;
 import slitherio.view.*;
 
-public class Controller {
+public final class Controller {
     private GameView view;
     private Arena model;
 
@@ -22,14 +22,14 @@ public class Controller {
     /* ******************** Functions ******************** */
 
     // Main function that initialize all values of game and launch it
-    protected void startGame() {
+    protected final void startGame() {
         bind();
         defaultView();
         animate();
     }
 
     // Run en continue...
-    private void animate() {
+    protected final void animate() {
         new AnimationTimer() {
             long last = 0;
             final double dt = 0.01;
@@ -84,31 +84,6 @@ public class Controller {
         });
     }
 
-    private void bindOneSnake(Snake snake, SnakeView snakeView) {
-        snake.getBodyProperty().addListener(new ListChangeListener<Segment>() {
-
-            @Override
-            public void onChanged(Change<? extends Segment> change) {
-                while (change.next()) {
-
-                    // Manage removed segment
-                    if (change.wasRemoved()) {
-                        for (Segment segment : change.getRemoved()) {
-                            for (DisplayableObject segmentView : snakeView.getBodyView()) {
-                                if (segmentView.getObject().equals(segment))
-                                    view.removeSegment(snakeView, segmentView);
-                            }
-                        }
-                    }
-
-                    // Manage added segment
-                    if (change.wasAdded())
-                        change.getAddedSubList().forEach((Segment segment) -> view.addSegment(snakeView, segment));
-                }
-            }
-        });
-    }
-
     private void bindSnakes() {
         model.getSnakesProperty().addListener(new ListChangeListener<Snake>() {
 
@@ -140,7 +115,7 @@ public class Controller {
         bindSnakes();
     }
 
-    protected void defaultView() {
+    protected final void defaultView() {
         model.getSnakes().forEach((Snake snake) -> view.addSnake(snake));
         model.getFoods().forEach((Food food) -> view.addFood(food));
     }

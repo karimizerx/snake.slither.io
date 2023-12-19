@@ -46,7 +46,7 @@ public class GameView {
     }
 
     protected void addSnake(Snake snake) {
-        SnakeView snakeView = new SnakeView(snake);
+        SnakeView snakeView = new SnakeView(this, snake);
         snakesToDisplay.add(snakeView);
         snakeView.getBodyView().forEach((SegmentView segmentView) -> segmentView.display(root));
     }

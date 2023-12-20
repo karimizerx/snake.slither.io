@@ -69,7 +69,7 @@ public class Snake {
     }
 
     // Return True if [this] (this.head) collides [snake]
-    public final boolean collidesSnake(Snake snake) {
+    public final boolean collides(Snake snake) {
         if (this.equals(snake))
             return false;
         for (Segment segment : snake.getBody()) {
@@ -77,6 +77,35 @@ public class Snake {
                 return true;
         }
         return false;
+    }
+
+    // Return True if [this] (this.head) collides window's edges
+    public final boolean collides(double maxWidth, double maxHeight) {
+        if (!getHead().collides(maxWidth, maxHeight))
+            return false;
+
+        boolean collidesUp = getHead().getUp() < 0 && getHead().getDirection() == 1;
+        boolean collidesDown = getHead().getDown() > maxHeight && getHead().getDirection() == 3;
+        boolean collidesLeft = getHead().getLeft() < 0 && getHead().getDirection() == 4;
+        boolean collidesRight = getHead().getRight() > maxWidth && getHead().getDirection() == 2;
+
+        return collidesUp || collidesDown || collidesLeft || collidesRight;
+    }
+
+    // Change [head]'s direction when [this] collides window's edges
+    public final void byPassCollidesWindow(double maxWidth, double maxHeight) {
+        // Check if snake is collides window's edges
+        if (!collides(maxWidth, maxHeight))
+            return;
+
+        int newDirection = getHead().getDirection();
+        System.out.println("Direction = " + newDirection);
+        if (getHead().getUp() < 0 || getHead().getDown() > maxHeight)
+            newDirection = (getHead().getLeft() < 0) ? 2 : 4;
+        else if (getHead().getLeft() < 0 || getHead().getRight() > maxWidth)
+            newDirection = (getHead().getUp() < 0) ? 3 : 1;
+
+        getHead().setDirection(newDirection);
     }
 
     public final void onKeyPressed(KeyCode key) {

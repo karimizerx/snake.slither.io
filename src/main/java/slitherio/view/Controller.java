@@ -1,13 +1,11 @@
 package slitherio.view;
 
-import java.util.*;
 import javafx.animation.*;
 import javafx.collections.*;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
 import slitherio.model.*;
 import slitherio.gameobjects.*;
-import slitherio.view.*;
 
 public final class Controller {
     private GameView view;

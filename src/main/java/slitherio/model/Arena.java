@@ -50,7 +50,7 @@ public final class Arena {
 
         // Manage collides with others snakes
         for (Snake snake2 : getSnakes()) {
-            if (snake2.collidesSnake(snake))
+            if (!snake2.getBody().isEmpty() && snake2.collides(snake))
                 snake2.getBody().clear();
         }
 
@@ -64,10 +64,10 @@ public final class Arena {
             }
         }
 
-        // Manage collides with Frame
-        if (snake.getHead().collides(width, height))
-            System.out.printf("Collides with Frame: x:%d y:%d", snake.getHead().getCenterX(),
-                    snake.getHead().getCenterY()).println();
+        // Manage collides with Window
+        if (snake.collides(width, height))
+            snake.byPassCollidesWindow(width, height);
+
     }
 
     // Run [onKeyPressed] function for each snake of [snakes]

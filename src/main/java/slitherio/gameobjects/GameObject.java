@@ -129,7 +129,7 @@ public abstract class GameObject {
 
     // True if [this] isn't strictly in the rectangle delimited by (0,0);(maxX,maxY)
     public final boolean collides(double maxX, double maxY) {
-        return (getLeft() < 0) && (maxX < getRight()) && (getUp() < 0) && (maxY < getDown());
+        return (getLeft() < 0) || (maxX < getRight()) || (getUp() < 0) || (maxY < getDown());
     }
 
 }

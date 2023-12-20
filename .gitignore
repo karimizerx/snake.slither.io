@@ -5,6 +5,5 @@
 build
 
 # Ignore directories
-.vscode
 
 bin

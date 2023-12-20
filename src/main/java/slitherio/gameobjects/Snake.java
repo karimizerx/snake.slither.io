@@ -99,11 +99,14 @@ public class Snake {
             return;
 
         int newDirection = getHead().getDirection();
-        System.out.println("Direction = " + newDirection);
-        if (getHead().getUp() < 0 || getHead().getDown() > maxHeight)
+        if (getHead().getUp() < 0)
+            newDirection = (getHead().getRight() > maxWidth) ? 4 : 2;
+        else if (getHead().getDown() > maxHeight)
             newDirection = (getHead().getLeft() < 0) ? 2 : 4;
-        else if (getHead().getLeft() < 0 || getHead().getRight() > maxWidth)
+        else if (getHead().getLeft() < 0)
             newDirection = (getHead().getUp() < 0) ? 3 : 1;
+        else if (getHead().getRight() > maxWidth)
+            newDirection = (getHead().getDown() > maxHeight) ? 1 : 3;
 
         getHead().setDirection(newDirection);
     }

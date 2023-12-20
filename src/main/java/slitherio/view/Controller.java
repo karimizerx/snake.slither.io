@@ -91,7 +91,7 @@ public final class Controller {
 
                     // Manage removed snakes
                     if (change.wasRemoved()) {
-                        for (Snake snake : model.getSnakes()) {
+                        for (Snake snake : change.getRemoved()) {
                             for (SnakeView snakeView : view.getSnakesToDisplay()) {
                                 if (snakeView.getSnake().equals(snake))
                                     view.removeSnake(snakeView);

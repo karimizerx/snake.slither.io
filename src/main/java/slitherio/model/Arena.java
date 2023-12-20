@@ -1,51 +1,82 @@
 package slitherio.model;
 
-import slitherio.gameobjects.*;
-import javafx.scene.input.*;
-import javafx.animation.*;
 import javafx.beans.property.*;
 import javafx.collections.*;
+import javafx.scene.input.*;
+import slitherio.gameobjects.*;
 
-public class Arena {
+public final class Arena {
     private ListProperty<Food> foods = new SimpleListProperty<Food>(FXCollections.<Food>observableArrayList());
-    private Snake snake;
+    private ListProperty<Snake> snakes = new SimpleListProperty<Snake>(FXCollections.<Snake>observableArrayList());
     private double width, height;
 
+    /* ******************** Constructor ******************** */
     public Arena(double width, double height) {
         this.width = width;
         this.height = height;
-        snake = new Snake(100, 300);
-        getFoods().add(new Food());
+
+        getSnakes().add(new Snake(600, 300));
+        getSnakes().add(new Snake(100, 350, KeyCode.Z, KeyCode.S, KeyCode.Q, KeyCode.D));
+
+        getFoods().add(Food.FoodRandom(width, height));
     }
 
-    private void update(double dt) {
-        snake.move(dt, width, height);
-        // TODO : Collides management...
+    /* ******************** Functions ******************** */
+
+    // Update all values of the make. [dt] is the elapsed time
+    public final void update(double dt) {
+        if (getSnakes().isEmpty())
+            return;
+
+        // Update all snakes of [snakes]
+        for (Snake snake : getSnakes())
+            updateOneSnake(snake, dt);
+
+        // Remove all snakes of [snakes] that need to be removed
+        getSnakes().removeIf(snake -> snake.getBody().isEmpty());
+
+        // Make all snakes of [snakes] move
+        for (Snake snake : getSnakes())
+            snake.move(dt);
+
     }
 
-    public void animate() {
-        new AnimationTimer() {
-            long last = 0;
-            final double dt = 0.1;
-            double acc = 0.0;
+    // Update values of [snake]. [dt] is the elapsed time
+    private void updateOneSnake(Snake snake, double dt) {
 
-            @Override
-            public void handle(long now) {
-                if (last == 0) {
-                    last = now;
-                    return;
-                }
+        // Make sure that the [snake]'s body isn't empty
+        if (snake.getBody().isEmpty())
+            return;
 
-                acc += (now - last) * 1.0e-9;
-                last = now;
+        // Manage collides with others snakes
+        for (Snake snake2 : getSnakes()) {
+            if (!snake2.getBody().isEmpty() && snake2.collides(snake))
+                snake2.getBody().clear();
+        }
 
-                while (acc >= dt) {
-                    update(dt);
-                    acc -= dt;
-                }
+        // Manage collides with food
+        for (Food food : getFoods()) {
+            if (snake.getHead().collides(food)) {
+                getFoods().remove(food);
+                snake.addSegment(dt);
+                getFoods().add(Food.FoodRandom(width, height));
+                break;
             }
-        }.start();
+        }
+
+        // Manage collides with Window
+        if (snake.collides(width, height))
+            snake.byPassCollidesWindow(width, height);
+
     }
+
+    // Run [onKeyPressed] function for each snake of [snakes]
+    public final void onKeyPressed(KeyCode key) {
+        for (Snake snake : getSnakes())
+            snake.onKeyPressed(key);
+    }
+
+    /* ******************** Getter & Setter ******************** */
 
     public final ListProperty<Food> getFoodsProperty() {
         return foods;
@@ -55,39 +86,28 @@ public class Arena {
         return foods.get();
     }
 
-    public Snake getSnake() {
-        return snake;
+    public final ListProperty<Snake> getSnakesProperty() {
+        return snakes;
     }
 
-    public double getWidth() {
+    public final ObservableList<Snake> getSnakes() {
+        return snakes.get();
+    }
+
+    public final double getWidth() {
         return width;
     }
 
-    public void setWidth(double value) {
-        this.width = value;
+    public final void setWidth(double value) {
+        width = value;
     }
 
-    public double getHeight() {
+    public final double getHeight() {
         return height;
     }
 
-    public void setHeight(double value) {
-        this.height = value;
+    public final void setHeight(double value) {
+        height = value;
     }
 
-    public void onKeyPressed(KeyCode key) {
-        Segment headSnake = snake.getBody().get(0);
-        int direction = headSnake.getDirection();
-        if (direction == 2 || direction == 4) {
-            if (key == KeyCode.UP)
-                headSnake.setDirection(1);
-            else if (key == KeyCode.DOWN)
-                headSnake.setDirection(3);
-        } else if (direction == 1 || direction == 3) {
-            if (key == KeyCode.RIGHT)
-                headSnake.setDirection(2);
-            else if (key == KeyCode.LEFT)
-                headSnake.setDirection(4);
-        }
-    }
 }

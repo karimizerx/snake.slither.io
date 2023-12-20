@@ -7,6 +7,7 @@ public abstract class GameObject {
     private IntegerProperty direction;
     private double dx, dy;
 
+    /* ******************** Constructor ******************** */
     public GameObject(double x, double y, double width, double height, double dx, double dy, int direction) {
         this.x = new SimpleDoubleProperty(x);
         this.y = new SimpleDoubleProperty(y);
@@ -16,6 +17,8 @@ public abstract class GameObject {
         this.dx = dx;
         this.dy = dy;
     }
+
+    /* ******************** Getter & Setter ******************** */
 
     public final DoubleProperty getXProperty() {
         return x;
@@ -109,8 +112,24 @@ public abstract class GameObject {
         dy = value;
     }
 
-    public final boolean collides(GameObject go, double dt) {
-        return false;
+    /* ******************** Functions ******************** */
+    /*
+     * l = left, r = right, u = up, d = down collides with a GameObject when : [l1 <
+     * r2] ∧ [l2 < r1] ∧ [u1 < d2] ∧ [u2 < d1] <=> l1 - r2 < 0 < r1 - l2 ∧ u1 - d2 <
+     * 0 < d1 - u2
+     */
+    // Return [true] if [this] collides [go]
+    public final boolean collides(GameObject go) {
+        double a = getLeft() - go.getRight();
+        double b = getRight() - go.getLeft();
+        double c = getUp() - go.getDown();
+        double d = getDown() - go.getUp();
+        return (a < 0) && (0 < b) && (c < 0) && (0 < d);
+    }
+
+    // True if [this] isn't strictly in the rectangle delimited by (0,0);(maxX,maxY)
+    public final boolean collides(double maxX, double maxY) {
+        return (getLeft() < 0) || (maxX < getRight()) || (getUp() < 0) || (maxY < getDown());
     }
 
 }

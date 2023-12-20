@@ -4,8 +4,8 @@ public class Segment extends GameObject {
 
     private final static double defaultWidth = 50;
     private final static double defaultHeight = 50;
-    private final static double defaultDx = 25;
-    private final static double defaultDy = 25;
+    private final static double defaultDx = 100;
+    private final static double defaultDy = 100;
     private final static int defaultDirection = 2;
 
     private Segment(double x, double y, double width, double height, double dx, double dy, int direction) {

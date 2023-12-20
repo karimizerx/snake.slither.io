@@ -29,7 +29,7 @@ public class GameView {
 
     protected void removeFood(DisplayableObject foodview) {
         root.getChildren().remove(foodview.getGraphics());
-        // foodsToDisplay.remove(foodview);
+        foodsToDisplay.remove(foodview);
     }
 
     protected void addSegment(SnakeView snakeView, Segment segment) {

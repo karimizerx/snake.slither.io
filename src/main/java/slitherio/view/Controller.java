@@ -66,9 +66,14 @@ public final class Controller {
                     // Manage removed foods
                     if (change.wasRemoved()) {
                         for (Food food : change.getRemoved()) {
-                            for (DisplayableObject foodview : view.getFoodsToDisplay()) {
-                                if (foodview.getObject().equals(food))
-                                    view.removeFood(foodview);
+                            int cnt = view.getFoodsToDisplay().size() - 1;
+                            while (cnt >= 0) {
+                                DisplayableObject foodView = view.getFoodsToDisplay().get(cnt);
+                                if (foodView.getObject().equals(food)) {
+                                    view.removeFood(foodView);
+                                    break;
+                                }
+                                --cnt;
                             }
                         }
                     }

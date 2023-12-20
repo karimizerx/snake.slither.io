@@ -1,7 +1,7 @@
 package slitherio.view;
 
 import java.util.*;
-import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.*;
 import javafx.scene.layout.*;
 import slitherio.gameobjects.*;
 
@@ -10,13 +10,13 @@ public class GameView {
     private Pane root;
     private DoubleProperty width, height;
     private List<DisplayableObject> foodsToDisplay = new ArrayList<>();
-    private List<SnakeView> snakesToDisplay;
+    private List<SnakeView> snakesToDisplay = new LinkedList<>();
 
     /* ******************** Constructor ******************** */
     protected GameView(Pane root, double width, double height) {
         this.root = root;
-        setWidth(width);
-        setHeight(height);
+        this.width = new SimpleDoubleProperty(width);
+        this.height = new SimpleDoubleProperty(height);
     }
 
     /* ******************** Functions ******************** */

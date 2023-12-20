@@ -16,7 +16,7 @@ public final class Arena {
         this.height = height;
 
         getSnakes().add(new Snake(600, 300));
-        getSnakes().add(new Snake(100, 350));
+        getSnakes().add(new Snake(100, 350, KeyCode.Z, KeyCode.S, KeyCode.Q, KeyCode.D));
 
         getFoods().add(Food.FoodRandom(width, height));
     }
@@ -66,8 +66,8 @@ public final class Arena {
 
         // Manage collides with Frame
         if (snake.getHead().collides(width, height))
-            while (true)
-                ;
+            System.out.printf("Collides with Frame: x:%d y:%d", snake.getHead().getCenterX(),
+                    snake.getHead().getCenterY()).println();
     }
 
     // Run [onKeyPressed] function for each snake of [snakes]

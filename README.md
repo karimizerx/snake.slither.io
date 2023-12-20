@@ -11,19 +11,19 @@
   - [ ] ajouter les **joueurs**
   - [ ] implémenter une **IA**
 
-- [ ] Etape 3: **déplacement d’un serpent de multiples segments**
+- [x] Etape 3: **déplacement d’un serpent de multiples segments**
 
   - [x] Le serpent se divise en segments, seul le premier segment fait un pas dans la direction indiquée à chaque mise à jour. Le second fait un pas vers le premier, le troisième vers le second, et ainsi de suite.
-  - [ ] Cela implique que le serpent ne reste pas tout droit, et qu’il y a une certaine **inertie** dans le déplacement de la queue
+  - [x] Cela implique que le serpent ne reste pas tout droit, et qu’il y a une certaine **inertie** dans le déplacement de la queue
 
-- [ ] Etape 4: **gestion de la mort**
+- [x] Etape 4: **gestion de la mort**
 
   - [x] collision avec un obstacle tiers
   - [ ] auto-collision :arrow_right: <span style="color:red">On oublie ça</span>
 
-- [ ] Etape 5: **gestion de la croissance**
+- [x] Etape 5: **gestion de la croissance**
 
-  - [x] quand on passe sur un morceau de nourriture, il disparaît, un autre apparaît à une position aléatoire sur le terrain et le serpent s’allonge d’un segment. :arrow_right: <span style="color:red">Gérer la concurrence</span>
+  - [x] quand on passe sur un morceau de nourriture, il disparaît, un autre apparaît à une position aléatoire sur le terrain et le serpent s’allonge d’un segment.
 
 - [x] Etape 6: **déplacement en temps réel dans une fenêtre graphique**
 

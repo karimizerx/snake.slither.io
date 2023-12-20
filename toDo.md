@@ -18,25 +18,25 @@
 
 - [ ] Etape 4: **gestion de la mort**
 
-  - [ ] collision avec un obstacle tiers
+  - [x] collision avec un obstacle tiers
   - [ ] auto-collision :arrow_right: <span style="color:red">On oublie ça</span>
 
 - [ ] Etape 5: **gestion de la croissance**
 
-  - [ ] quand on passe sur un morceau de nourriture, il disparaît, un autre apparaît à une position aléatoire sur le terrain et le serpent s’allonge d’un segment.
+  - [x] quand on passe sur un morceau de nourriture, il disparaît, un autre apparaît à une position aléatoire sur le terrain et le serpent s’allonge d’un segment. :arrow_right: <span style="color:red">Gérer la concurrence</span>
 
-- [ ] Etape 6: **déplacement en temps réel dans une fenêtre graphique**
+- [x] Etape 6: **déplacement en temps réel dans une fenêtre graphique**
 
-  - [ ] on se donne une « unité » de temps qui correspond au temps nécessaire pour faire un pas entier
-  - [ ] on fixe une nouvelle direction toutes les « unités » de temps :arrow_right: celle-ci est donnée par la dernière flèche de direction appuyée par le joueur
+  - [x] on se donne une « unité » de temps qui correspond au temps nécessaire pour faire un pas entier
+  - [x] on fixe une nouvelle direction toutes les « unités » de temps :arrow_right: celle-ci est donnée par la dernière flèche de direction appuyée par le joueur
 
 - [ ] Etape 7: **deux joueurs au clavier**
 
-- [ ] Etape 8: **déplacement fluide**
+- [x] Etape 8: **déplacement fluide**
 
-  - [ ] les coordonnées sont maintenant des double
-  - [ ] la taille du pas doit être égale à la **vitesse fois le temps écoulé** depuis le dernier pas
-  - [ ] on met à jour la direction à chaque fois que c’est possible sans attendre une unité de temps fixée
+  - [x] les coordonnées sont maintenant des double
+  - [x] la taille du pas doit être égale à la **vitesse fois le temps écoulé** depuis le dernier pas
+  - [x] on met à jour la direction à chaque fois que c’est possible sans attendre une unité de temps fixée
 
 - [ ] Etape 9: **déplacement libre**
 

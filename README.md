@@ -1,93 +1,67 @@
-# Slither.io
+- [x] Etape 1:
 
+  - [x] déplacement d’un seul segment
+  - [x] dans une grille à maillage rectangulaire
+  - [x] coordonnées entières
+  - [x] avec pas de 1 unité vers le nord, l’est, le sud ou l’ouest.
+  - [x] Le déplacement est tour par tour.
 
+- [ ] Etape 2:
 
-## Getting started
+  - [ ] ajouter les **joueurs**
+  - [ ] implémenter une **IA**
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+- [ ] Etape 3: **déplacement d’un serpent de multiples segments**
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+  - [x] Le serpent se divise en segments, seul le premier segment fait un pas dans la direction indiquée à chaque mise à jour. Le second fait un pas vers le premier, le troisième vers le second, et ainsi de suite.
+  - [ ] Cela implique que le serpent ne reste pas tout droit, et qu’il y a une certaine **inertie** dans le déplacement de la queue
 
-## Add your files
+- [ ] Etape 4: **gestion de la mort**
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+  - [x] collision avec un obstacle tiers
+  - [ ] auto-collision :arrow_right: <span style="color:red">On oublie ça</span>
 
-```
-cd existing_repo
-git remote add origin https://gitlab.com/cloudbackup1/fac/slither.io.git
-git branch -M main
-git push -uf origin main
-```
+- [ ] Etape 5: **gestion de la croissance**
 
-## Integrate with your tools
+  - [x] quand on passe sur un morceau de nourriture, il disparaît, un autre apparaît à une position aléatoire sur le terrain et le serpent s’allonge d’un segment. :arrow_right: <span style="color:red">Gérer la concurrence</span>
 
-- [ ] [Set up project integrations](https://gitlab.com/cloudbackup1/fac/slither.io/-/settings/integrations)
+- [x] Etape 6: **déplacement en temps réel dans une fenêtre graphique**
 
-## Collaborate with your team
+  - [x] on se donne une « unité » de temps qui correspond au temps nécessaire pour faire un pas entier
+  - [x] on fixe une nouvelle direction toutes les « unités » de temps :arrow_right: celle-ci est donnée par la dernière flèche de direction appuyée par le joueur
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+- [ ] Etape 7: **deux joueurs au clavier**
 
-## Test and Deploy
+- [x] Etape 8: **déplacement fluide**
 
-Use the built-in continuous integration in GitLab.
+  - [x] les coordonnées sont maintenant des double
+  - [x] la taille du pas doit être égale à la **vitesse fois le temps écoulé** depuis le dernier pas
+  - [x] on met à jour la direction à chaque fois que c’est possible sans attendre une unité de temps fixée
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+- [ ] Etape 9: **déplacement libre**
 
-***
+  - [ ] la direction n’est plus donnée par la dernière touche appuyée, mais par la position du pointeur par rapport à la tête du serpent
+  - [ ] cette direction peut suivre un angle quelconque, représenté par un double
+  - [ ] le pointeur lui-même peut être déplacé à la souris et/ou au clavier
 
-# Editing this README
+- [ ] Etape 10: **terrain sans bords**
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
+  - [ ] le terrain est bien plus grand que la zone d’affichage (gérer défilement)
+  - [ ] traverser un bord fait ré-apparaître le serpent sur le bord opposé :arrow_right: faire en sorte qu’on ne se rende pas compte de cela dans l’UI qui doit donner l’illusion d’un terrain infini
 
-## Suggestions for a good README
+- [ ] Etape 11: **règles personnalisées**
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+- [ ] Etape 12: **mode réseau classique**
 
-## Name
-Choose a self-explaining name for your project.
+  - [ ] en mode client/serveur le serveur fait foi pour ce qui est de l’état du jeu (ce qui n’empêche pas au client d’interpoler les déplacements pour donner une impression de fluidité)
+  - [ ] le jeu n’est plus limité à 2 joueurs
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+- [ ] Etape 13: **monde permanent**
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+  - [ ] comme dans slither.io, la partie n’est jamais terminée, et on peut la rejoindre n’importe quand
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+- [ ] Etape 14: **règles slither.io**
+  - [ ] la nourriture provient de la mort d’un serpent
+  - [ ] la vitesse dépend de la taille
+  - [ ] on peut « brûler » un segment pour augmenter temporairement sa vitesse...
+- :warning: Au point où vous en êtes, ces modifications devraient très peu changer votre base de code

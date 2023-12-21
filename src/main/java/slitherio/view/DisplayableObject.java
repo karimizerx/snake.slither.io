@@ -1,6 +1,7 @@
 package slitherio.view;
 
 import slitherio.gameobjects.*;
+import slitherio.Utils.*;
 import javafx.scene.image.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.*;
@@ -15,7 +16,7 @@ public abstract class DisplayableObject {
     protected DisplayableObject(GameObject go, String filename) {
         object = go;
         graphics = new Rectangle(object.getLeft(), object.getUp(), object.getWidth(), object.getHeight());
-        graphics.setFill(new ImagePattern(getImage(filename)));
+        graphics.setFill(new ImagePattern(Utils.getImage(filename)));
         graphics.setRotate(getRotatationOfDirection(object.getDirection()));
         bind();
     }
@@ -24,12 +25,6 @@ public abstract class DisplayableObject {
 
     protected final void display(Pane root) {
         root.getChildren().add(graphics);
-    }
-
-    // Create and return an Image object of [file] image
-    protected static Image getImage(String file) {
-        Image img = new Image("file:src/main/resources/" + file);
-        return !img.isError() ? img : null;
     }
 
     protected static double getRotatationOfDirection(int direction) {

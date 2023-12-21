@@ -10,6 +10,7 @@ import slitherio.gameobjects.*;
 public final class Controller {
     private GameView view;
     private Arena model;
+    private boolean pause = false;
 
     /* ******************** Constructor ******************** */
     protected Controller(Pane root, double width, double height) {
@@ -40,20 +41,27 @@ public final class Controller {
                     return;
                 }
 
-                acc += (now - last) * 1.0e-9;
+                if (pause)
+                    last = now;
+
+                acc += (now - last) * 1.0e-9; // Convert nanoseconds to seconds
                 last = now;
 
                 while (acc >= dt) {
                     model.update(dt);
                     acc -= dt;
                 }
+
             }
         }.start();
     }
 
     // Manage pressed key
     protected final void onKeyPressed(KeyCode key) {
-        model.onKeyPressed(key);
+        if (key == KeyCode.P)
+            pause = !pause;
+        else
+            model.onKeyPressed(key);
     }
 
     private void bindFoods() {

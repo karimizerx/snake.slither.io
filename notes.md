@@ -170,8 +170,10 @@
 
   - ### FrameGame.java
 
-    ```
-
+    ```java
+    // Passer les boutons en image
+      Button playButton = new Button("", new ImageView(Utils.getImage(imageButtonPlay)));
+      playButton.setPadding(Insets.EMPTY);
     ```
 
 - ## model/

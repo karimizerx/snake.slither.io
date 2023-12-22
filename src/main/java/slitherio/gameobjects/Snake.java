@@ -24,25 +24,25 @@ public class Snake {
     /* ******************** Functions ******************** */
     // Make the snake move. [dt] is the elapsed time
     public final void move(double dt) {
-        moveToDirection(dt, getHead().getDirection());
+        moveToDirection(dt, getHead().getRotation());
     }
 
-    // Move the snake to the [direction]. [dt] is the elapsed time
-    private void moveToDirection(double dt, int direction) {
+    // Move the snake in the direction of [rotation]. [dt] is the elapsed time
+    private void moveToDirection(double dt, double rotation) {
         for (int i = body.size() - 1; i > 0; --i) {
             Segment segment = body.getValue().get(i);
             Segment previous = body.getValue().get(i - 1);
             segment.setCenterX(previous.getCenterX());
             segment.setCenterY(previous.getCenterY());
-            segment.setDirection(previous.getDirection());
+            segment.setRotation(previous.getRotation());
         }
 
         double nx = getHead().getDx() * dt, ny = getHead().getDy() * dt;
-        switch (direction) {
-        case 1 -> getHead().setCenterY(getHead().getCenterY() - ny);
-        case 2 -> getHead().setCenterX(getHead().getCenterX() + nx);
-        case 3 -> getHead().setCenterY(getHead().getCenterY() + ny);
-        case 4 -> getHead().setCenterX(getHead().getCenterX() - nx);
+        switch ((int) rotation) {
+        case 180 -> getHead().setCenterY(getHead().getCenterY() - ny);
+        case -90 -> getHead().setCenterX(getHead().getCenterX() + nx);
+        case 0 -> getHead().setCenterY(getHead().getCenterY() + ny);
+        case 90 -> getHead().setCenterX(getHead().getCenterX() - nx);
         default -> {
             return;
         }
@@ -54,18 +54,18 @@ public class Snake {
         double hsx = getHead().getCenterX(), hsy = getHead().getCenterY();
         double hdx = getHead().getDx() * dt, hdy = getHead().getDy() * dt;
         double nx = hsx, ny = hsy;
-        int nd = getHead().getDirection();
+        double nr = getHead().getRotation();
 
-        switch (nd) {
-        case 1 -> ny -= hdy;
-        case 2 -> nx += hdx;
-        case 3 -> ny += hdy;
-        case 4 -> nx -= hdy;
+        switch ((int) nr) {
+        case 180 -> ny -= hdy;
+        case -90 -> nx += hdx;
+        case 0 -> ny += hdy;
+        case 90 -> nx -= hdy;
         default -> {
         }
         }
 
-        getBody().add(0, new Segment(nx, ny, nd));
+        getBody().add(0, new Segment(nx, ny, nr));
     }
 
     // Return True if [this] (this.head) collides [snake]
@@ -84,11 +84,10 @@ public class Snake {
         if (!getHead().collides(maxWidth, maxHeight))
             return false;
 
-        boolean collidesUp = getHead().getUp() < 0 && getHead().getDirection() == 1;
-        boolean collidesDown = getHead().getDown() > maxHeight && getHead().getDirection() == 3;
-        boolean collidesLeft = getHead().getLeft() < 0 && getHead().getDirection() == 4;
-        boolean collidesRight = getHead().getRight() > maxWidth && getHead().getDirection() == 2;
-
+        boolean collidesUp = getHead().getUp() < 0 && getHead().getRotation() == 180;
+        boolean collidesDown = getHead().getDown() > maxHeight && getHead().getRotation() == 0;
+        boolean collidesLeft = getHead().getLeft() < 0 && getHead().getRotation() == 90;
+        boolean collidesRight = getHead().getRight() > maxWidth && getHead().getRotation() == -90;
         return collidesUp || collidesDown || collidesLeft || collidesRight;
     }
 
@@ -98,32 +97,32 @@ public class Snake {
         if (!collides(maxWidth, maxHeight))
             return;
 
-        int newDirection = getHead().getDirection();
+        double newRotation = getHead().getRotation();
         if (getHead().getUp() < 0)
-            newDirection = (getHead().getRight() > maxWidth) ? 4 : 2;
+            newRotation = (getHead().getRight() > maxWidth) ? 90 : -90;
         else if (getHead().getDown() > maxHeight)
-            newDirection = (getHead().getLeft() < 0) ? 2 : 4;
+            newRotation = (getHead().getLeft() < 0) ? -90 : 90;
         else if (getHead().getLeft() < 0)
-            newDirection = (getHead().getUp() < 0) ? 3 : 1;
+            newRotation = (getHead().getUp() < 0) ? 0 : 180;
         else if (getHead().getRight() > maxWidth)
-            newDirection = (getHead().getDown() > maxHeight) ? 1 : 3;
+            newRotation = (getHead().getDown() > maxHeight) ? 180 : 0;
 
-        getHead().setDirection(newDirection);
+        getHead().setRotation(newRotation);
     }
 
     public final void onKeyPressed(KeyCode key) {
         if (!getBody().isEmpty()) {
-            int direction = getHead().getDirection();
-            if (direction == 2 || direction == 4) {
+            double rotation = getHead().getRotation();
+            if (rotation == -90 || rotation == 90) {
                 if (key == keyUp)
-                    getHead().setDirection(1);
+                    getHead().setRotation(180);
                 else if (key == keyDown)
-                    getHead().setDirection(3);
-            } else if (direction == 1 || direction == 3) {
+                    getHead().setRotation(0);
+            } else if (rotation == 180 || rotation == 0) {
                 if (key == keyRight)
-                    getHead().setDirection(2);
+                    getHead().setRotation(-90);
                 else if (key == keyLeft)
-                    getHead().setDirection(4);
+                    getHead().setRotation(90);
             }
         }
     }

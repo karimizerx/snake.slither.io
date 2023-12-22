@@ -17,7 +17,7 @@ public abstract class DisplayableObject {
         object = go;
         graphics = new Rectangle(object.getLeft(), object.getUp(), object.getWidth(), object.getHeight());
         graphics.setFill(new ImagePattern(Utils.getImage(filename)));
-        graphics.setRotate(getRotatationOfDirection(object.getDirection()));
+        graphics.setRotate(object.getRotation());
         bind();
     }
 
@@ -27,26 +27,12 @@ public abstract class DisplayableObject {
         root.getChildren().add(graphics);
     }
 
-    protected static double getRotatationOfDirection(int direction) {
-        int r = 0;
-        switch (direction) {
-        case 1 -> r = 180;
-        case 2 -> r = -90;
-        case 3 -> r = 0;
-        case 4 -> r = 90;
-        default -> {
-        }
-        }
-        return r;
-    }
-
     private void bind() {
         object.getXProperty().addListener(e -> graphics.setX(object.getLeft()));
         object.getYProperty().addListener(e -> graphics.setY(object.getUp()));
         object.getWidthProperty().addListener(e -> graphics.setWidth(object.getWidth()));
         object.getHeightProperty().addListener(e -> graphics.setHeight(object.getHeight()));
-        object.getDirectionProperty()
-                .addListener(e -> graphics.setRotate(getRotatationOfDirection(object.getDirection())));
+        object.getRotationProperty().addListener(e -> graphics.setRotate(object.getRotation()));
     }
 
     /* ******************** Getter & Setter ******************** */

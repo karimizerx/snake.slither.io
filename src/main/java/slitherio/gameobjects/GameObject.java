@@ -3,17 +3,16 @@ package slitherio.gameobjects;
 import javafx.beans.property.*;
 
 public abstract class GameObject {
-    private DoubleProperty x, y, width, height;
-    private IntegerProperty direction;
+    private DoubleProperty x, y, width, height, rotation;
     private double dx, dy;
 
     /* ******************** Constructor ******************** */
-    public GameObject(double x, double y, double width, double height, double dx, double dy, int direction) {
+    public GameObject(double x, double y, double width, double height, double dx, double dy, double rotation) {
         this.x = new SimpleDoubleProperty(x);
         this.y = new SimpleDoubleProperty(y);
         this.width = new SimpleDoubleProperty(width);
         this.height = new SimpleDoubleProperty(height);
-        this.direction = new SimpleIntegerProperty(direction);
+        this.rotation = new SimpleDoubleProperty(rotation);
         this.dx = dx;
         this.dy = dy;
     }
@@ -36,16 +35,16 @@ public abstract class GameObject {
         return height;
     }
 
-    public final IntegerProperty getDirectionProperty() {
-        return direction;
+    public final DoubleProperty getRotationProperty() {
+        return rotation;
     }
 
-    public final int getDirection() {
-        return direction.getValue();
+    public final double getRotation() {
+        return rotation.getValue();
     }
 
-    public final void setDirection(int value) {
-        direction.setValue(value);
+    public final void setRotation(double value) {
+        rotation.setValue(value);
     }
 
     public final double getCenterX() {

@@ -1,8 +1,11 @@
 package slitherio.gameobjects;
 
-import javafx.beans.property.*;
-import javafx.collections.*;
-import javafx.scene.input.*;
+import javafx.beans.property.ListProperty;
+import javafx.beans.property.SimpleListProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.input.KeyCode;
+import slitherio.Utils.Utils;
 
 public class Snake {
     private ListProperty<Segment> body = new SimpleListProperty<Segment>(FXCollections.<Segment>observableArrayList());
@@ -11,6 +14,15 @@ public class Snake {
     /* ******************** Constructor ******************** */
     public Snake(double headX, double headY) {
         getBody().add(new Segment(headX, headY));
+    }
+
+    public Snake(double headX, double headY, int bodyLength) {
+        getBody().add(new Segment(headX, headY));
+        for (int i = 1; i < bodyLength; ++i) {
+            Segment previous = getBody().get(getBody().size() - 1);
+            getBody().add(new Segment(previous.getCenterX() + 2.5, previous.getCenterY()));
+        }
+
     }
 
     public Snake(double headX, double headY, KeyCode keyUp, KeyCode keyDown, KeyCode keyLeft, KeyCode keyRight) {
@@ -25,6 +37,9 @@ public class Snake {
     // Make the snake move. [dt] is the elapsed time
     public final void move(double dt) {
         moveToDirection(dt, getHead().getRotation());
+    }
+
+    private void scale() {
     }
 
     // Move the snake in the direction of [rotation]. [dt] is the elapsed time
@@ -111,20 +126,36 @@ public class Snake {
     }
 
     public final void onKeyPressed(KeyCode key) {
+        /* Orignal Snake version */
+        // if (!getBody().isEmpty()) {
+        // double rotation = getHead().getRotation();
+        // if (rotation == -90 || rotation == 90) {
+        // if (key == keyUp)
+        // getHead().setRotation(180);
+        // else if (key == keyDown)
+        // getHead().setRotation(0);
+        // } else if (rotation == 180 || rotation == 0) {
+        // if (key == keyRight)
+        // getHead().setRotation(-90);
+        // else if (key == keyLeft)
+        // getHead().setRotation(90);
+        // }
+        // }
+
         if (!getBody().isEmpty()) {
-            double rotation = getHead().getRotation();
-            if (rotation == -90 || rotation == 90) {
-                if (key == keyUp)
-                    getHead().setRotation(180);
-                else if (key == keyDown)
-                    getHead().setRotation(0);
-            } else if (rotation == 180 || rotation == 0) {
-                if (key == keyRight)
-                    getHead().setRotation(-90);
-                else if (key == keyLeft)
-                    getHead().setRotation(90);
+            double incrRotate = 0;
+            if (key == keyLeft) {
+                incrRotate = -10;
+            } else if (key == keyRight) {
+                incrRotate = 10;
             }
+            getHead().setRotation(Utils.getAngle(getHead().getRotation() + incrRotate));
         }
+
+    }
+
+    public final void onMouseMoved(double pointerX, double pointerY) {
+
     }
 
     /* ******************** Getter & Setter ******************** */
@@ -141,6 +172,40 @@ public class Snake {
     // Get the snake's body
     public final ObservableList<Segment> getBody() {
         return body.getValue();
+    }
+
+    // S'il est strictement dans l'hemisphere nord, sud, droite, gauche
+    public final boolean isUp() {
+        return 90 < getHead().getRotation() && getHead().getRotation() < 270;
+    }
+
+    public final boolean isDown() {
+        return (0 < getHead().getRotation() && getHead().getRotation() < 90)
+                || (270 < getHead().getRotation() && getHead().getRotation() < 360);
+    }
+
+    public final boolean isLeft() {
+        return 0 < getHead().getRotation() && getHead().getRotation() < 180;
+    }
+
+    public final boolean isRight() {
+        return 180 < getHead().getRotation() && getHead().getRotation() < 360;
+    }
+
+    public final boolean isNorth() {
+        return getHead().getRotation() == 180;
+    }
+
+    public final boolean isSouth() {
+        return getHead().getRotation() == 0 || getHead().getRotation() == 360;
+    }
+
+    public final boolean isEast() {
+        return getHead().getRotation() == 90;
+    }
+
+    public final boolean isWest() {
+        return getHead().getRotation() == 270;
     }
 
 }

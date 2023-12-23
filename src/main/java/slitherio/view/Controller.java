@@ -64,6 +64,10 @@ public final class Controller {
             model.onKeyPressed(key);
     }
 
+    protected final void onMouseMoved(double mouseX, double mouseY) {
+        model.onMouseMoved(mouseX, mouseY);
+    }
+
     private void bindFoods() {
         model.getFoodsProperty().addListener(new ListChangeListener<Food>() {
 

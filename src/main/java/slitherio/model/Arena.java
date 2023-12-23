@@ -76,6 +76,11 @@ public final class Arena {
             snake.onKeyPressed(key);
     }
 
+    public final void onMouseMoved(double pointerX, double pointerY) {
+        for (Snake snake : getSnakes())
+            snake.onMouseMoved(pointerX, pointerY);
+    }
+
     /* ******************** Getter & Setter ******************** */
 
     public final ListProperty<Food> getFoodsProperty() {

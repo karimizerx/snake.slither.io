@@ -156,6 +156,7 @@ public class Framegame extends Application {
             else
                 controller.onKeyPressed(ev.getCode());
         });
+        scene.setOnMouseMoved(ev -> controller.onMouseMoved(ev.getX(), ev.getY()));
         scene.widthProperty().addListener((obs, oldVal, newVal) -> controller.getView().setWidth((double) newVal));
         scene.heightProperty().addListener((obs, oldVal, newVal) -> controller.getView().setHeight((double) newVal));
 

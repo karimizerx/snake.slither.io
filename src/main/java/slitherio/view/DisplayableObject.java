@@ -17,7 +17,7 @@ public abstract class DisplayableObject {
         object = go;
         graphics = new Rectangle(object.getLeft(), object.getUp(), object.getWidth(), object.getHeight());
         graphics.setFill(new ImagePattern(Utils.getImage(filename)));
-        graphics.setRotate(object.getRotation());
+        graphics.setRotate(getRotation());
         bind();
     }
 
@@ -27,12 +27,17 @@ public abstract class DisplayableObject {
         root.getChildren().add(graphics);
     }
 
+    // Return valid angle for Rectangle rotation
+    protected final double getRotation() {
+        return object.getRotation() - 90;
+    }
+
     private void bind() {
         object.getXProperty().addListener(e -> graphics.setX(object.getLeft()));
         object.getYProperty().addListener(e -> graphics.setY(object.getUp()));
         object.getWidthProperty().addListener(e -> graphics.setWidth(object.getWidth()));
         object.getHeightProperty().addListener(e -> graphics.setHeight(object.getHeight()));
-        object.getRotationProperty().addListener(e -> graphics.setRotate(object.getRotation()));
+        object.getRotationProperty().addListener(e -> graphics.setRotate(getRotation()));
     }
 
     /* ******************** Getter & Setter ******************** */

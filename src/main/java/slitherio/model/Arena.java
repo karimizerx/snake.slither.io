@@ -3,6 +3,7 @@ package slitherio.model;
 import javafx.beans.property.*;
 import javafx.collections.*;
 import javafx.scene.input.*;
+import slitherio.Utils.Utils;
 import slitherio.gameobjects.*;
 
 public final class Arena {
@@ -72,13 +73,17 @@ public final class Arena {
 
     // Run [onKeyPressed] function for each snake of [snakes]
     public final void onKeyPressed(KeyCode key) {
-        for (Snake snake : getSnakes())
-            snake.onKeyPressed(key);
+        for (Snake snake : getSnakes()) {
+            if (snake != getSnakes().get(0))
+                snake.onKeyPressed(key);
+        }
     }
 
     public final void onMouseMoved(double pointerX, double pointerY) {
-        for (Snake snake : getSnakes())
-            snake.onMouseMoved(pointerX, pointerY);
+        for (Snake snake : getSnakes()) {
+            if (snake == getSnakes().get(0))
+                snake.onMouseMoved(pointerX, pointerY);
+        }
     }
 
     /* ******************** Getter & Setter ******************** */

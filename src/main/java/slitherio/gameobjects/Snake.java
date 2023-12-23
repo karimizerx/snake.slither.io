@@ -39,9 +39,6 @@ public class Snake {
         moveToDirection(dt, getHead().getRotation());
     }
 
-    private void scale() {
-    }
-
     // Move the snake in the direction of [rotation]. [dt] is the elapsed time
     private void moveToDirection(double dt, double rotation) {
         for (int i = body.size() - 1; i > 0; --i) {
@@ -52,16 +49,23 @@ public class Snake {
             segment.setRotation(previous.getRotation());
         }
 
-        double nx = getHead().getDx() * dt, ny = getHead().getDy() * dt;
-        switch ((int) rotation) {
-        case 180 -> getHead().setCenterY(getHead().getCenterY() - ny);
-        case -90 -> getHead().setCenterX(getHead().getCenterX() + nx);
-        case 0 -> getHead().setCenterY(getHead().getCenterY() + ny);
-        case 90 -> getHead().setCenterX(getHead().getCenterX() - nx);
-        default -> {
-            return;
-        }
-        }
+        // double nx = getHead().getDx() * dt, ny = getHead().getDy() * dt;
+        // switch ((int) rotation) {
+        // case 180 -> getHead().setCenterY(getHead().getCenterY() - ny);
+        // case -90 -> getHead().setCenterX(getHead().getCenterX() + nx);
+        // case 0 -> getHead().setCenterY(getHead().getCenterY() + ny);
+        // case 90 -> getHead().setCenterX(getHead().getCenterX() - nx);
+        // default -> {
+        // return;
+        // }
+        // }
+
+        double hx = getHead().getCenterX(), hy = getHead().getCenterY();
+        double dx = getHead().getDx() * dt, dy = getHead().getDy() * dt;
+        double nx = hx + Math.sin(rotation) * dx, ny = hy + Math.cos(rotation) * dy;
+
+        getHead().setCenterX(nx);
+        getHead().setCenterY(ny);
     }
 
     // Add a segment to the snake. [dt] is the elapsed time
@@ -149,13 +153,13 @@ public class Snake {
             } else if (key == keyRight) {
                 incrRotate = 10;
             }
-            getHead().setRotation(Utils.getAngle(getHead().getRotation() + incrRotate));
+            getHead().setRotation(Utils.getValidAngle(getHead().getRotation() + incrRotate));
         }
 
     }
 
     public final void onMouseMoved(double pointerX, double pointerY) {
-
+        getHead().setRotation(Utils.getAngle(getHead().getCenterX(), getHead().getCenterY(), pointerX, pointerY));
     }
 
     /* ******************** Getter & Setter ******************** */
@@ -176,20 +180,20 @@ public class Snake {
 
     // S'il est strictement dans l'hemisphere nord, sud, droite, gauche
     public final boolean isUp() {
-        return 90 < getHead().getRotation() && getHead().getRotation() < 270;
+        return 180 < getHead().getRotation() && getHead().getRotation() < 360;
     }
 
     public final boolean isDown() {
-        return (0 < getHead().getRotation() && getHead().getRotation() < 90)
-                || (270 < getHead().getRotation() && getHead().getRotation() < 360);
+        return (0 < getHead().getRotation() && getHead().getRotation() < 180);
     }
 
     public final boolean isLeft() {
-        return 0 < getHead().getRotation() && getHead().getRotation() < 180;
+        return 90 < getHead().getRotation() && getHead().getRotation() < 270;
     }
 
     public final boolean isRight() {
-        return 180 < getHead().getRotation() && getHead().getRotation() < 360;
+        return (270 < getHead().getRotation() && getHead().getRotation() < 360)
+                || (0 < getHead().getRotation() && getHead().getRotation() < 90);
     }
 
     public final boolean isNorth() {

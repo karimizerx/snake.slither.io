@@ -10,7 +10,7 @@ public final class Utils {
         return !img.isError() ? img : null;
     }
 
-    // Return a valid angle, i.e 0 <= angle <= 360
+    // Return a valid angle, i.e 0 <= angle <= 360. [angle] in degrees
     public final static double getValidAngle(double angle) {
         double newAngle = angle;
         while (newAngle < 0)
@@ -22,10 +22,10 @@ public final class Utils {
         return newAngle;
     }
 
-    // Return angle formed by Origin, xAxis, (x,y)
+    // Return angle formed by Origin, yAxis, (x,y)
     public final static double getAngle(double xOrigin, double yOrigin, double x, double y) {
         double deltaX = x - xOrigin, deltaY = y - yOrigin;
         double rad = Math.atan2(deltaY, deltaX);
-        return getValidAngle(Math.round(rad * (180 / Math.PI)));
+        return getValidAngle(Math.round(rad * (180 / Math.PI)) - 90);
     }
 }

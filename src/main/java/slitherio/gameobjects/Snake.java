@@ -1,28 +1,18 @@
 package slitherio.gameobjects;
 
-import javafx.beans.property.ListProperty;
-import javafx.beans.property.SimpleListProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import javafx.beans.property.*;
+import javafx.collections.*;
 import javafx.scene.input.KeyCode;
 import slitherio.Utils.Utils;
 
-public class Snake {
-    private ListProperty<Segment> body = new SimpleListProperty<Segment>(FXCollections.<Segment>observableArrayList());
+public final class Snake {
+    private final ListProperty<Segment> body = new SimpleListProperty<Segment>(
+            FXCollections.<Segment>observableArrayList());
     private KeyCode keyUp = KeyCode.UP, keyDown = KeyCode.DOWN, keyLeft = KeyCode.LEFT, keyRight = KeyCode.RIGHT;
 
-    /* ******************** Constructor ******************** */
+    /* ******************** Constructors ******************** */
     public Snake(double headX, double headY) {
-        getBody().add(new Segment(headX, headY));
-    }
-
-    public Snake(double headX, double headY, int bodyLength) {
-        getBody().add(new Segment(headX, headY));
-        for (int i = 1; i < bodyLength; ++i) {
-            Segment previous = getBody().get(getBody().size() - 1);
-            getBody().add(new Segment(previous.getCenterX() + 2.5, previous.getCenterY()));
-        }
-
+        getBody().add(new Segment(headX, headY)); // A snake has, by default, a head.
     }
 
     public Snake(double headX, double headY, KeyCode keyUp, KeyCode keyDown, KeyCode keyLeft, KeyCode keyRight) {
@@ -49,41 +39,20 @@ public class Snake {
             segment.setRotation(previous.getRotation());
         }
 
-        // double nx = getHead().getDx() * dt, ny = getHead().getDy() * dt;
-        // switch ((int) rotation) {
-        // case 180 -> getHead().setCenterY(getHead().getCenterY() - ny);
-        // case -90 -> getHead().setCenterX(getHead().getCenterX() + nx);
-        // case 0 -> getHead().setCenterY(getHead().getCenterY() + ny);
-        // case 90 -> getHead().setCenterX(getHead().getCenterX() - nx);
-        // default -> {
-        // return;
-        // }
-        // }
-
+        // Manage snake's head move
         double hx = getHead().getCenterX(), hy = getHead().getCenterY();
         double dx = getHead().getDx() * dt, dy = getHead().getDy() * dt;
-        double nx = hx + Math.sin(rotation) * dx, ny = hy + Math.cos(rotation) * dy;
-
+        double nx = hx - Math.sin(Math.toRadians(rotation)) * dx, ny = hy + Math.cos(Math.toRadians(rotation)) * dy;
         getHead().setCenterX(nx);
         getHead().setCenterY(ny);
     }
 
     // Add a segment to the snake. [dt] is the elapsed time
     public final void addSegment(double dt) {
-        double hsx = getHead().getCenterX(), hsy = getHead().getCenterY();
+        double hx = getHead().getCenterX(), hy = getHead().getCenterY();
         double hdx = getHead().getDx() * dt, hdy = getHead().getDy() * dt;
-        double nx = hsx, ny = hsy;
         double nr = getHead().getRotation();
-
-        switch ((int) nr) {
-        case 180 -> ny -= hdy;
-        case -90 -> nx += hdx;
-        case 0 -> ny += hdy;
-        case 90 -> nx -= hdy;
-        default -> {
-        }
-        }
-
+        double nx = hx - Math.sin(Math.toRadians(nr)) * hdx, ny = hy + Math.cos(Math.toRadians(nr)) * hdy;
         getBody().add(0, new Segment(nx, ny, nr));
     }
 
@@ -103,10 +72,10 @@ public class Snake {
         if (!getHead().collides(maxWidth, maxHeight))
             return false;
 
-        boolean collidesUp = getHead().getUp() < 0 && getHead().getRotation() == 180;
-        boolean collidesDown = getHead().getDown() > maxHeight && getHead().getRotation() == 0;
-        boolean collidesLeft = getHead().getLeft() < 0 && getHead().getRotation() == 90;
-        boolean collidesRight = getHead().getRight() > maxWidth && getHead().getRotation() == -90;
+        boolean collidesUp = getHead().getUp() < 0;
+        boolean collidesDown = getHead().getDown() > maxHeight;
+        boolean collidesLeft = getHead().getLeft() < 0;
+        boolean collidesRight = getHead().getRight() > maxWidth;
         return collidesUp || collidesDown || collidesLeft || collidesRight;
     }
 
@@ -116,17 +85,17 @@ public class Snake {
         if (!collides(maxWidth, maxHeight))
             return;
 
-        double newRotation = getHead().getRotation();
-        if (getHead().getUp() < 0)
-            newRotation = (getHead().getRight() > maxWidth) ? 90 : -90;
-        else if (getHead().getDown() > maxHeight)
-            newRotation = (getHead().getLeft() < 0) ? -90 : 90;
-        else if (getHead().getLeft() < 0)
-            newRotation = (getHead().getUp() < 0) ? 0 : 180;
-        else if (getHead().getRight() > maxWidth)
-            newRotation = (getHead().getDown() > maxHeight) ? 180 : 0;
+        for (Segment segment : body) {
+            if (segment.getCenterX() < 0)
+                segment.setCenterX(maxWidth);
+            else if (segment.getCenterX() > maxWidth)
+                segment.setCenterX(0);
+            if (segment.getCenterY() < 0)
+                segment.setCenterY(maxHeight);
+            else if (segment.getCenterY() > maxHeight)
+                segment.setCenterY(0);
+        }
 
-        getHead().setRotation(newRotation);
     }
 
     public final void onKeyPressed(KeyCode key) {
@@ -146,6 +115,7 @@ public class Snake {
         // }
         // }
 
+        /* Slither.io key mode */
         if (!getBody().isEmpty()) {
             double incrRotate = 0;
             if (key == keyLeft) {
@@ -159,7 +129,10 @@ public class Snake {
     }
 
     public final void onMouseMoved(double pointerX, double pointerY) {
-        getHead().setRotation(Utils.getAngle(getHead().getCenterX(), getHead().getCenterY(), pointerX, pointerY));
+        if (!getBody().isEmpty()) {
+            double angle = Utils.getAngle(getHead().getCenterX(), getHead().getCenterY(), pointerX, pointerY);
+            getHead().setRotation(angle);
+        }
     }
 
     /* ******************** Getter & Setter ******************** */
@@ -176,40 +149,6 @@ public class Snake {
     // Get the snake's body
     public final ObservableList<Segment> getBody() {
         return body.getValue();
-    }
-
-    // S'il est strictement dans l'hemisphere nord, sud, droite, gauche
-    public final boolean isUp() {
-        return 180 < getHead().getRotation() && getHead().getRotation() < 360;
-    }
-
-    public final boolean isDown() {
-        return (0 < getHead().getRotation() && getHead().getRotation() < 180);
-    }
-
-    public final boolean isLeft() {
-        return 90 < getHead().getRotation() && getHead().getRotation() < 270;
-    }
-
-    public final boolean isRight() {
-        return (270 < getHead().getRotation() && getHead().getRotation() < 360)
-                || (0 < getHead().getRotation() && getHead().getRotation() < 90);
-    }
-
-    public final boolean isNorth() {
-        return getHead().getRotation() == 180;
-    }
-
-    public final boolean isSouth() {
-        return getHead().getRotation() == 0 || getHead().getRotation() == 360;
-    }
-
-    public final boolean isEast() {
-        return getHead().getRotation() == 90;
-    }
-
-    public final boolean isWest() {
-        return getHead().getRotation() == 270;
     }
 
 }

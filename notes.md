@@ -82,6 +82,37 @@
 
   - ### Snake.java
 
+    ```java
+    // In moveToDirection, for Original Snake:
+        double nx = getHead().getDx() * dt, ny = getHead().getDy() * dt;
+        switch ((int) rotation) {
+            case 0 -> getHead().setCenterX(getHead().getCenterX() + nx);
+            case 90 -> getHead().setCenterY(getHead().getCenterY() + ny);
+            case 180 -> getHead().setCenterX(getHead().getCenterX() - nx);
+            case 270 -> getHead().setCenterY(getHead().getCenterY() - ny);
+            case 360 -> getHead().setCenterX(getHead().getCenterX() + nx);
+            default -> {
+                return;
+            }
+        }
+
+    ```
+
+    ```java
+    // Rebondir le serpent sur les bords de la window
+      double newRotation = getHead().getRotation();
+      if (getHead().getUp() < 0)
+        newRotation = (getHead().getRight() > maxWidth) ? 90 : -90;
+      else if (getHead().getDown() > maxHeight)
+        newRotation = (getHead().getLeft() < 0) ? -90 : 90;
+      else if (getHead().getLeft() < 0)
+        newRotation = (getHead().getUp() < 0) ? 0 : 180;
+      else if (getHead().getRight() > maxWidth)
+        newRotation = (getHead().getDown() > maxHeight) ? 180 : 0;
+
+      getHead().setRotation(newRotation);
+    ```
+
     :warning: :arrow_down: not working
 
     ```java

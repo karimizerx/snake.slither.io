@@ -28,8 +28,8 @@ public abstract class DisplayableObject {
     }
 
     // Return valid angle for Rectangle rotation
-    protected final double getRotation() {
-        return object.getRotation() - 90;
+    private final double getRotation() {
+        return Utils.getValidAngle(object.getRotation());
     }
 
     private void bind() {

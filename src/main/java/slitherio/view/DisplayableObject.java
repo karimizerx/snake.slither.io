@@ -2,7 +2,6 @@ package slitherio.view;
 
 import slitherio.gameobjects.*;
 import slitherio.Utils.*;
-import javafx.scene.image.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.*;
 import javafx.scene.shape.*;

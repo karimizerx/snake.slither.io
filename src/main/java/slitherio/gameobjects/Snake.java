@@ -54,6 +54,7 @@ public final class Snake {
         double nr = getHead().getRotation();
         double nx = hx - Math.sin(Math.toRadians(nr)) * hdx, ny = hy + Math.cos(Math.toRadians(nr)) * hdy;
         getBody().add(0, new Segment(nx, ny, nr));
+        /* VOIR POURQUOI ON PEUT PAS AJOUTER A LA FINw */
     }
 
     // Return True if [this] (this.head) collides [snake]

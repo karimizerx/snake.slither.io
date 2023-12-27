@@ -82,6 +82,8 @@
 
   - ### Snake.java
 
+    :warning: **VOIR POURQUOI JE NE PEUX PAS AJOUTER UN SEGMENT A LA FIN DANS `addSegment` et `SnakeView.bind`** :warning:
+
     ```java
     // In moveToDirection, for Original Snake:
         double nx = getHead().getDx() * dt, ny = getHead().getDy() * dt;

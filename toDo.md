@@ -38,11 +38,11 @@
   - [x] la taille du pas doit être égale à la **vitesse fois le temps écoulé** depuis le dernier pas
   - [x] on met à jour la direction à chaque fois que c’est possible sans attendre une unité de temps fixée
 
-- [ ] Etape 9: **déplacement libre**
+- [x] Etape 9: **déplacement libre**
 
   - [ ] la direction n’est plus donnée par la dernière touche appuyée, mais par la position du pointeur par rapport à la tête du serpent
-  - [ ] cette direction peut suivre un angle quelconque, représenté par un double
-  - [ ] le pointeur lui-même peut être déplacé à la souris et/ou au clavier
+  - [x] cette direction peut suivre un angle quelconque, représenté par un double
+  - [x] le pointeur lui-même peut être déplacé à la souris et/ou au clavier
 
 - [ ] Etape 10: **terrain sans bords**
 

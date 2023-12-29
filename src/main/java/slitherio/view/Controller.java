@@ -1,7 +1,6 @@
 package slitherio.view;
 
 import javafx.animation.*;
-import javafx.beans.property.*;
 import javafx.collections.*;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
@@ -12,13 +11,12 @@ public final class Controller {
     private GameView view;
     private Arena model;
     private boolean pause = false;
-    private final ListProperty<Player> players = new SimpleListProperty<Player>(
-            FXCollections.<Player>observableArrayList());
 
     /* ******************** Constructor ******************** */
     protected Controller(Pane root, double width, double height) {
         view = new GameView(root, width, height);
-        model = new Arena(width, height);
+        model = new SnakeGame(width, height);
+        // model = new SlitherIoGame(width, height);
     }
 
     /* ******************** Functions ******************** */
@@ -26,9 +24,6 @@ public final class Controller {
     // Main function that initialize all values of game and launch it
     protected final void startGame() {
         bind();
-        // En fonction du gamemodes....
-        Player player = new Player(92, "KMZX", false, model.getWidth() / 2, model.getHeight() / 2);
-        getPlayers().add(player);
         defaultView();
         animate();
     }
@@ -103,7 +98,7 @@ public final class Controller {
 
                     // Manage added foods
                     if (change.wasAdded())
-                        change.getAddedSubList().forEach((Food food) -> view.addFood(food));
+                        change.getAddedSubList().forEach(food -> view.addFood(food));
                 }
             }
 
@@ -129,39 +124,22 @@ public final class Controller {
 
                     // Manage added snakes
                     if (change.wasAdded())
-                        change.getAddedSubList().forEach((Snake snake) -> view.addSnake(snake));
+                        change.getAddedSubList().forEach(snake -> view.addSnake(snake));
                 }
             }
 
-        });
-    }
-
-    private void bindPlayers() {
-        players.addListener(new ListChangeListener<Player>() {
-            @Override
-            public void onChanged(Change<? extends Player> change) {
-                while (change.next()) {
-
-                    if (change.wasRemoved())
-                        change.getRemoved().forEach((Player player) -> model.getSnakes().remove(player.getSnake()));
-
-                    if (change.wasAdded())
-                        change.getAddedSubList().forEach((Player player) -> model.getSnakes().add(player.getSnake()));
-                }
-            }
         });
     }
 
     private void bind() {
         bindSize();
-        bindPlayers();
         bindFoods();
         bindSnakes();
     }
 
     protected final void defaultView() {
-        model.getSnakes().forEach((Snake snake) -> view.addSnake(snake));
-        model.getFoods().forEach((Food food) -> view.addFood(food));
+        model.getSnakes().forEach(snake -> view.addSnake(snake));
+        model.getFoods().forEach(food -> view.addFood(food));
     }
 
     /* ******************** Getter & Setter ******************** */
@@ -174,11 +152,4 @@ public final class Controller {
         return view;
     }
 
-    protected final ListProperty<Player> getPlayersProperty() {
-        return players;
-    }
-
-    protected final ObservableList<Player> getPlayers() {
-        return players.get();
-    }
 }

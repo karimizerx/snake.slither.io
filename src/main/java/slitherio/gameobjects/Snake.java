@@ -8,19 +8,10 @@ import slitherio.Utils.Utils;
 public final class Snake {
     private final ListProperty<Segment> body = new SimpleListProperty<Segment>(
             FXCollections.<Segment>observableArrayList());
-    private KeyCode keyUp = KeyCode.UP, keyDown = KeyCode.DOWN, keyLeft = KeyCode.LEFT, keyRight = KeyCode.RIGHT;
 
     /* ******************** Constructors ******************** */
     public Snake(double headX, double headY) {
         getBody().add(new Segment(headX, headY)); // A snake has, by default, a head.
-    }
-
-    public Snake(double headX, double headY, KeyCode keyUp, KeyCode keyDown, KeyCode keyLeft, KeyCode keyRight) {
-        getBody().add(new Segment(headX, headY));
-        this.keyUp = keyUp;
-        this.keyDown = keyDown;
-        this.keyLeft = keyLeft;
-        this.keyRight = keyRight;
     }
 
     /* ******************** Functions ******************** */
@@ -99,34 +90,19 @@ public final class Snake {
 
     }
 
-    public final void onKeyPressed(KeyCode key) {
-        /* Orignal Snake version */
-        // if (!getBody().isEmpty()) {
-        // double rotation = getHead().getRotation();
-        // if (rotation == -90 || rotation == 90) {
-        // if (key == keyUp)
-        // getHead().setRotation(180);
-        // else if (key == keyDown)
-        // getHead().setRotation(0);
-        // } else if (rotation == 180 || rotation == 0) {
-        // if (key == keyRight)
-        // getHead().setRotation(-90);
-        // else if (key == keyLeft)
-        // getHead().setRotation(90);
-        // }
-        // }
+    // Put [snake] in a valid position, respecting x & y.
+    public final void setValidPosition(double x, double y) {
+        double width = getHead().getWidth(), height = getHead().getHeight();
 
-        /* Slither.io key mode */
-        if (!getBody().isEmpty()) {
-            double incrRotate = 0;
-            if (key == keyLeft) {
-                incrRotate = -10;
-            } else if (key == keyRight) {
-                incrRotate = 10;
-            }
-            getHead().setRotation(Utils.getValidAngle(getHead().getRotation() + incrRotate));
-        }
+        if (getHead().getLeft() < 0)
+            getHead().setCenterX(width / 2);
+        else if (getHead().getRight() > x)
+            getHead().setCenterX(x - width / 2);
 
+        if (getHead().getUp() < 0)
+            getHead().setCenterY(height / 2);
+        else if (getHead().getDown() > y)
+            getHead().setCenterY((y - height / 2));
     }
 
     public final void onMouseMoved(double pointerX, double pointerY) {

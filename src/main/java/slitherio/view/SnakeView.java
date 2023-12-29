@@ -41,9 +41,9 @@ public final class SnakeView {
 
                     // Manage added segment
                     if (change.wasAdded()) {
-                        change.getAddedSubList().forEach((Segment segment) -> view.addSegment(snakeView, segment));
-                        bodyView.forEach((SegmentView segmentView) -> view.getRoot().getChildren().remove(segmentView.getGraphics()));
-                        bodyView.forEach((SegmentView segmentView) -> segmentView.display(view.getRoot()));
+                        change.getAddedSubList().forEach(segment -> view.addSegment(snakeView, segment));
+                        bodyView.forEach(segmentView -> view.getRoot().getChildren().remove(segmentView.getGraphics()));
+                        bodyView.forEach(segmentView -> segmentView.display(view.getRoot()));
 
                     }
                 }

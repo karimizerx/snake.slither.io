@@ -3,24 +3,43 @@ package slitherio.model;
 import javafx.beans.property.*;
 import javafx.collections.*;
 import javafx.scene.input.*;
+import slitherio.gamemodes.GameMode;
 import slitherio.gameobjects.*;
 
-public final class Arena {
-    private ListProperty<Food> foods = new SimpleListProperty<Food>(FXCollections.<Food>observableArrayList());
-    private ListProperty<Snake> snakes = new SimpleListProperty<Snake>(FXCollections.<Snake>observableArrayList());
+public abstract class Arena {
+    private final ListProperty<Player> players = new SimpleListProperty<Player>(
+            FXCollections.<Player>observableArrayList());
+    private final ListProperty<Food> foods = new SimpleListProperty<Food>(FXCollections.<Food>observableArrayList());
+    private final ListProperty<Snake> snakes = new SimpleListProperty<Snake>(
+            FXCollections.<Snake>observableArrayList());
     private double width, height;
 
     /* ******************** Constructor ******************** */
     public Arena(double width, double height) {
         this.width = width;
         this.height = height;
-
-        getFoods().add(getValidRandomFood());
+        bindPlayers();
     }
 
     /* ******************** Functions ******************** */
 
-    private final boolean isValidFoodPosition(Food food) {
+    private final void bindPlayers() {
+        getPlayers().addListener(new ListChangeListener<Player>() {
+            @Override
+            public void onChanged(Change<? extends Player> change) {
+                while (change.next()) {
+
+                    if (change.wasRemoved())
+                        change.getRemoved().forEach(player -> getSnakes().remove(player.getSnake()));
+
+                    if (change.wasAdded())
+                        change.getAddedSubList().forEach(player -> getSnakes().add(player.getSnake()));
+                }
+            }
+        });
+    }
+
+    protected final boolean isValidFoodPosition(Food food) {
         for (Snake snake : getSnakes()) {
             for (Segment segment : snake.getBody())
                 if (food.collides(segment))
@@ -29,7 +48,7 @@ public final class Arena {
         return true;
     }
 
-    private final Food getValidRandomFood() {
+    protected final Food getValidRandomFood() {
         int cnt = 500;
         Food food = Food.FoodRandom(width, height);
         while (cnt != 0 && !isValidFoodPosition(food)) {
@@ -41,65 +60,24 @@ public final class Arena {
         return (cnt == 0) ? food : food;
     }
 
-    // Update all values of the make. [dt] is the elapsed time
-    public final void update(double dt) {
-        if (getSnakes().isEmpty())
-            return;
-
-        // Update all snakes of [snakes]
-        for (Snake snake : getSnakes())
-            updateOneSnake(snake, dt);
-
-        // Remove all snakes of [snakes] that need to be removed
-        getSnakes().removeIf(snake -> snake.getBody().isEmpty());
-
-        // Make all snakes of [snakes] move
-        for (Snake snake : getSnakes())
-            snake.move(dt);
-
-    }
-
-    // Update values of [snake]. [dt] is the elapsed time
-    private void updateOneSnake(Snake snake, double dt) {
-
-        // Make sure that the [snake]'s body isn't empty
-        if (snake.getBody().isEmpty())
-            return;
-
-        // Manage collides with others snakes
-        for (Snake snake2 : getSnakes()) {
-            if (!snake2.getBody().isEmpty() && snake2.collides(snake))
-                snake2.getBody().clear();
-        }
-
-        // Manage collides with food
-        for (Food food : getFoods()) {
-            if (snake.getHead().collides(food)) {
-                getFoods().remove(food);
-                snake.addSegment(dt);
-                getFoods().add(getValidRandomFood());
-                break;
-            }
-        }
-
-        // Manage collides with Window
-        if (snake.collides(width, height))
-            snake.byPassCollidesWindow(width, height);
-
-    }
+    // Update all values of the game. [dt] is the elapsed time
+    public abstract void update(double dt);
 
     // Run [onKeyPressed] function for each snake of [snakes]
-    public final void onKeyPressed(KeyCode key) {
-        for (Snake snake : getSnakes())
-            snake.onKeyPressed(key);
-    }
+    public abstract void onKeyPressed(KeyCode key);
 
-    public final void onMouseMoved(double pointerX, double pointerY) {
-        for (Snake snake : getSnakes())
-            snake.onMouseMoved(pointerX, pointerY);
-    }
+    // Run [onMouseMoved] function for each snake of [snakes]
+    public abstract void onMouseMoved(double pointerX, double pointerY);
 
     /* ******************** Getter & Setter ******************** */
+
+    public final ListProperty<Player> getPlayersProperty() {
+        return players;
+    }
+
+    public final ObservableList<Player> getPlayers() {
+        return players.get();
+    }
 
     public final ListProperty<Food> getFoodsProperty() {
         return foods;

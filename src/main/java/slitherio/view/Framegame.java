@@ -1,8 +1,8 @@
 package slitherio.view;
 
-import slitherio.Utils.*;
 import javafx.stage.*;
 import javafx.application.*;
+import javafx.beans.property.*;
 import javafx.geometry.*;
 import javafx.scene.*;
 import javafx.scene.control.*;
@@ -10,6 +10,7 @@ import javafx.scene.image.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
+import slitherio.Utils.*;
 
 public class Framegame extends Application {
 
@@ -17,6 +18,8 @@ public class Framegame extends Application {
     private final String backgroundGame = "grass.jpg";
     private final String imageButtonPlay = "button.play.png";
     private final String imageButtonSettings = "button.settings.png";
+    private final StringProperty gameName = new SimpleStringProperty("Snake");
+    private final StringProperty controlName = new SimpleStringProperty("ARROWS");
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -98,30 +101,62 @@ public class Framegame extends Application {
         VBox box = new VBox();
         box.setSpacing(20);
 
+        // Manage Buttons
+        Font font = new Font(20);
+        String game1 = "Snake", game2 = "Local SlitherIo", game3 = "The Snake Slither";
+
         // Button Retour
         Button retour = new Button("Retour");
-        retour.setFont(new Font(20));
+        retour.setFont(font);
         retour.setContentDisplay(ContentDisplay.CENTER);
         retour.setOnAction(ev -> startMenu(stage));
 
-        String text1 = "Arrow Control";
-        String text2 = "ZQSD Control";
-        Button controlMode = new Button(text1);
-        controlMode.setFont(new Font(20));
-        controlMode.setContentDisplay(ContentDisplay.CENTER);
-        controlMode.setOnAction(ev -> {
-            if (controlMode.getText() == text1)
-                controlMode.setText(text2);
-            else
-                controlMode.setText(text1);
+        // Button Game
+        Button gameButton = new Button(gameName.get());
+        retour.setFont(font);
+        retour.setContentDisplay(ContentDisplay.CENTER);
+        gameName.addListener((obs, oldName, newName) -> gameButton.setText(newName));
+        gameButton.setOnAction(ev -> {
+            if (gameName.get().equals(game1))
+                gameName.set(game2);
+            else if (gameName.get().equals(game2))
+                gameName.set(game3);
+            else if (gameName.get().equals(game3))
+                gameName.set(game1);
         });
 
-        box.getChildren().addAll(retour, controlMode);
+        // Button Control
+        Button controlButton = new Button(controlName.get());
+        controlButton.setFont(font);
+        controlButton.setContentDisplay(ContentDisplay.CENTER);
+        controlName.addListener((obs, oldName, newName) -> controlButton.setText(newName));
+        controlButton.setOnAction(ev -> {
+            String control1 = "ARROWS", control2 = "ZSQD", control3 = "MOUSE";
+            if (gameName.get().equals(game2)) {
+                if (controlName.get().equals(control1))
+                    controlName.set(control2);
+                else if (controlName.get().equals(control2))
+                    controlName.set(control1);
+            } else if (gameName.get().equals(game3)) {
+                if (controlName.get().equals(control3))
+                    controlName.set(control1);
+                else if (controlName.get().equals(control1))
+                    controlName.set(control3);
+            }
+
+        });
+
+        box.getChildren().addAll(retour, gameButton, controlButton);
         box.setAlignment(Pos.CENTER);
 
         root.setCenter(box);
 
-        var menuScene = new Scene(root, 1000, 600);
+        Scene menuScene = new Scene(root, 1000, 600);
+        // Adding [scene] listeners
+        menuScene.setOnKeyPressed(ev -> {
+            if (ev.getCode() == KeyCode.ESCAPE)
+                startMenu(stage);
+        });
         stage.setScene(menuScene);
         stage.setTitle("The Snake Slither - Settings");
         stage.show();
@@ -140,7 +175,7 @@ public class Framegame extends Application {
         Scene scene = new Scene(root, 1000, 600);
 
         // Init Model, View & Controller (by initialisation of Controller)
-        Controller controller = new Controller(root, scene.getWidth(), scene.getHeight());
+        Controller controller = new Controller(root, scene.getWidth(), scene.getHeight(), gameName.get());
 
         // Adding [scene] listeners
         scene.setOnKeyPressed(ev -> {
@@ -154,7 +189,7 @@ public class Framegame extends Application {
         scene.heightProperty().addListener((obs, oldVal, newVal) -> controller.getView().setHeight((double) newVal));
 
         stage.setScene(scene);
-        stage.setTitle("The Snake Slither - In game ...");
+        stage.setTitle(gameName.get() + " - In game ...");
         stage.show();
 
         controller.startGame();

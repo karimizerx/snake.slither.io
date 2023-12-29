@@ -12,7 +12,7 @@ public final class SlitherIoGame extends Arena {
 
         // Manage players
         Player player1 = new Player(1, "REAL", 0, 0);
-        Player player2 = new Player(2, "PSG", width, 0, KeyCode.Q, KeyCode.D);
+        Player player2 = new Player(2, "PSG", width, 0, KeyCode.Z, KeyCode.S, KeyCode.Q, KeyCode.D);
         getPlayers().addAll(player1, player2);
         getPlayers().forEach(player -> player.getSnake().setValidPosition(width, height));
 
@@ -107,7 +107,7 @@ public final class SlitherIoGame extends Arena {
 
     @Override
     public final boolean endGame() {
-        return false;
+        return !assertSize();
     }
     /* ******************** Getter & Setter ******************** */
 

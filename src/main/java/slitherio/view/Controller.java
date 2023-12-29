@@ -13,10 +13,15 @@ public final class Controller {
     private boolean pause = false;
 
     /* ******************** Constructor ******************** */
-    protected Controller(Pane root, double width, double height) {
+    protected Controller(Pane root, double width, double height, String nameGame) {
         view = new GameView(root, width, height);
-        // model = new SnakeGame(width, height);
-        model = new SlitherIoGame(width, height);
+        switch (nameGame) {
+        case "Snake" -> model = new SnakeGame(width, height);
+        case "Local SlitherIo" -> model = new SlitherIoGame(width, height);
+        case "The Snake Slither" -> model = new SnakeSlitherGame(width, height);
+        default -> {
+        }
+        }
     }
 
     /* ******************** Functions ******************** */

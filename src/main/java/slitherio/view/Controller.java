@@ -15,8 +15,8 @@ public final class Controller {
     /* ******************** Constructor ******************** */
     protected Controller(Pane root, double width, double height) {
         view = new GameView(root, width, height);
-        model = new SnakeGame(width, height);
-        // model = new SlitherIoGame(width, height);
+        // model = new SnakeGame(width, height);
+        model = new SlitherIoGame(width, height);
     }
 
     /* ******************** Functions ******************** */

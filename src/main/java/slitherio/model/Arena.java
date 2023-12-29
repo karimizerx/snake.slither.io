@@ -3,7 +3,6 @@ package slitherio.model;
 import javafx.beans.property.*;
 import javafx.collections.*;
 import javafx.scene.input.*;
-import slitherio.gamemodes.GameMode;
 import slitherio.gameobjects.*;
 
 public abstract class Arena {
@@ -68,6 +67,9 @@ public abstract class Arena {
 
     // Run [onMouseMoved] function for each snake of [snakes]
     public abstract void onMouseMoved(double pointerX, double pointerY);
+
+    // Return true if the game is over
+    public abstract boolean endGame();
 
     /* ******************** Getter & Setter ******************** */
 

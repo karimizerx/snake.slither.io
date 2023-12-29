@@ -45,6 +45,8 @@ public final class SnakeGame extends Arena {
             }
         }
 
+        // Manage auto-collision
+
         // Manage collides with Window
         if (getSnake().collides(getWidth(), getHeight()))
             getSnake().byPassCollidesWindow(getWidth(), getHeight());
@@ -58,7 +60,7 @@ public final class SnakeGame extends Arena {
     }
 
     @Override
-    public void onKeyPressed(KeyCode key) {
+    public final void onKeyPressed(KeyCode key) {
         if (!assertSize())
             return;
 
@@ -79,9 +81,13 @@ public final class SnakeGame extends Arena {
     }
 
     @Override
-    public void onMouseMoved(double pointerX, double pointerY) {
+    public final void onMouseMoved(double pointerX, double pointerY) {
     }
 
+    @Override
+    public final boolean endGame() {
+        return false;
+    }
     /* ******************** Getter & Setter ******************** */
 
     private Player getPlayer() {

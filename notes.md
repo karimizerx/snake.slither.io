@@ -79,6 +79,26 @@ segment.setDirection(headSnake.getDirection());
 
 ## Arena.java
 
+## SlitherIoGame.java
+
+:arrow_right: **DIFFERENT CONTROL MODE** :white_check_mark:
+
+```java
+// In onKeyPressed
+
+/* VERSION 2 (SLITHER): ROTATION OF 10 degrees, with KeyLeft & KeyRight only */
+for (Player player : getPlayers()) {
+    if (!player.getSnake().getBody().isEmpty()) {
+        double newAngle = player.getSnake().getHead().getRotation();
+        if (key == player.getKeyLeft())
+            player.getSnake().getHead().setRotation(Utils.getValidAngle(newAngle - 10));
+        else if (key == player.getKeyRight())
+            player.getSnake().getHead().setRotation(Utils.getValidAngle(newAngle + 10));
+    }
+}
+
+```
+
 ## Controller.java
 
 ```

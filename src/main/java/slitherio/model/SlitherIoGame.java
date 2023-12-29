@@ -1,7 +1,6 @@
 package slitherio.model;
 
 import javafx.scene.input.KeyCode;
-import slitherio.Utils.Utils;
 import slitherio.gameobjects.*;
 
 public final class SlitherIoGame extends Arena {
@@ -34,7 +33,7 @@ public final class SlitherIoGame extends Arena {
 
     // Update values of [snake]. [dt] is the elapsed time
     private void updateOneSnake(Snake snake, double dt) {
-        if (!snake.getBody().isEmpty())
+        if (snake.getBody().isEmpty())
             return;
 
         // Manage collides with others snakes
@@ -78,25 +77,38 @@ public final class SlitherIoGame extends Arena {
     }
 
     @Override
-    public void onKeyPressed(KeyCode key) {
+    public final void onKeyPressed(KeyCode key) {
         if (!assertSize())
             return;
 
         for (Player player : getPlayers()) {
-            if (!player.getSnake().getBody().isEmpty()) {
-                double newAngle = player.getSnake().getHead().getRotation();
-                if (key == player.getKeyLeft())
-                    player.getSnake().getHead().setRotation(Utils.getValidAngle(newAngle + 10));
-                else if (key == player.getKeyRight())
-                    player.getSnake().getHead().setRotation(Utils.getValidAngle(newAngle - 10));
+            Snake snake = player.getSnake();
+            if (!snake.getBody().isEmpty()) {
+                double angle = snake.getHead().getRotation();
+                if (angle == 90 || angle == 270) {
+                    if (key == player.getKeyUp())
+                        snake.getHead().setRotation(180);
+                    else if (key == player.getKeyDown())
+                        snake.getHead().setRotation(0);
+                } else if (angle == 0 || angle == 360 || angle == 180) {
+                    if (key == player.getKeyLeft())
+                        snake.getHead().setRotation(90);
+                    else if (key == player.getKeyRight())
+                        snake.getHead().setRotation(270);
+                }
             }
         }
+
     }
 
     @Override
-    public void onMouseMoved(double pointerX, double pointerY) {
+    public final void onMouseMoved(double pointerX, double pointerY) {
     }
 
+    @Override
+    public final boolean endGame() {
+        return false;
+    }
     /* ******************** Getter & Setter ******************** */
 
 }

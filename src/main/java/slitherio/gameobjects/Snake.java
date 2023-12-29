@@ -2,7 +2,6 @@ package slitherio.gameobjects;
 
 import javafx.beans.property.*;
 import javafx.collections.*;
-import javafx.scene.input.KeyCode;
 import slitherio.Utils.Utils;
 
 public final class Snake {

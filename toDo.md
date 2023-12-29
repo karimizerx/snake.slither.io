@@ -30,7 +30,7 @@
   - [x] on se donne une « unité » de temps qui correspond au temps nécessaire pour faire un pas entier
   - [x] on fixe une nouvelle direction toutes les « unités » de temps :arrow_right: celle-ci est donnée par la dernière flèche de direction appuyée par le joueur
 
-- [ ] Etape 7: **deux joueurs au clavier**
+- [x] Etape 7: **deux joueurs au clavier**
 
 - [x] Etape 8: **déplacement fluide**
 

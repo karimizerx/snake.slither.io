@@ -15,11 +15,31 @@ public final class Arena {
         this.width = width;
         this.height = height;
 
-        getSnakes().add(new Snake(width / 2, height / 2));
-        getFoods().add(Food.FoodRandom(width, height));
+        getFoods().add(getValidRandomFood());
     }
 
     /* ******************** Functions ******************** */
+
+    private final boolean isValidFoodPosition(Food food) {
+        for (Snake snake : getSnakes()) {
+            for (Segment segment : snake.getBody())
+                if (food.collides(segment))
+                    return false;
+        }
+        return true;
+    }
+
+    private final Food getValidRandomFood() {
+        int cnt = 500;
+        Food food = Food.FoodRandom(width, height);
+        while (cnt != 0 && !isValidFoodPosition(food)) {
+            --cnt;
+            food = Food.FoodRandom(width, height);
+        }
+
+        // return (cnt == 0) ? (new Food(width / 2, height / 2)) : food;
+        return (cnt == 0) ? food : food;
+    }
 
     // Update all values of the make. [dt] is the elapsed time
     public final void update(double dt) {
@@ -57,7 +77,7 @@ public final class Arena {
             if (snake.getHead().collides(food)) {
                 getFoods().remove(food);
                 snake.addSegment(dt);
-                getFoods().add(Food.FoodRandom(width, height));
+                getFoods().add(getValidRandomFood());
                 break;
             }
         }

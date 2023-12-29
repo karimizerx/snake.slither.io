@@ -1,6 +1,7 @@
 package slitherio.view;
 
 import javafx.animation.*;
+import javafx.beans.property.*;
 import javafx.collections.*;
 import javafx.scene.input.*;
 import javafx.scene.layout.*;
@@ -11,6 +12,8 @@ public final class Controller {
     private GameView view;
     private Arena model;
     private boolean pause = false;
+    private final ListProperty<Player> players = new SimpleListProperty<Player>(
+            FXCollections.<Player>observableArrayList());
 
     /* ******************** Constructor ******************** */
     protected Controller(Pane root, double width, double height) {
@@ -23,6 +26,9 @@ public final class Controller {
     // Main function that initialize all values of game and launch it
     protected final void startGame() {
         bind();
+        // En fonction du gamemodes....
+        Player player = new Player(92, "KMZX", false, model.getWidth() / 2, model.getHeight() / 2);
+        getPlayers().add(player);
         defaultView();
         animate();
     }
@@ -125,7 +131,24 @@ public final class Controller {
         });
     }
 
+    private void bindPlayers() {
+        players.addListener(new ListChangeListener<Player>() {
+            @Override
+            public void onChanged(Change<? extends Player> change) {
+                while (change.next()) {
+
+                    if (change.wasRemoved())
+                        change.getRemoved().forEach((Player player) -> model.getSnakes().remove(player.getSnake()));
+
+                    if (change.wasAdded())
+                        change.getAddedSubList().forEach((Player player) -> model.getSnakes().add(player.getSnake()));
+                }
+            }
+        });
+    }
+
     private void bind() {
+        bindPlayers();
         bindFoods();
         bindSnakes();
     }
@@ -143,5 +166,13 @@ public final class Controller {
 
     protected final GameView getView() {
         return view;
+    }
+
+    protected final ListProperty<Player> getPlayersProperty() {
+        return players;
+    }
+
+    protected final ObservableList<Player> getPlayers() {
+        return players.get();
     }
 }

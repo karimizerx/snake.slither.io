@@ -74,6 +74,11 @@ public final class Controller {
         model.onMouseMoved(mouseX, mouseY);
     }
 
+    private void bindSize() {
+        view.getWidthProperty().addListener((obs, oldVal, newVal) -> model.setWidth((double) newVal));
+        view.getHeightProperty().addListener((obs, oldVal, newVal) -> model.setHeight((double) newVal));
+    }
+
     private void bindFoods() {
         model.getFoodsProperty().addListener(new ListChangeListener<Food>() {
 
@@ -148,6 +153,7 @@ public final class Controller {
     }
 
     private void bind() {
+        bindSize();
         bindPlayers();
         bindFoods();
         bindSnakes();

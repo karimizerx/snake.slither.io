@@ -8,7 +8,7 @@
 
 - [ ] Etape 2:
 
-  - [ ] ajouter les **joueurs**
+  - [x] ajouter les **joueurs**
   - [ ] implémenter une **IA**
 
 - [x] Etape 3: **déplacement d’un serpent de multiples segments**
@@ -19,7 +19,7 @@
 - [x] Etape 4: **gestion de la mort**
 
   - [x] collision avec un obstacle tiers
-  - [ ] auto-collision :arrow_right: <span style="color:red">On oublie ça</span>
+  - [ ] auto-collision :arrow_right: **On oublie ça**
 
 - [x] Etape 5: **gestion de la croissance**
 

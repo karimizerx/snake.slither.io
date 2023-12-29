@@ -72,6 +72,10 @@ public class GameView {
         width.setValue(value);
     }
 
+    protected final DoubleProperty getHeightProperty() {
+        return height;
+    }
+
     protected final double getHeight() {
         return height.getValue();
     }

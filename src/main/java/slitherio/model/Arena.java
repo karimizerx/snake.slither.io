@@ -11,10 +11,12 @@ public abstract class Arena {
     private final ListProperty<Food> foods = new SimpleListProperty<Food>(FXCollections.<Food>observableArrayList());
     private final ListProperty<Snake> snakes = new SimpleListProperty<Snake>(
             FXCollections.<Snake>observableArrayList());
-    private double width, height;
+    private double worldWidth, worldHeight, width, height;
 
     /* ******************** Constructor ******************** */
-    public Arena(double width, double height) {
+    public Arena(double worldWidth, double worldHeight, double width, double height) {
+        this.worldWidth = worldWidth;
+        this.worldHeight = worldHeight;
         this.width = width;
         this.height = height;
         bindPlayers();
@@ -49,10 +51,10 @@ public abstract class Arena {
 
     protected final Food getValidRandomFood() {
         int cnt = 500;
-        Food food = Food.FoodRandom(width, height);
+        Food food = Food.FoodRandom(worldWidth, worldHeight);
         while (cnt != 0 && !isValidFoodPosition(food)) {
             --cnt;
-            food = Food.FoodRandom(width, height);
+            food = Food.FoodRandom(worldWidth, worldHeight);
         }
 
         // return (cnt == 0) ? (new Food(width / 2, height / 2)) : food;
@@ -110,6 +112,22 @@ public abstract class Arena {
     }
 
     public final void setHeight(double value) {
+        height = value;
+    }
+
+    public final double getWorldtWidth() {
+        return width;
+    }
+
+    public final void setWorldWidth(double value) {
+        width = value;
+    }
+
+    public final double getWorldHeight() {
+        return height;
+    }
+
+    public final void setWorldHeight(double value) {
         height = value;
     }
 

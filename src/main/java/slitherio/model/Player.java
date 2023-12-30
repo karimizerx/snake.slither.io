@@ -6,19 +6,20 @@ import slitherio.gameobjects.*;
 public final class Player {
 
     private int id;
-    private String name = "Player";
+    private String name = "Player", skin = "snake.head.png";
     private Snake snake;
     private boolean isIa = false, mouseControl = false;
     private KeyCode keyUp = KeyCode.UP, keyDown = KeyCode.DOWN, keyLeft = KeyCode.LEFT, keyRight = KeyCode.RIGHT;
 
     /* ******************** Constructors ******************** */
     // Complete configuration
-    public Player(int id, String name, boolean isIa, double x, double y, KeyCode keyUp, KeyCode keyDown,
+    public Player(int id, String name, String skin, boolean isIa, double x, double y, KeyCode keyUp, KeyCode keyDown,
             KeyCode keyLeft, KeyCode keyRight) {
         this.id = id;
         this.name = name;
         this.isIa = isIa;
-        this.snake = new Snake(x, y);
+        this.skin = skin;
+        this.snake = new Snake(skin, x, y);
         this.keyUp = keyUp;
         this.keyDown = keyDown;
         this.keyLeft = keyLeft;
@@ -26,16 +27,17 @@ public final class Player {
     }
 
     // Human player, control with ARROWS, default configuration
-    public Player(int id, String name, double x, double y) {
+    public Player(int id, String name, String skin, double x, double y) {
         this.id = id;
         this.name = name;
-        this.snake = new Snake(x, y);
+        this.skin = skin;
+        this.snake = new Snake(skin, x, y);
     }
 
     // Human player, control with ARROWS, complete configuration
-    public Player(int id, String name, double x, double y, KeyCode keyUp, KeyCode keyDown, KeyCode keyLeft,
+    public Player(int id, String name, String skin, double x, double y, KeyCode keyUp, KeyCode keyDown, KeyCode keyLeft,
             KeyCode keyRight) {
-        this(id, name, x, y);
+        this(id, name, skin, x, y);
         this.keyUp = keyUp;
         this.keyDown = keyDown;
         this.keyLeft = keyLeft;
@@ -43,21 +45,21 @@ public final class Player {
     }
 
     // Human player, control with ARROWS, SlitherIo configuration
-    public Player(int id, String name, double x, double y, KeyCode keyLeft, KeyCode keyRight) {
-        this(id, name, x, y);
+    public Player(int id, String name, String skin, double x, double y, KeyCode keyLeft, KeyCode keyRight) {
+        this(id, name, skin, x, y);
         this.keyLeft = keyLeft;
         this.keyRight = keyRight;
     }
 
     // Human player, control with MOUSE
-    public Player(int id, String name, double x, double y, boolean mouseControl) {
-        this(id, name, x, y);
+    public Player(int id, String name, String skin, double x, double y, boolean mouseControl) {
+        this(id, name, skin, x, y);
         this.mouseControl = mouseControl;
     }
 
     // Ia player
-    public Player(boolean isIa, int id, String name, double x, double y) {
-        this(id, name, x, y);
+    public Player(boolean isIa, int id, String name, String skin, double x, double y) {
+        this(id, name, skin, x, y);
         this.isIa = isIa;
     }
 

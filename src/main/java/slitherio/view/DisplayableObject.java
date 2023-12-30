@@ -28,7 +28,7 @@ public abstract class DisplayableObject {
 
     // Return valid angle for Rectangle rotation
     private final double getRotation() {
-        return Utils.getValidAngle(object.getRotation());
+        return Utils.getValidAngle(object.getAngle());
     }
 
     private void bind() {
@@ -36,7 +36,7 @@ public abstract class DisplayableObject {
         object.getYProperty().addListener(e -> graphics.setY(object.getUp()));
         object.getWidthProperty().addListener(e -> graphics.setWidth(object.getWidth()));
         object.getHeightProperty().addListener(e -> graphics.setHeight(object.getHeight()));
-        object.getRotationProperty().addListener(e -> graphics.setRotate(getRotation()));
+        object.getAngleProperty().addListener(e -> graphics.setRotate(getRotation()));
     }
 
     /* ******************** Getter & Setter ******************** */

@@ -6,11 +6,10 @@ import slitherio.gameobjects.*;
 public final class SnakeGame extends Arena {
 
     /* ******************** Constructors ******************** */
-    public SnakeGame(double width, double height) {
-        super(width, height);
+    public SnakeGame(double width, double height, Player player) {
+        super(width, height, width, height);
 
         // Manage players
-        Player player = new Player(92, "KMZX", width / 2, height / 2);
         getPlayers().add(player);
 
         // Manage default [food] list content
@@ -22,7 +21,8 @@ public final class SnakeGame extends Arena {
     // Make sure that there is juste one snake
     private boolean assertSize() {
         if (getSnakes().size() != 1) {
-            System.out.println("SnakeGame: assertSize: Invalid Number Of Snakes (" + getSnakes().size() + ")");
+            // System.out.println("SnakeGame: assertSize: Invalid Number Of Snakes (" +
+            // getSnakes().size() + ")");
             return false;
         }
         return true;
@@ -54,6 +54,10 @@ public final class SnakeGame extends Arena {
         // Remove all snakes of [snakes] that need to be removed
         getPlayers().removeIf(player -> player.getSnake().getBody().isEmpty());
 
+        // Manage the end of the game
+        if (endGame())
+            ;
+
         // Make snake move if he's still alive, i.e if [snakes] isn't empty
         if (!getSnakes().isEmpty())
             getSnake().move(dt);
@@ -65,17 +69,17 @@ public final class SnakeGame extends Arena {
             return;
 
         if (!getSnake().getBody().isEmpty()) {
-            double angle = getSnake().getHead().getRotation();
+            double angle = getSnake().getHead().getAngle();
             if (angle == 90 || angle == 270) {
                 if (key == getPlayer().getKeyUp())
-                    getSnake().getHead().setRotation(180);
+                    getSnake().getHead().setAngle(180);
                 else if (key == getPlayer().getKeyDown())
-                    getSnake().getHead().setRotation(0);
+                    getSnake().getHead().setAngle(0);
             } else if (angle == 0 || angle == 360 || angle == 180) {
                 if (key == getPlayer().getKeyLeft())
-                    getSnake().getHead().setRotation(90);
+                    getSnake().getHead().setAngle(90);
                 else if (key == getPlayer().getKeyRight())
-                    getSnake().getHead().setRotation(270);
+                    getSnake().getHead().setAngle(270);
             }
         }
     }

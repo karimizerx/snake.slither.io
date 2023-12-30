@@ -7,12 +7,12 @@ public final class SnakeSlitherGame extends Arena {
 
     /* ******************** Constructors ******************** */
 
-    public SnakeSlitherGame(double width, double height) {
-        super(width, height);
+    public SnakeSlitherGame(double worldWidth, double worldHeight, double width, double height) {
+        super(worldWidth, worldHeight, width, height);
 
         // Manage players
-        Player player1 = new Player(1, "REAL", 0, 0);
-        Player player2 = new Player(2, "PSG", width, 0, KeyCode.Z, KeyCode.S, KeyCode.Q, KeyCode.D);
+        Player player1 = new Player(1, "REAL", "snake.head.png", 0, 0);
+        Player player2 = new Player(2, "PSG", "snake.head.png", width, 0, KeyCode.Z, KeyCode.S, KeyCode.Q, KeyCode.D);
         getPlayers().addAll(player1, player2);
         getPlayers().forEach(player -> player.getSnake().setValidPosition(width, height));
 
@@ -25,7 +25,8 @@ public final class SnakeSlitherGame extends Arena {
     // Make sure that there is juste one snake
     private boolean assertSize() {
         if (getSnakes().size() != 2) {
-            System.out.println("SnakeGame: assertSize: Invalid Number Of Snakes (" + getSnakes().size() + ")");
+            // System.out.println("SnakeGame: assertSize: Invalid Number Of Snakes (" +
+            // getSnakes().size() + ")");
             return false;
         }
         return true;

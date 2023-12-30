@@ -2,37 +2,40 @@ package slitherio.gameobjects;
 
 import javafx.beans.property.*;
 import javafx.collections.*;
-import slitherio.Utils.Utils;
 
 public final class Snake {
     private final ListProperty<Segment> body = new SimpleListProperty<Segment>(
             FXCollections.<Segment>observableArrayList());
+    private String skin;
 
     /* ******************** Constructors ******************** */
-    public Snake(double headX, double headY) {
+
+    public Snake(String skin, double headX, double headY) {
+        this.skin = skin;
         getBody().add(new Segment(headX, headY)); // A snake has, by default, a head.
     }
 
     /* ******************** Functions ******************** */
+
     // Make the snake move. [dt] is the elapsed time
     public final void move(double dt) {
-        moveToDirection(dt, getHead().getRotation());
+        moveToDirection(dt, getHead().getAngle());
     }
 
-    // Move the snake in the direction of [rotation]. [dt] is the elapsed time
-    private void moveToDirection(double dt, double rotation) {
-        for (int i = body.size() - 1; i > 0; --i) {
-            Segment segment = body.getValue().get(i);
-            Segment previous = body.getValue().get(i - 1);
+    // Move the snake in the direction of [angle]. [dt] is the elapsed time
+    private void moveToDirection(double dt, double angle) {
+        for (int i = getBody().size() - 1; i > 0; --i) {
+            Segment segment = getBody().get(i);
+            Segment previous = getBody().get(i - 1);
             segment.setCenterX(previous.getCenterX());
             segment.setCenterY(previous.getCenterY());
-            segment.setRotation(previous.getRotation());
+            segment.setAngle(previous.getAngle());
         }
 
         // Manage snake's head move
         double hx = getHead().getCenterX(), hy = getHead().getCenterY();
         double dx = getHead().getDx() * dt, dy = getHead().getDy() * dt;
-        double nx = hx - Math.sin(Math.toRadians(rotation)) * dx, ny = hy + Math.cos(Math.toRadians(rotation)) * dy;
+        double nx = hx - Math.sin(Math.toRadians(angle)) * dx, ny = hy + Math.cos(Math.toRadians(angle)) * dy;
         getHead().setCenterX(nx);
         getHead().setCenterY(ny);
     }
@@ -41,7 +44,7 @@ public final class Snake {
     public final void addSegment(double dt) {
         double hx = getHead().getCenterX(), hy = getHead().getCenterY();
         double hdx = getHead().getDx() * dt, hdy = getHead().getDy() * dt;
-        double nr = getHead().getRotation();
+        double nr = getHead().getAngle();
         double nx = hx - Math.sin(Math.toRadians(nr)) * hdx, ny = hy + Math.cos(Math.toRadians(nr)) * hdy;
         getBody().add(0, new Segment(nx, ny, nr));
         /* VOIR POURQUOI ON PEUT PAS AJOUTER A LA FINw */
@@ -104,14 +107,12 @@ public final class Snake {
             getHead().setCenterY((y - height / 2));
     }
 
-    public final void onMouseMoved(double pointerX, double pointerY) {
-        if (!getBody().isEmpty()) {
-            double angle = Utils.getAngle(getHead().getCenterX(), getHead().getCenterY(), pointerX, pointerY);
-            getHead().setRotation(angle);
-        }
+    /* ******************** Getter & Setter ******************** */
+    // Get the snake's skin
+    public String getSkin() {
+        return skin;
     }
 
-    /* ******************** Getter & Setter ******************** */
     // Get the snake's head
     public final Segment getHead() {
         return getBody().get(0);

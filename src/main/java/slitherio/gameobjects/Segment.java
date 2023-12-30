@@ -8,6 +8,8 @@ public class Segment extends GameObject {
     private final static double defaultDy = 200;
     private final static double defaultRoation = 0;
 
+    /* ******************** Constructors ******************** */
+
     private Segment(double x, double y, double width, double height, double dx, double dy, double rotation) {
         super(x, y, width, height, dx, dy, rotation);
     }

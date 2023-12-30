@@ -5,14 +5,11 @@ import slitherio.gameobjects.*;
 
 public final class SlitherIoGame extends Arena {
 
-    /* ******************** Constructors ******************** */
-
-    public SlitherIoGame(double width, double height) {
-        super(width, height);
+    /* ******************** Constructor ******************** */
+    public SlitherIoGame(double width, double height, Player player1, Player player2) {
+        super(width, height, width, height);
 
         // Manage players
-        Player player1 = new Player(1, "REAL", 0, 0);
-        Player player2 = new Player(2, "PSG", width, 0, KeyCode.Z, KeyCode.S, KeyCode.Q, KeyCode.D);
         getPlayers().addAll(player1, player2);
         getPlayers().forEach(player -> player.getSnake().setValidPosition(width, height));
 
@@ -21,11 +18,11 @@ public final class SlitherIoGame extends Arena {
     }
 
     /* ******************** Functions ******************** */
-
-    // Make sure that there is juste one snake
+    // Make sure that there is two snake
     private boolean assertSize() {
         if (getSnakes().size() != 2) {
-            System.out.println("SnakeGame: assertSize: Invalid Number Of Snakes (" + getSnakes().size() + ")");
+            // System.out.println("SnakeGame: assertSize: Invalid Number Of Snakes (" +
+            // getSnakes().size() + ")");
             return false;
         }
         return true;
@@ -84,17 +81,17 @@ public final class SlitherIoGame extends Arena {
         for (Player player : getPlayers()) {
             Snake snake = player.getSnake();
             if (!snake.getBody().isEmpty()) {
-                double angle = snake.getHead().getRotation();
+                double angle = snake.getHead().getAngle();
                 if (angle == 90 || angle == 270) {
                     if (key == player.getKeyUp())
-                        snake.getHead().setRotation(180);
+                        snake.getHead().setAngle(180);
                     else if (key == player.getKeyDown())
-                        snake.getHead().setRotation(0);
+                        snake.getHead().setAngle(0);
                 } else if (angle == 0 || angle == 360 || angle == 180) {
                     if (key == player.getKeyLeft())
-                        snake.getHead().setRotation(90);
+                        snake.getHead().setAngle(90);
                     else if (key == player.getKeyRight())
-                        snake.getHead().setRotation(270);
+                        snake.getHead().setAngle(270);
                 }
             }
         }
@@ -109,6 +106,5 @@ public final class SlitherIoGame extends Arena {
     public final boolean endGame() {
         return !assertSize();
     }
-    /* ******************** Getter & Setter ******************** */
 
 }

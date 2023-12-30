@@ -33,7 +33,7 @@ public class GameView {
     }
 
     protected void addSegment(SnakeView snakeView, Segment segment) {
-        SegmentView segmentView = new SegmentView(segment);
+        SegmentView segmentView = new SegmentView(segment, snakeView.getSnake().getSkin());
         snakeView.getBodyView().add(segmentView);
         segmentView.display(root);
     }

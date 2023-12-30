@@ -14,7 +14,7 @@ public final class SnakeView {
     public SnakeView(GameView view, Snake snake) {
         this.snake = snake;
         for (Segment segment : snake.getBody())
-            bodyView.add(new SegmentView(segment));
+            bodyView.add(new SegmentView(segment, snake.getSkin()));
 
         bind(view, this);
 

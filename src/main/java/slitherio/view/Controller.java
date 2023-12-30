@@ -16,9 +16,20 @@ public final class Controller {
     protected Controller(Pane root, double width, double height, String nameGame) {
         view = new GameView(root, width, height);
         switch (nameGame) {
-        case "Snake" -> model = new SnakeGame(width, height);
-        case "Local SlitherIo" -> model = new SlitherIoGame(width, height);
-        case "The Snake Slither" -> model = new SnakeSlitherGame(width, height);
+        case "Snake" -> {
+            Player player = new Player(92, "KMZX", "snake.head.png", width / 2, height / 2);
+            model = new SnakeGame(width, height, player);
+        }
+        case "Local SlitherIo" -> {
+            Player player1 = new Player(1, "REAL", "snake.head.png", width, 0);
+            Player player2 = new Player(2, "PSG", "snake.head2.png", 0, 0, KeyCode.Z, KeyCode.S, KeyCode.Q, KeyCode.D);
+            model = new SlitherIoGame(width, height, player1, player2);
+        }
+        case "The Snake Slither" -> {
+            Player player = new Player(92, "KMZX", "snake.head2.png", width / 2, height / 2);
+            model = new SnakeSlitherGame(2000, 2000, width, height);
+            ((SnakeSlitherGame) model).addPlayer(player);
+        }
         default -> {
         }
         }
@@ -66,7 +77,7 @@ public final class Controller {
     protected final void onKeyPressed(KeyCode key) {
         if (key == KeyCode.P)
             pause = !pause;
-        else
+        else if (!pause)
             model.onKeyPressed(key);
     }
 

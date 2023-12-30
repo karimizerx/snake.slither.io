@@ -17,11 +17,6 @@ public final class SnakeSlitherGame extends Arena {
 
     /* ******************** Functions ******************** */
 
-    // Add [player] in [players] list
-    public final void addPlayer(Player player) {
-        getPlayers().add(player);
-    }
-
     // Update values of [snake]. [dt] is the elapsed time
     private void updateOneSnake(Snake snake, double dt) {
         // Make sure that the [snake]'s body isn't empty

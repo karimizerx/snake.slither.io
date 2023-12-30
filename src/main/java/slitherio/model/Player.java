@@ -81,6 +81,14 @@ public final class Player {
         this.name = name;
     }
 
+    public final String getSkin() {
+        return skin;
+    }
+
+    public final void setSkin(String skin) {
+        this.skin = skin;
+    }
+
     public final Snake getSnake() {
         return snake;
     }

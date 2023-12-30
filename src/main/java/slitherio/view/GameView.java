@@ -11,15 +11,22 @@ public class GameView {
     private DoubleProperty width, height;
     private List<DisplayableObject> foodsToDisplay = new ArrayList<>();
     private List<SnakeView> snakesToDisplay = new LinkedList<>();
+    private Double ox, oy;
 
     /* ******************** Constructor ******************** */
-    protected GameView(Pane root, double width, double height) {
+    protected GameView(Pane root, double width, double height, double originX, double originY) {
         this.root = root;
         this.width = new SimpleDoubleProperty(width);
         this.height = new SimpleDoubleProperty(height);
+        this.ox = originX;
+        this.oy = originY;
     }
 
     /* ******************** Functions ******************** */
+
+    protected void update() {
+
+    }
 
     protected void addFood(Food food) {
         DisplayableObject foodView = new FoodView(food);
@@ -94,5 +101,13 @@ public class GameView {
 
     protected final List<SnakeView> getSnakesToDisplay() {
         return snakesToDisplay;
+    }
+
+    protected final Double getOx() {
+        return ox;
+    }
+
+    protected final Double getOy() {
+        return oy;
     }
 }

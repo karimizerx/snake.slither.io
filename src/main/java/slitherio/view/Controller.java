@@ -14,7 +14,6 @@ public final class Controller {
 
     /* ******************** Constructor ******************** */
     protected Controller(Pane root, double width, double height, String nameGame) {
-        view = new GameView(root, width, height);
         switch (nameGame) {
         case "Snake" -> {
             Player player = new Player(92, "KMZX", "snake.head.png", width / 2, height / 2);
@@ -35,6 +34,8 @@ public final class Controller {
         default -> {
         }
         }
+        view = new GameView(root, width, height, model.getWorldtWidth() / 2, model.getWorldHeight() / 2);
+
     }
 
     /* ******************** Functions ******************** */

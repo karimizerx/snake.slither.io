@@ -8,8 +8,13 @@ public final class SnakeSlitherGame extends Arena {
 
     /* ******************** Constructors ******************** */
 
-    public SnakeSlitherGame(double wWidth, double wHeight, double width, double height) {
+    public SnakeSlitherGame(double wWidth, double wHeight, double width, double height, Player player1,
+            Player player2) {
         super(wWidth, wHeight, width, height);
+
+        // Manage players
+        getPlayers().addAll(player1, player2);
+        getPlayers().forEach(player -> player.getSnake().setValidPosition(width, height));
 
         // Manage default [food] list content
         getFoods().add(getValidRandomFood());
@@ -29,7 +34,7 @@ public final class SnakeSlitherGame extends Arena {
             if (!snake2.getBody().isEmpty()) {
 
                 // Mutual collides
-                if (snake2.getHead().collides(snake.getHead())) {
+                if (snake2.collides(snake) && snake.getHead().collides(snake2.getHead())) {
                     snake2.getBody().clear();
                     snake.getBody().clear();
                     return;
@@ -70,25 +75,6 @@ public final class SnakeSlitherGame extends Arena {
         // Make all snakes of [snakes] move
         for (Snake snake : getSnakes())
             snake.move(dt);
-    }
-
-    private final void move(Snake snake, double dt) {
-        double angle = snake.getHead().getAngle();
-
-        for (int i = snake.getBody().size() - 1; i > 0; --i) {
-            Segment segment = snake.getBody().get(i);
-            Segment previous = snake.getBody().get(i - 1);
-            segment.setCenterX(previous.getCenterX());
-            segment.setCenterY(previous.getCenterY());
-            segment.setAngle(previous.getAngle());
-        }
-
-        // Manage snake's head move
-        double hx = snake.getHead().getCenterX(), hy = snake.getHead().getCenterY();
-        double dx = snake.getHead().getDx() * dt, dy = snake.getHead().getDy() * dt;
-        double nx = hx - Math.sin(Math.toRadians(angle)) * dx, ny = hy + Math.cos(Math.toRadians(angle)) * dy;
-        snake.getHead().setCenterX(nx);
-        snake.getHead().setCenterY(ny);
     }
 
     @Override

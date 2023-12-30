@@ -21,15 +21,16 @@ public final class Controller {
             model = new SnakeGame(width, height, player);
         }
         case "Local SlitherIo" -> {
-            Player player1 = new Player(1, "REAL", "snake.head.png", width, 0);
-            Player player2 = new Player(2, "PSG", "snake.head2.png", 0, 0, KeyCode.Z, KeyCode.S, KeyCode.Q, KeyCode.D);
+            Player player1 = new Player(1, "REAL", "snake.head.png", width * 2 / 3, 0);
+            Player player2 = new Player(2, "PSG", "snake.head2.png", width / 3, 0, KeyCode.Z, KeyCode.S, KeyCode.Q,
+                    KeyCode.D);
             model = new SlitherIoGame(width, height, player1, player2);
         }
         case "The Snake Slither" -> {
-            Player player1 = new Player(1, "REAL", "snake.head.png", width, 0);
-            Player player2 = new Player(2, "PSG", "snake.head2.png", 0, 0, KeyCode.Z, KeyCode.S, KeyCode.Q, KeyCode.D);
-            model = new SnakeSlitherGame(2000, 2000, width, height);
-            model.getPlayers().addAll(player1, player2);
+            Player player1 = new Player(1, "REAL", "snake.head.png", width * 2 / 3, 0);
+            Player player2 = new Player(2, "PSG", "snake.head2.png", width / 3, 0, KeyCode.Z, KeyCode.S, KeyCode.Q,
+                    KeyCode.D);
+            model = new SnakeSlitherGame(width, height, width, height, player1, player2);
         }
         default -> {
         }

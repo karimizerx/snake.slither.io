@@ -1,20 +1,15 @@
 package slitherio.model;
 
 import javafx.scene.input.KeyCode;
+import slitherio.Utils.Utils;
 import slitherio.gameobjects.*;
 
 public final class SnakeSlitherGame extends Arena {
 
     /* ******************** Constructors ******************** */
 
-    public SnakeSlitherGame(double worldWidth, double worldHeight, double width, double height) {
-        super(worldWidth, worldHeight, width, height);
-
-        // Manage players
-        Player player1 = new Player(1, "REAL", "snake.head.png", 0, 0);
-        Player player2 = new Player(2, "PSG", "snake.head.png", width, 0, KeyCode.Z, KeyCode.S, KeyCode.Q, KeyCode.D);
-        getPlayers().addAll(player1, player2);
-        getPlayers().forEach(player -> player.getSnake().setValidPosition(width, height));
+    public SnakeSlitherGame(double wWidth, double wHeight, double width, double height) {
+        super(wWidth, wHeight, width, height);
 
         // Manage default [food] list content
         getFoods().add(getValidRandomFood());
@@ -22,25 +17,30 @@ public final class SnakeSlitherGame extends Arena {
 
     /* ******************** Functions ******************** */
 
-    // Make sure that there is juste one snake
-    private boolean assertSize() {
-        if (getSnakes().size() != 2) {
-            // System.out.println("SnakeGame: assertSize: Invalid Number Of Snakes (" +
-            // getSnakes().size() + ")");
-            return false;
-        }
-        return true;
+    // Add [player] in [players] list
+    public final void addPlayer(Player player) {
+        getPlayers().add(player);
     }
 
     // Update values of [snake]. [dt] is the elapsed time
     private void updateOneSnake(Snake snake, double dt) {
+        // Make sure that the [snake]'s body isn't empty
         if (snake.getBody().isEmpty())
             return;
 
         // Manage collides with others snakes
         for (Snake snake2 : getSnakes()) {
-            if (!snake2.getBody().isEmpty() && snake2.collides(snake))
-                snake2.getBody().clear();
+
+            if (!snake2.getBody().isEmpty()) {
+
+                // Mutual collides
+                if (snake2.getHead().collides(snake.getHead())) {
+                    snake2.getBody().clear();
+                    snake.getBody().clear();
+                    return;
+                } else if (snake2.collides(snake))
+                    snake2.getBody().clear();
+            }
         }
 
         // Manage collides with food
@@ -62,7 +62,7 @@ public final class SnakeSlitherGame extends Arena {
     // Update all values of the game. [dt] is the elapsed time
     public final void update(double dt) {
         // Make sure that there is one snake
-        if (!assertSize())
+        if (endGame())
             return;
 
         // Update all snakes of [snakes]
@@ -77,38 +77,43 @@ public final class SnakeSlitherGame extends Arena {
             snake.move(dt);
     }
 
-    @Override
-    public final void onKeyPressed(KeyCode key) {
-        if (!assertSize())
-            return;
+    private final void move(Snake snake, double dt) {
+        double angle = snake.getHead().getAngle();
 
-        for (Player player : getPlayers()) {
-            Snake snake = player.getSnake();
-            if (!snake.getBody().isEmpty()) {
-                double angle = snake.getHead().getRotation();
-                if (angle == 90 || angle == 270) {
-                    if (key == player.getKeyUp())
-                        snake.getHead().setRotation(180);
-                    else if (key == player.getKeyDown())
-                        snake.getHead().setRotation(0);
-                } else if (angle == 0 || angle == 360 || angle == 180) {
-                    if (key == player.getKeyLeft())
-                        snake.getHead().setRotation(90);
-                    else if (key == player.getKeyRight())
-                        snake.getHead().setRotation(270);
-                }
-            }
+        for (int i = snake.getBody().size() - 1; i > 0; --i) {
+            Segment segment = snake.getBody().get(i);
+            Segment previous = snake.getBody().get(i - 1);
+            segment.setCenterX(previous.getCenterX());
+            segment.setCenterY(previous.getCenterY());
+            segment.setAngle(previous.getAngle());
         }
 
+        // Manage snake's head move
+        double hx = snake.getHead().getCenterX(), hy = snake.getHead().getCenterY();
+        double dx = snake.getHead().getDx() * dt, dy = snake.getHead().getDy() * dt;
+        double nx = hx - Math.sin(Math.toRadians(angle)) * dx, ny = hy + Math.cos(Math.toRadians(angle)) * dy;
+        snake.getHead().setCenterX(nx);
+        snake.getHead().setCenterY(ny);
+    }
+
+    @Override
+    public final void onKeyPressed(KeyCode key) {
     }
 
     @Override
     public final void onMouseMoved(double pointerX, double pointerY) {
+        for (Snake snake : getSnakes()) {
+            if (!snake.getBody().isEmpty()) {
+                double angle = Utils.getAngle(snake.getHead().getCenterX(), snake.getHead().getCenterY(), pointerX,
+                        pointerY);
+                snake.getHead().setAngle(angle);
+            }
+        }
     }
 
     @Override
     public final boolean endGame() {
-        return !assertSize();
+        return getSnakes().isEmpty();
     }
     /* ******************** Getter & Setter ******************** */
 

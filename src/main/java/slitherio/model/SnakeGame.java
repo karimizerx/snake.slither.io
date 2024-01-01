@@ -39,7 +39,8 @@ public final class SnakeGame extends Arena {
         for (Food food : getFoods()) {
             if (getSnake().getHead().collides(food)) {
                 getFoods().remove(food);
-                getSnake().addSegment(dt);
+                for (int i = 0; i < 4; ++i)
+                    getSnake().addSegment(dt);
                 getFoods().add(getValidRandomFood());
                 break;
             }

@@ -18,7 +18,7 @@ public class Framegame extends Application {
     private final String backgroundGame = "grass.jpg";
     private final String imageButtonPlay = "button.play.png";
     private final String imageButtonSettings = "button.settings.png";
-    private final StringProperty gameName = new SimpleStringProperty("The Snake Slither");
+    private final StringProperty gameName = new SimpleStringProperty("Local SlitherIo");
     private final StringProperty controlName = new SimpleStringProperty("ARROWS");
 
     @Override

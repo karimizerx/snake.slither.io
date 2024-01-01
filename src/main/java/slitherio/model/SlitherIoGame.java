@@ -35,7 +35,12 @@ public final class SlitherIoGame extends Arena {
 
         // Manage collides with others snakes
         for (Snake snake2 : getSnakes()) {
-            if (!snake2.getBody().isEmpty() && snake2.collides(snake))
+            // Mutual collides
+            if (snake2.collides(snake) && snake.getHead().collides(snake2.getHead())) {
+                snake2.getBody().clear();
+                snake.getBody().clear();
+                return;
+            } else if (snake2.collides(snake))
                 snake2.getBody().clear();
         }
 
@@ -43,7 +48,8 @@ public final class SlitherIoGame extends Arena {
         for (Food food : getFoods()) {
             if (snake.getHead().collides(food)) {
                 getFoods().remove(food);
-                snake.addSegment(dt);
+                for (int i = 0; i < 4; ++i)
+                    snake.addSegment(dt);
                 getFoods().add(getValidRandomFood());
                 break;
             }

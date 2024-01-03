@@ -15,7 +15,7 @@
 ### Test projetct:
 
 ```
-./test
+./gradlew test
 ```
 
 ### Implemented features:

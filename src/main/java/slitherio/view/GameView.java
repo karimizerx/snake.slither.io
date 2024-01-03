@@ -24,10 +24,6 @@ public class GameView {
 
     /* ******************** Functions ******************** */
 
-    protected void update() {
-
-    }
-
     protected void addFood(Food food) {
         DisplayableObject foodView = new FoodView(food);
         foodsToDisplay.add(foodView);

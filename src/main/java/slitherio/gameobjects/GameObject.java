@@ -36,12 +36,17 @@ public abstract class GameObject {
 
     // True if [this] isn't strictly in boundes delimited by (0,0);(maxX,maxY)
     public final boolean collides(double maxX, double maxY) {
-        return (getLeft() < 0) || (maxX < getRight()) || (getUp() < 0) || (maxY < getDown());
+        boolean x1 = getLeft() <= 0 && 0 <= getRight();
+        boolean x2 = getLeft() <= maxX && maxX <= getRight();
+        boolean y1 = getUp() <= 0 && 0 <= getDown();
+        boolean y2 = getUp() <= maxY && maxY <= getDown();
+
+        return x1 || x2 || y1 || y2;
     }
 
     // True if [this] is strictly out of boundes delimited by (0,0);(maxX,maxY)
     public final boolean isOut(double maxX, double maxY) {
-        return (getLeft() < 0) && (maxX < getRight()) && (getUp() < 0) && (maxY < getDown());
+        return (getRight() < 0) || (maxX < getLeft()) || (getDown() < 0) && (maxY < getUp());
     }
 
     /* ******************** Getter & Setter ******************** */

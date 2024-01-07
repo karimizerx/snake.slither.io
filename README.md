@@ -1,5 +1,12 @@
 ## The Snake Slither
 
+### Liens vers :
+
+- [**le code source**](/src/main/java/slitherio/)
+- [**les tests**](/src/test/java/slitherio/mainTest.java)
+- [**les ressources du jeu**](/src/main/resources/)
+- [**toute la documentation**](/documentation/)
+
 ### Pour compiler :
 
 ```
@@ -8,15 +15,11 @@
 
 ### Pour exécuter :
 
-[ici](/src/main/java/slitherio/)
-
 ```
 ./gradlew run
 ```
 
-### Tests :
-
-Pour lancer les [**tests**](/src/test/java/slitherio/mainTest.java) :
+### Pour tester :
 
 ```
 ./gradlew test
@@ -37,7 +40,7 @@ Lire [**_toDo.md_**](/documentation/toDo.md).
 
 ### Architecture
 
-Lire [**_diagramme.de.classes.md_**](/documentation/architecture/diagramme.de.classes.md)
+Lire [**_diagramme.de.classes.md_**](/documentation/architecture/diagramme.de.classes.md).
 
 ### Documentation
 

@@ -1,18 +1,22 @@
 ## The Snake Slither
 
-### Pour compiler:
+### Pour compiler :
 
 ```
 ./gradlew build
 ```
 
-### Pour exécuter:
+### Pour exécuter :
+
+[ici](/src/main/java/slitherio/)
 
 ```
 ./gradlew run
 ```
 
-### Pour tester:
+### Tests :
+
+Pour lancer les [**tests**](/src/test/java/slitherio/mainTest.java) :
 
 ```
 ./gradlew test
@@ -20,7 +24,7 @@
 
 ### Fonctionnalités implémentées:
 
-Lire [**_toDo.md_**](/OPENME/toDo.md).
+Lire [**_toDo.md_**](/documentation/toDo.md).
 
 ### Choix techniques:
 
@@ -28,12 +32,13 @@ Lire [**_toDo.md_**](/OPENME/toDo.md).
 - Durant une partie, on peut revenir au menu principale à tout moment avec la touche `ESCAP`.
 - Depuis le menu principal, on peut arrêter le programme avec la touche `ESCAP`.
 - Le terrain des jeux **SNAKE** et **SLITHERIO** est sans bord: traverser un bord fait apparaître le serpent de l'autre côté.
+- Dans **SLITHERIO**, il n'y a pas d'auto-collision.
 - ...
 
 ### Architecture
 
-**_diagrame de classe_**
+Lire [**_diagramme.de.classes.md_**](/documentation/architecture/diagramme.de.classes.md)
 
 ### Documentation
 
-Lire [**_documentation_**](/OPENME/doc.md).
+Lire [**_documentation_**](/documentation/javadoc/).

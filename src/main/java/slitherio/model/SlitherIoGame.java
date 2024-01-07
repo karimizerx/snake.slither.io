@@ -15,6 +15,7 @@ public final class SlitherIoGame extends Arena {
 
         // Manage default [food] list content
         getFoods().add(getValidRandomFood());
+        getFoods().add(getValidRandomFood());
     }
 
     /* ******************** Functions ******************** */
@@ -51,6 +52,8 @@ public final class SlitherIoGame extends Arena {
                 for (int i = 0; i < 4; ++i)
                     snake.addSegment(dt);
                 getFoods().add(getValidRandomFood());
+                if (getFoods().size() < 2)
+                    getFoods().add(getValidRandomFood());
                 break;
             }
         }

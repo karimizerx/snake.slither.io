@@ -16,8 +16,6 @@ public class Framegame extends Application {
 
     private final String backgroundMenu = "background.menu.png";
     private final String backgroundGame = "grass.jpg";
-    private final String imageButtonPlay = "button.play.png";
-    private final String imageButtonSettings = "button.settings.png";
     private final StringProperty gameName = new SimpleStringProperty("Local SlitherIo");
     private final StringProperty controlName = new SimpleStringProperty("ARROWS");
 
@@ -195,8 +193,4 @@ public class Framegame extends Application {
         controller.startGame();
     }
 
-    private void gameMenu(Stage stage, Pane gameRoot) {
-        // TODO: possiblité de dire ce qu'on veut faire lorsqu'on met pause (continuer
-        // la partie, revenir au menu, quitter, sauvegarder....)
-    }
 }

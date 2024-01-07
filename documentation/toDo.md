@@ -1,4 +1,4 @@
-## Fonctionnalités
+## Implemented Features
 
 - [x] Etape 1:
 

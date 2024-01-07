@@ -1,11 +1,3 @@
-## gameobjects/
-
-### GameObject.java
-
-```
-
-```
-
 ### Food.java
 
 ```t

@@ -27,6 +27,10 @@ test {
     useJUnitPlatform()
 }
 
+javadoc {
+    destinationDir = file("documentation/javadoc")
+}
+
 application {
     mainClass = "slitherio.App"
 }

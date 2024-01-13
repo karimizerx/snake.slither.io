@@ -3,9 +3,20 @@ package slitherio.model;
 import javafx.scene.input.KeyCode;
 import slitherio.gameobjects.*;
 
+/**
+ * Cette classe s'occupe de gérer un jeu de Snake classique.
+ */
 public final class SnakeGame extends Arena {
 
     /* ******************** Constructors ******************** */
+    /**
+     * Creates a new SNAKE game, with a default [food] object in @attribut
+     * [getFoods] list.
+     * 
+     * @param width  width of the world and the screen
+     * @param height height of the world and the screen
+     * @param player There is juste one playe.
+     */
     public SnakeGame(double width, double height, Player player) {
         super(width, height, width, height);
 
@@ -18,14 +29,34 @@ public final class SnakeGame extends Arena {
 
     /* ******************** Functions ******************** */
 
-    // Make sure that there is juste one snake
+    /**
+     * Make sure that there is juste one snake.
+     * 
+     * @return boolean, who return TRUE if pirate size are note infinity.
+     */
     private boolean assertSize() {
-        if (getSnakes().size() != 1) {
-            // System.out.println("SnakeGame: assertSize: Invalid Number Of Snakes (" +
-            // getSnakes().size() + ")");
-            return false;
+        return getSnakes().size() == 1;
+    }
+
+    /**
+     * 
+     * @param player
+     */
+    private void moveIA(Player player) {
+
+        // Get the nearest food
+        Food nearestFood = getFoods().get(0);
+        double dist = 0;
+        for (Food food : getFoods()) {
+            double newDist = Math.abs(player.getSnake().getHead().getCenterX() - food.getCenterX());
+            if (dist < newDist)
+                nearestFood = food;
         }
-        return true;
+
+        // Direct the snake to this [nearestFood]
+        if (nearestFood.getCenterX() < getSnake().getHead().getCenterX()) {
+            // TODO: faire bouger le snake
+        }
     }
 
     @Override
@@ -34,6 +65,10 @@ public final class SnakeGame extends Arena {
         // Make sure that there is one snake
         if (!assertSize())
             return;
+
+        // Manage IA move
+        if (getPlayer().isIa())
+            moveIA(getPlayer());
 
         // Manage collides with food
         for (Food food : getFoods()) {

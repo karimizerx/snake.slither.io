@@ -44,14 +44,14 @@ loadScripts(document, 'script');</script>
 <ul class="sub-nav-list">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
-<li>Constr&nbsp;|&nbsp;</li>
+<li><a href="#field-summary">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor-summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method-summary">Method</a></li>
 </ul>
 <ul class="sub-nav-list">
 <li>Detail:&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
-<li>Constr&nbsp;|&nbsp;</li>
+<li><a href="#field-detail">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#constructor-detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method-detail">Method</a></li>
 </ul>
 </div>
@@ -79,11 +79,74 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public final class </span><span class="element-name type-name-label">Food</span>
 <span class="extends-implements">extends <a href="GameObject.html" title="class in slitherio.gameobjects">GameObject</a></span></div>
-<div class="block">Représente la nourriture du jeu. Possède une vitesse, un angle et des
- dimensions par défaut.</div>
+<div class="block">Représente la nourriture du jeu.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
+<!-- =========== FIELD SUMMARY =========== -->
+<li>
+<section class="field-summary" id="field-summary">
+<h2>Field Summary</h2>
+<div class="caption"><span>Fields</span></div>
+<div class="summary-table three-column-summary">
+<div class="table-header col-first">Modifier and Type</div>
+<div class="table-header col-second">Field</div>
+<div class="table-header col-last">Description</div>
+<div class="col-first even-row-color"><code>private static final double</code></div>
+<div class="col-second even-row-color"><code><a href="#defaultAngle" class="member-name-link">defaultAngle</a></code></div>
+<div class="col-last even-row-color">
+<div class="block">The default value of the food's angle is 0.0</div>
+</div>
+<div class="col-first odd-row-color"><code>private static final double</code></div>
+<div class="col-second odd-row-color"><code><a href="#defaultDx" class="member-name-link">defaultDx</a></code></div>
+<div class="col-last odd-row-color">
+<div class="block">The default value of the food's speed is 0.0</div>
+</div>
+<div class="col-first even-row-color"><code>private static final double</code></div>
+<div class="col-second even-row-color"><code><a href="#defaultDy" class="member-name-link">defaultDy</a></code></div>
+<div class="col-last even-row-color">
+<div class="block">The default value of the food's speed is 0.0</div>
+</div>
+<div class="col-first odd-row-color"><code>private static final double</code></div>
+<div class="col-second odd-row-color"><code><a href="#defaultHeight" class="member-name-link">defaultHeight</a></code></div>
+<div class="col-last odd-row-color">
+<div class="block">The default value of the food's height is 50.0</div>
+</div>
+<div class="col-first even-row-color"><code>private static final double</code></div>
+<div class="col-second even-row-color"><code><a href="#defaultWidth" class="member-name-link">defaultWidth</a></code></div>
+<div class="col-last even-row-color">
+<div class="block">The default value of the food's width is 50.0</div>
+</div>
+</div>
+</section>
+</li>
+<!-- ======== CONSTRUCTOR SUMMARY ======== -->
+<li>
+<section class="constructor-summary" id="constructor-summary">
+<h2>Constructor Summary</h2>
+<div class="caption"><span>Constructors</span></div>
+<div class="summary-table three-column-summary">
+<div class="table-header col-first">Modifier</div>
+<div class="table-header col-second">Constructor</div>
+<div class="table-header col-last">Description</div>
+<div class="col-first even-row-color"><code>private </code></div>
+<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(double,double)" class="member-name-link">Food</a><wbr>(double&nbsp;x,
+ double&nbsp;y)</code></div>
+<div class="col-last even-row-color">
+<div class="block">Create a new instance of <a href="Food.html" title="class in slitherio.gameobjects"><code>Food</code></a>, only with the X and Y coordinates.</div>
+</div>
+<div class="col-first odd-row-color"><code>private </code></div>
+<div class="col-constructor-name odd-row-color"><code><a href="#%3Cinit%3E(double,double,double,double,double,double,double)" class="member-name-link">Food</a><wbr>(double&nbsp;x,
+ double&nbsp;y,
+ double&nbsp;width,
+ double&nbsp;height,
+ double&nbsp;dx,
+ double&nbsp;dy,
+ double&nbsp;angle)</code></div>
+<div class="col-last odd-row-color">&nbsp;</div>
+</div>
+</section>
+</li>
 <!-- ========== METHOD SUMMARY =========== -->
 <li>
 <section class="method-summary" id="method-summary">
@@ -116,6 +179,131 @@ loadScripts(document, 'script');</script>
 </section>
 <section class="details">
 <ul class="details-list">
+<!-- ============ FIELD DETAIL =========== -->
+<li>
+<section class="field-details" id="field-detail">
+<h2>Field Details</h2>
+<ul class="member-list">
+<li>
+<section class="detail" id="defaultWidth">
+<h3>defaultWidth</h3>
+<div class="member-signature"><span class="modifiers">private static final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">defaultWidth</span></div>
+<div class="block">The default value of the food's width is 50.0</div>
+<dl class="notes">
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list">
+<li><a href="../../constant-values.html#slitherio.gameobjects.Food.defaultWidth">Constant Field Values</a></li>
+</ul>
+</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="defaultHeight">
+<h3>defaultHeight</h3>
+<div class="member-signature"><span class="modifiers">private static final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">defaultHeight</span></div>
+<div class="block">The default value of the food's height is 50.0</div>
+<dl class="notes">
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list">
+<li><a href="../../constant-values.html#slitherio.gameobjects.Food.defaultHeight">Constant Field Values</a></li>
+</ul>
+</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="defaultDx">
+<h3>defaultDx</h3>
+<div class="member-signature"><span class="modifiers">private static final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">defaultDx</span></div>
+<div class="block">The default value of the food's speed is 0.0</div>
+<dl class="notes">
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list">
+<li><a href="../../constant-values.html#slitherio.gameobjects.Food.defaultDx">Constant Field Values</a></li>
+</ul>
+</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="defaultDy">
+<h3>defaultDy</h3>
+<div class="member-signature"><span class="modifiers">private static final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">defaultDy</span></div>
+<div class="block">The default value of the food's speed is 0.0</div>
+<dl class="notes">
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list">
+<li><a href="../../constant-values.html#slitherio.gameobjects.Food.defaultDy">Constant Field Values</a></li>
+</ul>
+</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="defaultAngle">
+<h3>defaultAngle</h3>
+<div class="member-signature"><span class="modifiers">private static final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">defaultAngle</span></div>
+<div class="block">The default value of the food's angle is 0.0</div>
+<dl class="notes">
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list">
+<li><a href="../../constant-values.html#slitherio.gameobjects.Food.defaultAngle">Constant Field Values</a></li>
+</ul>
+</dd>
+</dl>
+</section>
+</li>
+</ul>
+</section>
+</li>
+<!-- ========= CONSTRUCTOR DETAIL ======== -->
+<li>
+<section class="constructor-details" id="constructor-detail">
+<h2>Constructor Details</h2>
+<ul class="member-list">
+<li>
+<section class="detail" id="&lt;init&gt;(double,double,double,double,double,double,double)">
+<h3>Food</h3>
+<div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="element-name">Food</span><wbr><span class="parameters">(double&nbsp;x,
+ double&nbsp;y,
+ double&nbsp;width,
+ double&nbsp;height,
+ double&nbsp;dx,
+ double&nbsp;dy,
+ double&nbsp;angle)</span></div>
+<dl class="notes">
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list-long">
+<li><a href="GameObject.html#%3Cinit%3E(double,double,double,double,double,double,double)"><code>GameObject(double, double, double, double, double, double, double)</code></a></li>
+</ul>
+</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="&lt;init&gt;(double,double)">
+<h3>Food</h3>
+<div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="element-name">Food</span><wbr><span class="parameters">(double&nbsp;x,
+ double&nbsp;y)</span></div>
+<div class="block">Create a new instance of <a href="Food.html" title="class in slitherio.gameobjects"><code>Food</code></a>, only with the X and Y coordinates.
+ Others attribute are using default values.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>x</code> - X-coordinate of the food</dd>
+<dd><code>y</code> - Y-coordinate of the food</dd>
+</dl>
+</section>
+</li>
+</ul>
+</section>
+</li>
 <!-- ============ METHOD DETAIL ========== -->
 <li>
 <section class="method-details" id="method-detail">

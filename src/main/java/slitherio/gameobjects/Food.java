@@ -1,24 +1,34 @@
 package slitherio.gameobjects;
 
-/**
- * Représente la nourriture du jeu. Possède une vitesse, un angle et des
- * dimensions par défaut.
- */
+/** Représente la nourriture du jeu. */
 public final class Food extends GameObject {
 
-    /**
-     * ------------------------------------------------------------------
-     */
+    /** The default value of the food's width is 50.0 */
     private final static double defaultWidth = 50;
+    /** The default value of the food's height is 50.0 */
     private final static double defaultHeight = 50;
+    /** The default value of the food's speed is 0.0 */
     private final static double defaultDx = 0;
+    /** The default value of the food's speed is 0.0 */
     private final static double defaultDy = 0;
+    /** The default value of the food's angle is 0.0 */
     private final static double defaultAngle = 0;
 
+    /**
+     * @see GameObject#GameObject(double, double, double, double, double, double,
+     *      double)
+     */
     private Food(double x, double y, double width, double height, double dx, double dy, double angle) {
         super(x, y, width, height, dx, dy, angle);
     }
 
+    /**
+     * Create a new instance of {@link Food}, only with the X and Y coordinates.
+     * Others attribute are using default values.
+     * 
+     * @param x X-coordinate of the food
+     * @param y Y-coordinate of the food
+     */
     private Food(double x, double y) {
         this(x, y, defaultWidth, defaultHeight, defaultDx, defaultDy, defaultAngle);
     }

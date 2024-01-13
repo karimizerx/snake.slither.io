@@ -15,7 +15,7 @@ test:
 	./gradlew test
 
 initjavadoc:
-	rm -r documentation/javadoc && mkdir documentation/javadoc && ./gradlew javadoc 2>> /dev/null
+	./gradlew javadoc 2>> /dev/null
 
 javadoc: 
-	google-chrome documentation/javadoc/index.html
+	google-chrome documentation/javadoc/allclasses-index.html

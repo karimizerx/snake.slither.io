@@ -11,8 +11,22 @@ import javafx.beans.property.*;
  * Cette objet doit être considéré comme un rectangle !
  */
 public abstract class GameObject {
-    private DoubleProperty x, y, width, height, angle;
-    private double dx, dy;
+    /** Defines the X coordinate of the center of the object. */
+    private DoubleProperty x;
+    /** Defines the Y coordinate of the center of the object. */
+    private DoubleProperty y;
+    /** Defines the width of the object. */
+    private DoubleProperty width;
+    /** Defines the height of the object. */
+    private DoubleProperty height;
+    /**
+     * Defines the angle of rotation about the object's center, measured in degrees.
+     */
+    private DoubleProperty angle;
+    /** Defines the speed of the object along the X axis. */
+    private double dx;
+    /** Defines the speed of the object along the Y axis. */
+    private double dy;
 
     public GameObject(double x, double y, double width, double height, double dx, double dy, double angle) {
         this.x = new SimpleDoubleProperty(x);
@@ -76,41 +90,28 @@ public abstract class GameObject {
         return (getRight() < 0) || (maxX < getLeft()) || (getDown() < 0) && (maxY < getUp());
     }
 
-    /**
-     * Defines the X coordinate of the center of the object.
-     *
-     */
+    /** Defines the X coordinate of the center of the object. */
     public final DoubleProperty getXProperty() {
         return x;
     }
 
-    /**
-     * Defines the Y coordinate of the center of the object.
-     *
-     */
+    /** Defines the Y coordinate of the center of the object. */
     public final DoubleProperty getYProperty() {
         return y;
     }
 
-    /**
-     * Defines the width of the object.
-     *
-     */
+    /** Defines the width of the object. */
     public final DoubleProperty getWidthProperty() {
         return width;
     }
 
-    /**
-     * Defines the height of the object.
-     *
-     */
+    /** Defines the height of the object. */
     public final DoubleProperty getHeightProperty() {
         return height;
     }
 
     /**
      * Defines the angle of rotation about the object's center, measured in degrees.
-     *
      */
     public final DoubleProperty getAngleProperty() {
         return angle;
@@ -181,7 +182,6 @@ public abstract class GameObject {
 
     /**
      * Defines the X coordinate of the top-left corner of the object.
-     *
      */
     public final double getLeft() {
         return x.getValue() - width.getValue() / 2;
@@ -189,7 +189,6 @@ public abstract class GameObject {
 
     /**
      * Defines the X coordinate of the top-right corner of the object.
-     *
      */
     public final double getRight() {
         return x.getValue() + width.getValue() / 2;
@@ -197,7 +196,6 @@ public abstract class GameObject {
 
     /**
      * Defines the Y coordinate of the top-left corner of the object.
-     *
      */
     public final double getUp() {
         return y.getValue() - height.getValue() / 2;
@@ -205,7 +203,6 @@ public abstract class GameObject {
 
     /**
      * Defines the X coordinate of the bottom-right corner of the object.
-     *
      */
     public final double getDown() {
         return y.getValue() + height.getValue() / 2;
@@ -253,10 +250,7 @@ public abstract class GameObject {
         height.setValue(value);
     }
 
-    /**
-     * Defines the speed of the object along the X axis.
-     *
-     */
+    /** Defines the speed of the object along the X axis. */
     public final double getDx() {
         return dx;
     }
@@ -271,10 +265,7 @@ public abstract class GameObject {
         dx = value;
     }
 
-    /**
-     * Defines the speed of the object along the Y axis.
-     *
-     */
+    /** Defines the speed of the object along the Y axis. */
     public final double getDy() {
         return dy;
     }

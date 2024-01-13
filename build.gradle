@@ -29,6 +29,9 @@ test {
 
 javadoc {
     destinationDir = file("documentation/javadoc")
+    options {
+        memberLevel = JavadocMemberLevel.PRIVATE
+    }
 }
 
 application {

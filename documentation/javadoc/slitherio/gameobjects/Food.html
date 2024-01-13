@@ -77,9 +77,10 @@ loadScripts(document, 'script');</script>
 </div>
 <section class="class-description" id="class-description">
 <hr>
-<div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">Food</span>
+<div class="type-signature"><span class="modifiers">public final class </span><span class="element-name type-name-label">Food</span>
 <span class="extends-implements">extends <a href="GameObject.html" title="class in slitherio.gameobjects">GameObject</a></span></div>
-<div class="block">Cette classe représente la nourriture.</div>
+<div class="block">Représente la nourriture du jeu. Possède une vitesse, un angle et des
+ dimensions par défaut.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -95,9 +96,11 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="Food.html" title="class in slitherio.gameobjects">Food</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#FoodRandom(double,double)" class="member-name-link">FoodRandom</a><wbr>(double&nbsp;maxWidth,
- double&nbsp;maxHeight)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#FoodRandom(double,double)" class="member-name-link">FoodRandom</a><wbr>(double&nbsp;maxX,
+ double&nbsp;maxY)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Like a static constructor.</div>
+</div>
 </div>
 </div>
 </div>
@@ -121,8 +124,18 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="FoodRandom(double,double)">
 <h3>FoodRandom</h3>
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="Food.html" title="class in slitherio.gameobjects">Food</a></span>&nbsp;<span class="element-name">FoodRandom</span><wbr><span class="parameters">(double&nbsp;maxWidth,
- double&nbsp;maxHeight)</span></div>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="Food.html" title="class in slitherio.gameobjects">Food</a></span>&nbsp;<span class="element-name">FoodRandom</span><wbr><span class="parameters">(double&nbsp;maxX,
+ double&nbsp;maxY)</span></div>
+<div class="block">Like a static constructor. Create a new object of type <a href="Food.html" title="class in slitherio.gameobjects"><code>Food</code></a>. The
+ object is in the rectangle delimited by the coordinates (0,0) and
+ (maxX,maxY).</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>maxX</code> - limit of X-coordinate</dd>
+<dd><code>maxY</code> - limit of Y-coordinate</dd>
+<dt>Returns:</dt>
+<dd>a new instance of Food, with random coordinates</dd>
+</dl>
 </section>
 </li>
 </ul>

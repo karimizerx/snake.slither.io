@@ -10,19 +10,33 @@
 ### Pour compiler :
 
 ```
-./gradlew build
+make build
 ```
 
 ### Pour exécuter :
 
 ```
-./gradlew run
+make run
 ```
 
 ### Pour tester :
 
 ```
-./gradlew test
+make test
+```
+
+### Pour lire la documentation :
+
+**Avec chrome:**
+
+```
+make javadoc
+```
+
+**Avec un autre lecteur de fichiers HTML, par exemple vscode:**
+
+```
+code documentation/javadoc/index.html
 ```
 
 ### Fonctionnalités implémentées:
@@ -41,7 +55,3 @@ Lire [**_toDo.md_**](/documentation/toDo.md).
 ### Architecture
 
 Lire [**_diagramme.de.classes.md_**](/documentation/architecture/diagramme.de.classes.md).
-
-### Documentation
-
-Lire [**_documentation_**](/documentation/javadoc/).

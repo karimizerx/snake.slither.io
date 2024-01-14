@@ -79,6 +79,11 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public final class </span><span class="element-name type-name-label">SnakeGame</span>
 <span class="extends-implements">extends <a href="Arena.html" title="class in slitherio.model">Arena</a></span></div>
+<div class="block">Gestion du jeu <b>Snake classique</b>. Il n'y a qu'un seul joueur. Les
+ déplacement se font à l'aide des flèches, uniquement vers le Nord, Sud, Est
+ et West. <b>Le snake ne peut pas s'auto collisionner.</b> Les dimensions du
+ WORLD sont celle de la window. Le serpent ne collisionne pas la window, il
+ traverse.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -93,7 +98,11 @@ loadScripts(document, 'script');</script>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(double,double,slitherio.model.Player)" class="member-name-link">SnakeGame</a><wbr>(double&nbsp;width,
  double&nbsp;height,
  <a href="Player.html" title="class in slitherio.model">Player</a>&nbsp;player)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">
+ 
+ This constructor add, by default, a food in <a href="Arena.html#getFoods()"><code>foods</code></a>.</div>
+</div>
 </div>
 </section>
 </li>
@@ -108,34 +117,35 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>private boolean</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#assertSize()" class="member-name-link">assertSize</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>final boolean</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#endGame()" class="member-name-link">endGame</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>final boolean</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#endGame()" class="member-name-link">endGame</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Return true if the game is over.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>private <a href="Player.html" title="class in slitherio.model">Player</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getPlayer()" class="member-name-link">getPlayer</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>private <a href="../gameobjects/Snake.html" title="class in slitherio.gameobjects">Snake</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getSnake()" class="member-name-link">getSnake</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>final void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#onKeyPressed(javafx.scene.input.KeyCode)" class="member-name-link">onKeyPressed</a><wbr>(javafx.scene.input.KeyCode&nbsp;key)</code></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>private <a href="Player.html" title="class in slitherio.model">Player</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getPlayer()" class="member-name-link">getPlayer</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Get the player.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>private <a href="../gameobjects/Snake.html" title="class in slitherio.gameobjects">Snake</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getSnake()" class="member-name-link">getSnake</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Manage action when a key is pressed, for each player.</div>
+<div class="block">Get the snake of the player.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>final void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#onMouseMoved(double,double)" class="member-name-link">onMouseMoved</a><wbr>(double&nbsp;pointerX,
- double&nbsp;pointerY)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#onKeyPressed(javafx.scene.input.KeyCode)" class="member-name-link">onKeyPressed</a><wbr>(javafx.scene.input.KeyCode&nbsp;key)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Manage action when the mouse is moved, for each player.</div>
+<div class="block">Manage action when a key is pressed, for each player.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>final void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#update(double)" class="member-name-link">update</a><wbr>(double&nbsp;dt)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#onMouseMoved(double,double)" class="member-name-link">onMouseMoved</a><wbr>(double&nbsp;pointerX,
+ double&nbsp;pointerY)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Manage action when the mouse is moved, for each player.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>final void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#update(double)" class="member-name-link">update</a><wbr>(double&nbsp;dt)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Update all values of the game.</div>
 </div>
 </div>
@@ -164,6 +174,15 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">SnakeGame</span><wbr><span class="parameters">(double&nbsp;width,
  double&nbsp;height,
  <a href="Player.html" title="class in slitherio.model">Player</a>&nbsp;player)</span></div>
+<div class="block">
+ 
+ This constructor add, by default, a food in <a href="Arena.html#getFoods()"><code>foods</code></a>.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>width</code> - the width of window and world</dd>
+<dd><code>height</code> - the height of windosw and world</dd>
+<dd><code>player</code> - the player</dd>
+</dl>
 </section>
 </li>
 </ul>
@@ -175,17 +194,13 @@ loadScripts(document, 'script');</script>
 <h2>Method Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="assertSize()">
-<h3>assertSize</h3>
-<div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">assertSize</span>()</div>
-</section>
-</li>
-<li>
 <section class="detail" id="update(double)">
 <h3>update</h3>
 <div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">update</span><wbr><span class="parameters">(double&nbsp;dt)</span></div>
 <div class="block"><span class="descfrm-type-label">Description copied from class:&nbsp;<code><a href="Arena.html#update(double)">Arena</a></code></span></div>
-<div class="block">Update all values of the game.</div>
+<div class="block">Update all values of the game.
+ 
+ Manage collides with food, other snakes, window...</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="Arena.html#update(double)">update</a></code>&nbsp;in class&nbsp;<code><a href="Arena.html" title="class in slitherio.model">Arena</a></code></dd>
@@ -242,12 +257,22 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getPlayer()">
 <h3>getPlayer</h3>
 <div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type"><a href="Player.html" title="class in slitherio.model">Player</a></span>&nbsp;<span class="element-name">getPlayer</span>()</div>
+<div class="block">Get the player.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>the player</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getSnake()">
 <h3>getSnake</h3>
 <div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type"><a href="../gameobjects/Snake.html" title="class in slitherio.gameobjects">Snake</a></span>&nbsp;<span class="element-name">getSnake</span>()</div>
+<div class="block">Get the snake of the player.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>the snake of the player</dd>
+</dl>
 </section>
 </li>
 </ul>

@@ -3,9 +3,24 @@ package slitherio.model;
 import javafx.scene.input.KeyCode;
 import slitherio.gameobjects.*;
 
+/**
+ * Gestion du jeu <b>Snake classique</b>. Il n'y a qu'un seul joueur. Les
+ * déplacement se font à l'aide des flèches, uniquement vers le Nord, Sud, Est
+ * et West. <b>Le snake ne peut pas s'auto collisionner.</b> Les dimensions du
+ * WORLD sont celle de la window. Le serpent ne collisionne pas la window, il
+ * traverse.
+ */
 public final class SnakeGame extends Arena {
 
-    /* ******************** Constructors ******************** */
+    /**
+     * {@inheritDoc}
+     * 
+     * This constructor add, by default, a food in {@link #getFoods() foods}.
+     * 
+     * @param width  the width of window and world
+     * @param height the height of windosw and world
+     * @param player the player
+     */
     public SnakeGame(double width, double height, Player player) {
         super(width, height, width, height);
 
@@ -16,23 +31,10 @@ public final class SnakeGame extends Arena {
         getFoods().add(getValidRandomFood());
     }
 
-    /* ******************** Functions ******************** */
-
-    // Make sure that there is juste one snake
-    private boolean assertSize() {
-        if (getSnakes().size() != 1) {
-            // System.out.println("SnakeGame: assertSize: Invalid Number Of Snakes (" +
-            // getSnakes().size() + ")");
-            return false;
-        }
-        return true;
-    }
-
     @Override
-    // Update all values of the game. [dt] is the elapsed time
     public final void update(double dt) {
-        // Make sure that there is one snake
-        if (!assertSize())
+        // Make sure that there is one snake and food can be created
+        if (endGame())
             return;
 
         // Manage collides with food
@@ -46,7 +48,7 @@ public final class SnakeGame extends Arena {
             }
         }
 
-        // Manage auto-collision
+        // TODO: Manage auto-collision
 
         // Manage collides with Window
         if (getSnake().collides(getWidth(), getHeight()))
@@ -57,6 +59,7 @@ public final class SnakeGame extends Arena {
 
         // Manage the end of the game
         if (endGame())
+            // TODO: return to menu
             ;
 
         // Make snake move if he's still alive, i.e if [snakes] isn't empty
@@ -66,7 +69,7 @@ public final class SnakeGame extends Arena {
 
     @Override
     public final void onKeyPressed(KeyCode key) {
-        if (!assertSize())
+        if (endGame())
             return;
 
         if (!getSnake().getBody().isEmpty()) {
@@ -91,14 +94,23 @@ public final class SnakeGame extends Arena {
 
     @Override
     public final boolean endGame() {
-        return false;
+        return getSnakes().size() != 1 || getValidRandomFood() == null;
     }
-    /* ******************** Getter & Setter ******************** */
 
+    /**
+     * Get the player.
+     * 
+     * @return the player
+     */
     private Player getPlayer() {
         return getPlayers().get(0);
     }
 
+    /**
+     * Get the snake of the player.
+     * 
+     * @return the snake of the player
+     */
     private Snake getSnake() {
         return getSnakes().get(0);
     }

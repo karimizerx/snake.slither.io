@@ -81,8 +81,8 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public abstract class </span><span class="element-name type-name-label">Arena</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
-<div class="block">Représente un jeu. Une Arena s'occupe de gérer les différents éléments du
- jeu, d'appliquer les règles. C'est la classe principale des jeux.
+<div class="block">Représente un jeu. C'est la classe principale des jeux. Une Arena s'occupe de
+ gérer les différents éléments du jeu, d'appliquer les règles.
  
  Le jeu se déroule sur une arène appelée <b>WORLD</b>, avec ses dimensions
  <a href="#worldWidth"><code>worldWidth</code></a> et <a href="#worldHeight"><code>worldHeight</code></a>.</div>
@@ -158,7 +158,7 @@ loadScripts(document, 'script');</script>
  double&nbsp;width,
  double&nbsp;height)</code></div>
 <div class="col-last even-row-color">
-<div class="block">Create a new instance of <a href="Arena.html" title="class in slitherio.model"><code>Arena</code></a>.</div>
+<div class="block">Constructor for use by subclasses.</div>
 </div>
 </div>
 </section>
@@ -371,7 +371,7 @@ loadScripts(document, 'script');</script>
  double&nbsp;worldHeight,
  double&nbsp;width,
  double&nbsp;height)</span></div>
-<div class="block">Create a new instance of <a href="Arena.html" title="class in slitherio.model"><code>Arena</code></a>. This constructor calls
+<div class="block">Constructor for use by subclasses. This constructor calls
  <a href="#bindPlayers()"><code>bindPlayers()</code></a>.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -427,7 +427,9 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="update(double)">
 <h3>update</h3>
 <div class="member-signature"><span class="modifiers">public abstract</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">update</span><wbr><span class="parameters">(double&nbsp;dt)</span></div>
-<div class="block">Update all values of the game.</div>
+<div class="block">Update all values of the game.
+ 
+ Manage collides with food, other snakes, window...</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>dt</code> - the elapsed time</dd>

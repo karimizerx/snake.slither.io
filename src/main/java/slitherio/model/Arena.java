@@ -108,11 +108,13 @@ public abstract class Arena {
             food = Food.FoodRandom(worldWidth, worldHeight);
         }
 
-        return (cnt == 0) ? food : food;
+        return (cnt == 0) ? null : food;
     }
 
     /**
      * Update all values of the game.
+     * 
+     * Manage collides with food, other snakes, window...
      * 
      * @param dt the elapsed time
      */

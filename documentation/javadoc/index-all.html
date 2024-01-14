@@ -78,11 +78,9 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="slitherio/model/Arena.html#%3Cinit%3E(double,double,double,double)" class="member-name-link">Arena(double, double, double, double)</a> - Constructor for class slitherio.model.<a href="slitherio/model/Arena.html" title="class in slitherio.model">Arena</a></dt>
 <dd>
-<div class="block">Create a new instance of <a href="slitherio/model/Arena.html" title="class in slitherio.model"><code>Arena</code></a>.</div>
+<div class="block">Constructor for use by subclasses.</div>
 </dd>
 <dt><a href="slitherio/model/SlitherIoGame.html#assertSize()" class="member-name-link">assertSize()</a> - Method in class slitherio.model.<a href="slitherio/model/SlitherIoGame.html" title="class in slitherio.model">SlitherIoGame</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="slitherio/model/SnakeGame.html#assertSize()" class="member-name-link">assertSize()</a> - Method in class slitherio.model.<a href="slitherio/model/SnakeGame.html" title="class in slitherio.model">SnakeGame</a></dt>
 <dd>&nbsp;</dd>
 </dl>
 <h2 class="title" id="I:B">B</h2>
@@ -363,7 +361,9 @@ loadScripts(document, 'script');</script>
 <dt><a href="slitherio/view/GameView.html#getOy()" class="member-name-link">getOy()</a> - Method in class slitherio.view.<a href="slitherio/view/GameView.html" title="class in slitherio.view">GameView</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="slitherio/model/SnakeGame.html#getPlayer()" class="member-name-link">getPlayer()</a> - Method in class slitherio.model.<a href="slitherio/model/SnakeGame.html" title="class in slitherio.model">SnakeGame</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Get the player.</div>
+</dd>
 <dt><a href="slitherio/model/Arena.html#getPlayers()" class="member-name-link">getPlayers()</a> - Method in class slitherio.model.<a href="slitherio/model/Arena.html" title="class in slitherio.model">Arena</a></dt>
 <dd>
 <div class="block">Get the value of property players.</div>
@@ -389,7 +389,9 @@ loadScripts(document, 'script');</script>
 <dt><a href="slitherio/model/Player.html#getSnake()" class="member-name-link">getSnake()</a> - Method in class slitherio.model.<a href="slitherio/model/Player.html" title="class in slitherio.model">Player</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="slitherio/model/SnakeGame.html#getSnake()" class="member-name-link">getSnake()</a> - Method in class slitherio.model.<a href="slitherio/model/SnakeGame.html" title="class in slitherio.model">SnakeGame</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Get the snake of the player.</div>
+</dd>
 <dt><a href="slitherio/view/SnakeView.html#getSnake()" class="member-name-link">getSnake()</a> - Method in class slitherio.view.<a href="slitherio/view/SnakeView.html" title="class in slitherio.view">SnakeView</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="slitherio/model/Arena.html#getSnakes()" class="member-name-link">getSnakes()</a> - Method in class slitherio.model.<a href="slitherio/model/Arena.html" title="class in slitherio.model">Arena</a></dt>
@@ -694,9 +696,15 @@ loadScripts(document, 'script');</script>
 <div class="block">Create a new instance of <a href="slitherio/gameobjects/Snake.html" title="class in slitherio.gameobjects"><code>Snake</code></a>.</div>
 </dd>
 <dt><a href="slitherio/model/SnakeGame.html" class="type-name-link" title="class in slitherio.model">SnakeGame</a> - Class in <a href="slitherio/model/package-summary.html">slitherio.model</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Gestion du jeu <b>Snake classique</b>.</div>
+</dd>
 <dt><a href="slitherio/model/SnakeGame.html#%3Cinit%3E(double,double,slitherio.model.Player)" class="member-name-link">SnakeGame(double, double, Player)</a> - Constructor for class slitherio.model.<a href="slitherio/model/SnakeGame.html" title="class in slitherio.model">SnakeGame</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">
+ 
+ This constructor add, by default, a food in <a href="slitherio/model/Arena.html#getFoods()"><code>foods</code></a>.</div>
+</dd>
 <dt><a href="slitherio/model/Arena.html#snakes" class="member-name-link">snakes</a> - Variable in class slitherio.model.<a href="slitherio/model/Arena.html" title="class in slitherio.model">Arena</a></dt>
 <dd>
 <div class="block">Defines the list of <a href="slitherio/gameobjects/Snake.html" title="class in slitherio.gameobjects"><code>snakes</code></a>.</div>

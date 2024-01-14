@@ -3,9 +3,25 @@ package slitherio.model;
 import javafx.scene.input.KeyCode;
 import slitherio.gameobjects.*;
 
+/**
+ * Gestion du jeu <b>Slither.Io modifié</b>. Il n'y a que deux joueurs sur un
+ * pc. Les déplacement se font à l'aide des flèches, uniquement vers le Nord,
+ * Sud, Est et West. <b>Le snake ne peut pas s'auto collisionner.</b> Les
+ * dimensions du WORLD sont celle de la window. Le serpent ne collisionne pas la
+ * window, il traverse.
+ */
 public final class SlitherIoGame extends Arena {
 
-    /* ******************** Constructor ******************** */
+    /**
+     * {@inheritDoc}
+     * 
+     * This constructor add, by default, two foods in {@link #getFoods() foods}.
+     * 
+     * @param width   the width of window and world
+     * @param height  the height of windosw and world
+     * @param player1 the first player
+     * @param player2 the second player
+     */
     public SlitherIoGame(double width, double height, Player player1, Player player2) {
         super(width, height, width, height);
 
@@ -18,18 +34,13 @@ public final class SlitherIoGame extends Arena {
         getFoods().add(getValidRandomFood());
     }
 
-    /* ******************** Functions ******************** */
-    // Make sure that there is two snake
-    private boolean assertSize() {
-        if (getSnakes().size() != 2) {
-            // System.out.println("SnakeGame: assertSize: Invalid Number Of Snakes (" +
-            // getSnakes().size() + ")");
-            return false;
-        }
-        return true;
-    }
-
-    // Update values of [snake]. [dt] is the elapsed time
+    /**
+     * Update values of one snake. Manage collides with others snakes, food and
+     * window.
+     * 
+     * @param snake the snake to update
+     * @param dt    the elapsed time
+     */
     private void updateOneSnake(Snake snake, double dt) {
         if (snake.getBody().isEmpty())
             return;
@@ -38,9 +49,16 @@ public final class SlitherIoGame extends Arena {
         for (Snake snake2 : getSnakes()) {
             // Mutual collides
             if (snake2.collides(snake) && snake.getHead().collides(snake2.getHead())) {
-                snake2.getBody().clear();
-                snake.getBody().clear();
-                return;
+                if (snake.getBody().size() == snake2.getBody().size()) {
+                    snake2.getBody().clear();
+                    snake.getBody().clear();
+                    return;
+                } else if (snake.getBody().size() > snake2.getBody().size())
+                    snake2.getBody().clear();
+                else {
+                    snake.getBody().clear();
+                    return;
+                }
             } else if (snake2.collides(snake))
                 snake2.getBody().clear();
         }
@@ -64,10 +82,9 @@ public final class SlitherIoGame extends Arena {
     }
 
     @Override
-    // Update all values of the game. [dt] is the elapsed time
     public final void update(double dt) {
-        // Make sure that there is one snake
-        if (!assertSize())
+        // Make sure that there is two snakes and food can be created
+        if (endGame())
             return;
 
         // Update all snakes of [snakes]
@@ -77,6 +94,11 @@ public final class SlitherIoGame extends Arena {
         // Remove all snakes of [snakes] that need to be removed
         getPlayers().removeIf(player -> player.getSnake().getBody().isEmpty());
 
+        // Manage the end of the game
+        if (endGame())
+            // TODO: return to menu
+            return;
+
         // Make all snakes of [snakes] move
         for (Snake snake : getSnakes())
             snake.move(dt);
@@ -84,7 +106,7 @@ public final class SlitherIoGame extends Arena {
 
     @Override
     public final void onKeyPressed(KeyCode key) {
-        if (!assertSize())
+        if (endGame())
             return;
 
         for (Player player : getPlayers()) {
@@ -113,7 +135,7 @@ public final class SlitherIoGame extends Arena {
 
     @Override
     public final boolean endGame() {
-        return !assertSize();
+        return getSnakes().size() != 2 || getValidRandomFood() == null;
     }
 
 }

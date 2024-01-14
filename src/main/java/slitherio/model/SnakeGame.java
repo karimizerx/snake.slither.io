@@ -60,7 +60,7 @@ public final class SnakeGame extends Arena {
         // Manage the end of the game
         if (endGame())
             // TODO: return to menu
-            ;
+            return;
 
         // Make snake move if he's still alive, i.e if [snakes] isn't empty
         if (!getSnakes().isEmpty())

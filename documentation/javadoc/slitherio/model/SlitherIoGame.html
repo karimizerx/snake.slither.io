@@ -79,6 +79,11 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public final class </span><span class="element-name type-name-label">SlitherIoGame</span>
 <span class="extends-implements">extends <a href="Arena.html" title="class in slitherio.model">Arena</a></span></div>
+<div class="block">Gestion du jeu <b>Slither.Io modifié</b>. Il n'y a que deux joueurs sur un
+ pc. Les déplacement se font à l'aide des flèches, uniquement vers le Nord,
+ Sud, Est et West. <b>Le snake ne peut pas s'auto collisionner.</b> Les
+ dimensions du WORLD sont celle de la window. Le serpent ne collisionne pas la
+ window, il traverse.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -94,7 +99,11 @@ loadScripts(document, 'script');</script>
  double&nbsp;height,
  <a href="Player.html" title="class in slitherio.model">Player</a>&nbsp;player1,
  <a href="Player.html" title="class in slitherio.model">Player</a>&nbsp;player2)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">
+ 
+ This constructor add, by default, two foods in <a href="Arena.html#getFoods()"><code>foods</code></a>.</div>
+</div>
 </div>
 </section>
 </li>
@@ -109,34 +118,33 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>private boolean</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#assertSize()" class="member-name-link">assertSize</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>final boolean</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#endGame()" class="member-name-link">endGame</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>final boolean</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#endGame()" class="member-name-link">endGame</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Return true if the game is over.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>final void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#onKeyPressed(javafx.scene.input.KeyCode)" class="member-name-link">onKeyPressed</a><wbr>(javafx.scene.input.KeyCode&nbsp;key)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>final void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#onKeyPressed(javafx.scene.input.KeyCode)" class="member-name-link">onKeyPressed</a><wbr>(javafx.scene.input.KeyCode&nbsp;key)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Manage action when a key is pressed, for each player.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>final void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#onMouseMoved(double,double)" class="member-name-link">onMouseMoved</a><wbr>(double&nbsp;pointerX,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>final void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#onMouseMoved(double,double)" class="member-name-link">onMouseMoved</a><wbr>(double&nbsp;pointerX,
  double&nbsp;pointerY)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Manage action when the mouse is moved, for each player.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>final void</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#update(double)" class="member-name-link">update</a><wbr>(double&nbsp;dt)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>final void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#update(double)" class="member-name-link">update</a><wbr>(double&nbsp;dt)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Update all values of the game.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>private void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#updateOneSnake(slitherio.gameobjects.Snake,double)" class="member-name-link">updateOneSnake</a><wbr>(<a href="../gameobjects/Snake.html" title="class in slitherio.gameobjects">Snake</a>&nbsp;snake,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>private void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#updateOneSnake(slitherio.gameobjects.Snake,double)" class="member-name-link">updateOneSnake</a><wbr>(<a href="../gameobjects/Snake.html" title="class in slitherio.gameobjects">Snake</a>&nbsp;snake,
  double&nbsp;dt)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Update values of one snake.</div>
+</div>
 </div>
 </div>
 </div>
@@ -164,6 +172,16 @@ loadScripts(document, 'script');</script>
  double&nbsp;height,
  <a href="Player.html" title="class in slitherio.model">Player</a>&nbsp;player1,
  <a href="Player.html" title="class in slitherio.model">Player</a>&nbsp;player2)</span></div>
+<div class="block">
+ 
+ This constructor add, by default, two foods in <a href="Arena.html#getFoods()"><code>foods</code></a>.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>width</code> - the width of window and world</dd>
+<dd><code>height</code> - the height of windosw and world</dd>
+<dd><code>player1</code> - the first player</dd>
+<dd><code>player2</code> - the second player</dd>
+</dl>
 </section>
 </li>
 </ul>
@@ -175,16 +193,17 @@ loadScripts(document, 'script');</script>
 <h2>Method Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="assertSize()">
-<h3>assertSize</h3>
-<div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">assertSize</span>()</div>
-</section>
-</li>
-<li>
 <section class="detail" id="updateOneSnake(slitherio.gameobjects.Snake,double)">
 <h3>updateOneSnake</h3>
 <div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">updateOneSnake</span><wbr><span class="parameters">(<a href="../gameobjects/Snake.html" title="class in slitherio.gameobjects">Snake</a>&nbsp;snake,
  double&nbsp;dt)</span></div>
+<div class="block">Update values of one snake. Manage collides with others snakes, food and
+ window.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>snake</code> - the snake to update</dd>
+<dd><code>dt</code> - the elapsed time</dd>
+</dl>
 </section>
 </li>
 <li>

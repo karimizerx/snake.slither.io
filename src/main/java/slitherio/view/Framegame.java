@@ -12,6 +12,7 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import slitherio.Utils.*;
 
+/** Represents the game's windows. */
 public class Framegame extends Application {
 
     private final String backgroundMenu = "background.menu.png";
@@ -24,6 +25,7 @@ public class Framegame extends Application {
         startMenu(stage);
     }
 
+    /** Defines the main menu. */
     private void startMenu(Stage stage) {
         // Si on passe par le menu, on commence toujours une nouvelle partie
         Pane gameRoot = new Pane();
@@ -88,6 +90,7 @@ public class Framegame extends Application {
         stage.show();
     }
 
+    /** Defines the settings menu */
     private void startSettings(Stage stage, Pane gameRoot) {
         BorderPane root = new BorderPane();
 
@@ -160,6 +163,7 @@ public class Framegame extends Application {
         stage.show();
     }
 
+    /** Define the game window's view and start it. */
     private void startGame(Stage stage, Pane gameRoot) {
         // Pane [root] contains all graphics objects of the game
         Pane root = gameRoot;

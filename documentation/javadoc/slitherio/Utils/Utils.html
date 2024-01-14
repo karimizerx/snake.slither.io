@@ -77,6 +77,7 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public final class </span><span class="element-name type-name-label">Utils</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">Some utils methods.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -109,13 +110,19 @@ loadScripts(document, 'script');</script>
  double&nbsp;yOrigin,
  double&nbsp;x,
  double&nbsp;y)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Return angle formed by pivot Origin, yAxis and (x,y).</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static final javafx.scene.image.Image</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getImage(java.lang.String)" class="member-name-link">getImage</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;file)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Create and return an Image object of the file name image.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static final double</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getValidAngle(double)" class="member-name-link">getValidAngle</a><wbr>(double&nbsp;angle)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Return a valid angle, mesure in degrees.</div>
+</div>
 </div>
 </div>
 </div>
@@ -151,12 +158,26 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getImage(java.lang.String)">
 <h3>getImage</h3>
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type">javafx.scene.image.Image</span>&nbsp;<span class="element-name">getImage</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;file)</span></div>
+<div class="block">Create and return an Image object of the file name image.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>file</code> - name of a file in <b>resources</b></dd>
+<dt>Returns:</dt>
+<dd>an Image object of this file</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getValidAngle(double)">
 <h3>getValidAngle</h3>
 <div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">getValidAngle</span><wbr><span class="parameters">(double&nbsp;angle)</span></div>
+<div class="block">Return a valid angle, mesure in degrees. I.e 0 &lt;= angle &lt;= 360.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>angle</code> - an angle mesure in degrees</dd>
+<dt>Returns:</dt>
+<dd>Return a valid angle, mesure in degrees</dd>
+</dl>
 </section>
 </li>
 <li>
@@ -166,6 +187,16 @@ loadScripts(document, 'script');</script>
  double&nbsp;yOrigin,
  double&nbsp;x,
  double&nbsp;y)</span></div>
+<div class="block">Return angle formed by pivot Origin, yAxis and (x,y).</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>xOrigin</code> - X-coordinate of the pivot</dd>
+<dd><code>yOrigin</code> - Y-coordinate of the pivot</dd>
+<dd><code>x</code> - X-coordinate of the pointer</dd>
+<dd><code>y</code> - X-coordinate of the pointer</dd>
+<dt>Returns:</dt>
+<dd>Return angle formed by pivot Origin, yAxis and (x,y)</dd>
+</dl>
 </section>
 </li>
 </ul>

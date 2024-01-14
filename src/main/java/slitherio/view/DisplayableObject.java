@@ -6,12 +6,25 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.*;
 import javafx.scene.shape.*;
 
+/**
+ * Représente la vue d'un objet. C'est l'équivalent de
+ * {@link slitherio.gameobjects.GameObject} pour la vue.
+ */
 public abstract class DisplayableObject {
 
-    private Rectangle graphics;
+    /** Defines the object to display. */
     private GameObject object;
+    /** Gameobjects are displayed by rectangles. */
+    private Rectangle graphics;
 
-    /* ******************** Constructor ******************** */
+    /**
+     * Create a new instance DisplayableObject. This constructor calls
+     * {@link #bind()}.
+     * 
+     * @param go       the object to display
+     * @param filename the object's skin. It's a name of a file in the <b>resources
+     *                 directory</b>.
+     */
     protected DisplayableObject(GameObject go, String filename) {
         object = go;
         graphics = new Rectangle(object.getLeft(), object.getUp(), object.getWidth(), object.getHeight());
@@ -20,17 +33,32 @@ public abstract class DisplayableObject {
         bind();
     }
 
-    /* ******************** Functions ******************** */
-
+    /**
+     * Add graphics in root.
+     * 
+     * @param root the Pane where graphics should be added
+     */
     protected final void display(Pane root) {
         root.getChildren().add(graphics);
     }
 
-    // Return valid angle for Rectangle rotation
+    /**
+     * Return valid angle value of
+     * {@link slitherio.gameobjects.GameObject#getAngle() object.angle}. Make sure
+     * that the angle is always valid.
+     * 
+     * @return valid angle value of
+     *         {@link slitherio.gameobjects.GameObject#getAngle() object.angle}
+     * @see slitherio.Utils.Utils#getValidAngle(double)
+     */
     private final double getRotation() {
         return Utils.getValidAngle(object.getAngle());
     }
 
+    /**
+     * Bind {@link #object} and {@link #graphics}. Bind the values of x, y, width,
+     * height and angle.
+     */
     private void bind() {
         object.getXProperty().addListener(e -> graphics.setX(object.getLeft()));
         object.getYProperty().addListener(e -> graphics.setY(object.getUp()));
@@ -39,12 +67,20 @@ public abstract class DisplayableObject {
         object.getAngleProperty().addListener(e -> graphics.setRotate(getRotation()));
     }
 
-    /* ******************** Getter & Setter ******************** */
-
+    /**
+     * Get the value of graphics.
+     * 
+     * @return graphics
+     */
     protected final Rectangle getGraphics() {
         return graphics;
     }
 
+    /**
+     * Get the object.
+     * 
+     * @return the object
+     */
     protected final GameObject getObject() {
         return object;
     }

@@ -81,6 +81,8 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public abstract class </span><span class="element-name type-name-label">DisplayableObject</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">Représente la vue d'un objet. C'est l'équivalent de
+ <a href="../gameobjects/GameObject.html" title="class in slitherio.gameobjects"><code>GameObject</code></a> pour la vue.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -95,10 +97,14 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><code>private javafx.scene.shape.Rectangle</code></div>
 <div class="col-second even-row-color"><code><a href="#graphics" class="member-name-link">graphics</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Gameobjects are displayed by rectangles.</div>
+</div>
 <div class="col-first odd-row-color"><code>private <a href="../gameobjects/GameObject.html" title="class in slitherio.gameobjects">GameObject</a></code></div>
 <div class="col-second odd-row-color"><code><a href="#object" class="member-name-link">object</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Defines the object to display.</div>
+</div>
 </div>
 </section>
 </li>
@@ -114,7 +120,9 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color"><code>protected </code></div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(slitherio.gameobjects.GameObject,java.lang.String)" class="member-name-link">DisplayableObject</a><wbr>(<a href="../gameobjects/GameObject.html" title="class in slitherio.gameobjects">GameObject</a>&nbsp;go,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filename)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Create a new instance DisplayableObject.</div>
+</div>
 </div>
 </section>
 </li>
@@ -131,19 +139,30 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>private void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#bind()" class="member-name-link">bind</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Bind <a href="#object"><code>object</code></a> and <a href="#graphics"><code>graphics</code></a>.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected final void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#display(javafx.scene.layout.Pane)" class="member-name-link">display</a><wbr>(javafx.scene.layout.Pane&nbsp;root)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Add graphics in root.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected final javafx.scene.shape.Rectangle</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getGraphics()" class="member-name-link">getGraphics</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Get the value of graphics.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected final <a href="../gameobjects/GameObject.html" title="class in slitherio.gameobjects">GameObject</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getObject()" class="member-name-link">getObject</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Get the object.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>private final double</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getRotation()" class="member-name-link">getRotation</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Return valid angle value of
+ <a href="../gameobjects/GameObject.html#getAngle()"><code>object.angle</code></a>.</div>
+</div>
 </div>
 </div>
 </div>
@@ -162,15 +181,17 @@ loadScripts(document, 'script');</script>
 <h2>Field Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="graphics">
-<h3>graphics</h3>
-<div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type">javafx.scene.shape.Rectangle</span>&nbsp;<span class="element-name">graphics</span></div>
-</section>
-</li>
-<li>
 <section class="detail" id="object">
 <h3>object</h3>
 <div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type"><a href="../gameobjects/GameObject.html" title="class in slitherio.gameobjects">GameObject</a></span>&nbsp;<span class="element-name">object</span></div>
+<div class="block">Defines the object to display.</div>
+</section>
+</li>
+<li>
+<section class="detail" id="graphics">
+<h3>graphics</h3>
+<div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type">javafx.scene.shape.Rectangle</span>&nbsp;<span class="element-name">graphics</span></div>
+<div class="block">Gameobjects are displayed by rectangles.</div>
 </section>
 </li>
 </ul>
@@ -186,6 +207,14 @@ loadScripts(document, 'script');</script>
 <h3>DisplayableObject</h3>
 <div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="element-name">DisplayableObject</span><wbr><span class="parameters">(<a href="../gameobjects/GameObject.html" title="class in slitherio.gameobjects">GameObject</a>&nbsp;go,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;filename)</span></div>
+<div class="block">Create a new instance DisplayableObject. This constructor calls
+ <a href="#bind()"><code>bind()</code></a>.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>go</code> - the object to display</dd>
+<dd><code>filename</code> - the object's skin. It's a name of a file in the <b>resources
+                 directory</b>.</dd>
+</dl>
 </section>
 </li>
 </ul>
@@ -200,30 +229,61 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="display(javafx.scene.layout.Pane)">
 <h3>display</h3>
 <div class="member-signature"><span class="modifiers">protected final</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">display</span><wbr><span class="parameters">(javafx.scene.layout.Pane&nbsp;root)</span></div>
+<div class="block">Add graphics in root.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>root</code> - the Pane where graphics should be added</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getRotation()">
 <h3>getRotation</h3>
 <div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">getRotation</span>()</div>
+<div class="block">Return valid angle value of
+ <a href="../gameobjects/GameObject.html#getAngle()"><code>object.angle</code></a>. Make sure
+ that the angle is always valid.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>valid angle value of
+         <a href="../gameobjects/GameObject.html#getAngle()"><code>object.angle</code></a></dd>
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list">
+<li><a href="../Utils/Utils.html#getValidAngle(double)"><code>Utils.getValidAngle(double)</code></a></li>
+</ul>
+</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="bind()">
 <h3>bind</h3>
 <div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">bind</span>()</div>
+<div class="block">Bind <a href="#object"><code>object</code></a> and <a href="#graphics"><code>graphics</code></a>. Bind the values of x, y, width,
+ height and angle.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="getGraphics()">
 <h3>getGraphics</h3>
 <div class="member-signature"><span class="modifiers">protected final</span>&nbsp;<span class="return-type">javafx.scene.shape.Rectangle</span>&nbsp;<span class="element-name">getGraphics</span>()</div>
+<div class="block">Get the value of graphics.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>graphics</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getObject()">
 <h3>getObject</h3>
 <div class="member-signature"><span class="modifiers">protected final</span>&nbsp;<span class="return-type"><a href="../gameobjects/GameObject.html" title="class in slitherio.gameobjects">GameObject</a></span>&nbsp;<span class="element-name">getObject</span>()</div>
+<div class="block">Get the object.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>the object</dd>
+</dl>
 </section>
 </li>
 </ul>

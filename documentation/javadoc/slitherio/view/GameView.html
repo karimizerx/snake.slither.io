@@ -77,6 +77,8 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">GameView</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">Représente la vue d'un jeu. Gère l'affichage et les éléments à afficher à
+ l'écran.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -91,25 +93,39 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><code>private <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="DisplayableObject.html" title="class in slitherio.view">DisplayableObject</a>&gt;</code></div>
 <div class="col-second even-row-color"><code><a href="#foodsToDisplay" class="member-name-link">foodsToDisplay</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Defines the list of foods to display.</div>
+</div>
 <div class="col-first odd-row-color"><code>private javafx.beans.property.DoubleProperty</code></div>
 <div class="col-second odd-row-color"><code><a href="#height" class="member-name-link">height</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Defines the window's height.</div>
+</div>
 <div class="col-first even-row-color"><code>private <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a></code></div>
 <div class="col-second even-row-color"><code><a href="#ox" class="member-name-link">ox</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Defines the X-coordinate of window's center in the world</div>
+</div>
 <div class="col-first odd-row-color"><code>private <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a></code></div>
 <div class="col-second odd-row-color"><code><a href="#oy" class="member-name-link">oy</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Defines the X-coordinate of window's center in the world</div>
+</div>
 <div class="col-first even-row-color"><code>private javafx.scene.layout.Pane</code></div>
 <div class="col-second even-row-color"><code><a href="#root" class="member-name-link">root</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Defines the pane where the graphics objects are displayed</div>
+</div>
 <div class="col-first odd-row-color"><code>private <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="SnakeView.html" title="class in slitherio.view">SnakeView</a>&gt;</code></div>
 <div class="col-second odd-row-color"><code><a href="#snakesToDisplay" class="member-name-link">snakesToDisplay</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Defines the list of snakes to display.</div>
+</div>
 <div class="col-first even-row-color"><code>private javafx.beans.property.DoubleProperty</code></div>
 <div class="col-second even-row-color"><code><a href="#width" class="member-name-link">width</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Defines the window's width.</div>
+</div>
 </div>
 </section>
 </li>
@@ -145,14 +161,20 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#addFood(slitherio.gameobjects.Food)" class="member-name-link">addFood</a><wbr>(<a href="../gameobjects/Food.html" title="class in slitherio.gameobjects">Food</a>&nbsp;food)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Add a food in to the view and displays it.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#addSegment(slitherio.view.SnakeView,slitherio.gameobjects.Segment)" class="member-name-link">addSegment</a><wbr>(<a href="SnakeView.html" title="class in slitherio.view">SnakeView</a>&nbsp;snakeView,
  <a href="../gameobjects/Segment.html" title="class in slitherio.gameobjects">Segment</a>&nbsp;segment)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Add a Segment in the view and displays it.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#addSnake(slitherio.gameobjects.Snake)" class="member-name-link">addSnake</a><wbr>(<a href="../gameobjects/Snake.html" title="class in slitherio.gameobjects">Snake</a>&nbsp;snake)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Add a snake in the view and displays it.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="DisplayableObject.html" title="class in slitherio.view">DisplayableObject</a>&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getFoodsToDisplay()" class="member-name-link">getFoodsToDisplay</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
@@ -182,14 +204,20 @@ loadScripts(document, 'script');</script>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#removeFood(slitherio.view.DisplayableObject)" class="member-name-link">removeFood</a><wbr>(<a href="DisplayableObject.html" title="class in slitherio.view">DisplayableObject</a>&nbsp;foodview)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Remove a food's foodView of the view.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#removeSegment(slitherio.view.SnakeView,slitherio.view.DisplayableObject)" class="member-name-link">removeSegment</a><wbr>(<a href="SnakeView.html" title="class in slitherio.view">SnakeView</a>&nbsp;snakeView,
  <a href="DisplayableObject.html" title="class in slitherio.view">DisplayableObject</a>&nbsp;segmentView)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Remove a segment's segmentView of the view.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#removeSnake(slitherio.view.SnakeView)" class="member-name-link">removeSnake</a><wbr>(<a href="SnakeView.html" title="class in slitherio.view">SnakeView</a>&nbsp;snakeView)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Remove a snake's snakeView of the view.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected final void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setHeight(double)" class="member-name-link">setHeight</a><wbr>(double&nbsp;value)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
@@ -217,42 +245,49 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="root">
 <h3>root</h3>
 <div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type">javafx.scene.layout.Pane</span>&nbsp;<span class="element-name">root</span></div>
+<div class="block">Defines the pane where the graphics objects are displayed</div>
 </section>
 </li>
 <li>
 <section class="detail" id="width">
 <h3>width</h3>
 <div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type">javafx.beans.property.DoubleProperty</span>&nbsp;<span class="element-name">width</span></div>
+<div class="block">Defines the window's width.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="height">
 <h3>height</h3>
 <div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type">javafx.beans.property.DoubleProperty</span>&nbsp;<span class="element-name">height</span></div>
+<div class="block">Defines the window's height.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="foodsToDisplay">
 <h3>foodsToDisplay</h3>
 <div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="DisplayableObject.html" title="class in slitherio.view">DisplayableObject</a>&gt;</span>&nbsp;<span class="element-name">foodsToDisplay</span></div>
+<div class="block">Defines the list of foods to display.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="snakesToDisplay">
 <h3>snakesToDisplay</h3>
 <div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="SnakeView.html" title="class in slitherio.view">SnakeView</a>&gt;</span>&nbsp;<span class="element-name">snakesToDisplay</span></div>
+<div class="block">Defines the list of snakes to display.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="ox">
 <h3>ox</h3>
 <div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a></span>&nbsp;<span class="element-name">ox</span></div>
+<div class="block">Defines the X-coordinate of window's center in the world</div>
 </section>
 </li>
 <li>
 <section class="detail" id="oy">
 <h3>oy</h3>
 <div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link">Double</a></span>&nbsp;<span class="element-name">oy</span></div>
+<div class="block">Defines the X-coordinate of window's center in the world</div>
 </section>
 </li>
 </ul>
@@ -285,12 +320,22 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="addFood(slitherio.gameobjects.Food)">
 <h3>addFood</h3>
 <div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">addFood</span><wbr><span class="parameters">(<a href="../gameobjects/Food.html" title="class in slitherio.gameobjects">Food</a>&nbsp;food)</span></div>
+<div class="block">Add a food in to the view and displays it.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>food</code> - the food to add</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="removeFood(slitherio.view.DisplayableObject)">
 <h3>removeFood</h3>
 <div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">removeFood</span><wbr><span class="parameters">(<a href="DisplayableObject.html" title="class in slitherio.view">DisplayableObject</a>&nbsp;foodview)</span></div>
+<div class="block">Remove a food's foodView of the view.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>foodview</code> - the food's foodView to remove</dd>
+</dl>
 </section>
 </li>
 <li>
@@ -298,6 +343,12 @@ loadScripts(document, 'script');</script>
 <h3>addSegment</h3>
 <div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">addSegment</span><wbr><span class="parameters">(<a href="SnakeView.html" title="class in slitherio.view">SnakeView</a>&nbsp;snakeView,
  <a href="../gameobjects/Segment.html" title="class in slitherio.gameobjects">Segment</a>&nbsp;segment)</span></div>
+<div class="block">Add a Segment in the view and displays it.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>snakeView</code> - the snakeView of the segment's snake</dd>
+<dd><code>segment</code> - the segment to add</dd>
+</dl>
 </section>
 </li>
 <li>
@@ -305,18 +356,34 @@ loadScripts(document, 'script');</script>
 <h3>removeSegment</h3>
 <div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">removeSegment</span><wbr><span class="parameters">(<a href="SnakeView.html" title="class in slitherio.view">SnakeView</a>&nbsp;snakeView,
  <a href="DisplayableObject.html" title="class in slitherio.view">DisplayableObject</a>&nbsp;segmentView)</span></div>
+<div class="block">Remove a segment's segmentView of the view.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>snakeView</code> - the snakeView of the segment's snake</dd>
+<dd><code>segmentView</code> - the segmentView to remove</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="addSnake(slitherio.gameobjects.Snake)">
 <h3>addSnake</h3>
 <div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">addSnake</span><wbr><span class="parameters">(<a href="../gameobjects/Snake.html" title="class in slitherio.gameobjects">Snake</a>&nbsp;snake)</span></div>
+<div class="block">Add a snake in the view and displays it.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>snake</code> - the snake to display</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="removeSnake(slitherio.view.SnakeView)">
 <h3>removeSnake</h3>
 <div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">removeSnake</span><wbr><span class="parameters">(<a href="SnakeView.html" title="class in slitherio.view">SnakeView</a>&nbsp;snakeView)</span></div>
+<div class="block">Remove a snake's snakeView of the view.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>snakeView</code> - the snake's snakeView to remove</dd>
+</dl>
 </section>
 </li>
 <li>

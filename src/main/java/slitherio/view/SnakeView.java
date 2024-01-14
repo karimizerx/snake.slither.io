@@ -5,12 +5,21 @@ import java.util.*;
 import javafx.collections.ListChangeListener;
 import slitherio.gameobjects.*;
 
+/** Représente la vue d'un {@link slitherio.gameobjects.Snake}. */
 public final class SnakeView {
 
+    /** The snake to display. */
     private Snake snake;
+    /** The snake's body to display. */
     private List<SegmentView> bodyView = new LinkedList<SegmentView>();
 
-    /* ******************** Constructor ******************** */
+    /**
+     * Create a new instance of SnakeView. This constructor calls
+     * {@link #bind(GameView, SnakeView)}.
+     * 
+     * @param view  the game's view
+     * @param snake the snake to display
+     */
     public SnakeView(GameView view, Snake snake) {
         this.snake = snake;
         for (Segment segment : snake.getBody())
@@ -20,8 +29,13 @@ public final class SnakeView {
 
     }
 
-    /* ******************** Functions ******************** */
-
+    /**
+     * Bind the properties {@link slitherio.gameobjects.Snake#getBodyProperty()
+     * snake.body} and {@link #bodyView}.
+     * 
+     * @param view      the game's view
+     * @param snakeView the snake's view to bind
+     */
     private final void bind(GameView view, SnakeView snakeView) {
         snake.getBodyProperty().addListener(new ListChangeListener<Segment>() {
 
@@ -51,12 +65,20 @@ public final class SnakeView {
         });
     }
 
-    /* ******************** Getter & Setter ******************** */
-
+    /**
+     * Get the snake to display.
+     * 
+     * @return the snake to display
+     */
     protected final Snake getSnake() {
         return snake;
     }
 
+    /**
+     * Get the property bodyView
+     * 
+     * @return the property bodyView
+     */
     protected final List<SegmentView> getBodyView() {
         return bodyView;
     }

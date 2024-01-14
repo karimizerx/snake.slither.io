@@ -7,7 +7,7 @@ import javafx.scene.paint.*;
 import javafx.scene.shape.*;
 
 /**
- * Représente la vue d'un objet. C'est l'équivalent de
+ * Represents the view of an object. C'est l'équivalent de
  * {@link slitherio.gameobjects.GameObject} pour la vue.
  */
 public abstract class DisplayableObject {

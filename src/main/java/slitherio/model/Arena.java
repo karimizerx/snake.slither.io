@@ -6,7 +6,7 @@ import javafx.scene.input.*;
 import slitherio.gameobjects.*;
 
 /**
- * Représente un jeu. C'est la classe principale des jeux. Une Arena s'occupe de
+ * Represents a game. C'est la classe principale des jeux. Une Arena s'occupe de
  * gérer les différents éléments du jeu, d'appliquer les règles.
  * 
  * Le jeu se déroule sur une arène appelée <b>WORLD</b>, avec ses dimensions

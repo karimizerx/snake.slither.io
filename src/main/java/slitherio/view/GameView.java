@@ -6,7 +6,7 @@ import javafx.scene.layout.*;
 import slitherio.gameobjects.*;
 
 /**
- * Représente la vue d'un jeu. Gère l'affichage et les éléments à afficher à
+ * Represents the game's view. Gère l'affichage et les éléments à afficher à
  * l'écran.
  */
 public class GameView {

@@ -3,7 +3,7 @@ package slitherio.gameobjects;
 import javafx.beans.property.*;
 
 /**
- * Représente les objets "physiques" du jeu. Elle fonctionne avec des
+ * Represents the physicals objects in the game. Elle fonctionne avec des
  * DoupleProperty représentation sa position (x,y), ses dimensions (width,
  * height) et son angle de rotation. Chaque objet possède une vitesse en x et en
  * y (dx et dy respectivement).

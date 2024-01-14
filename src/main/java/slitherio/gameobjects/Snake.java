@@ -4,7 +4,7 @@ import javafx.beans.property.*;
 import javafx.collections.*;
 
 /**
- * Représente un serpent.
+ * Represents a snake.
  */
 public final class Snake {
 

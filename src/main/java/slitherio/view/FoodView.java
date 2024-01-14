@@ -2,7 +2,7 @@ package slitherio.view;
 
 import slitherio.gameobjects.*;
 
-/** Représente la vue d'un objet {@link slitherio.gameobjects.Food food}. */
+/** Represents the view of an {@link slitherio.gameobjects.Food food} object. */
 public class FoodView extends DisplayableObject {
 
     protected FoodView(GameObject go) {

@@ -5,7 +5,7 @@ import java.util.*;
 import javafx.collections.ListChangeListener;
 import slitherio.gameobjects.*;
 
-/** Représente la vue d'un {@link slitherio.gameobjects.Snake}. */
+/** Represents the view of a {@link slitherio.gameobjects.Snake}. */
 public final class SnakeView {
 
     /** The snake to display. */

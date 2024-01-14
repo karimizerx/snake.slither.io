@@ -3,16 +3,33 @@ package slitherio.model;
 import javafx.scene.input.KeyCode;
 import slitherio.gameobjects.*;
 
+/**
+ * Represents a player.
+ */
 public final class Player {
 
+    /** Defines the id. */
     private int id;
-    private String name = "Player", skin = "snake.head.png";
+    /** Defines the name. <b>Default value:</b> Player. */
+    private String name = "Player";
+    /** Defines the skin's file name. <b>Default value:</b> "snake.head.png". */
+    private String skin = "snake.head.png";
+    /** Defines the snake. */
     private Snake snake;
-    private boolean isIa = false, mouseControl = false;
-    private KeyCode keyUp = KeyCode.UP, keyDown = KeyCode.DOWN, keyLeft = KeyCode.LEFT, keyRight = KeyCode.RIGHT;
+    /** Defines the player's type. */
+    private boolean isIa = false;
+    /** Defines the control's type. Keyboard if false */
+    private boolean mouseControl = false;
+    /** Defines the keyUp. <b>Default value:</b> Arrow.UP */
+    private KeyCode keyUp = KeyCode.UP;
+    /** Defines the keyDown. <b>Default value:</b> Arrow.DOWN */
+    private KeyCode keyDown = KeyCode.DOWN;
+    /** Defines the keyLeft. <b>Default value:</b> Arrow.LEFT */
+    private KeyCode keyLeft = KeyCode.LEFT;
+    /** Defines the keyRight. <b>Default value:</b> Arrow.RIGHT */
+    private KeyCode keyRight = KeyCode.RIGHT;
 
-    /* ******************** Constructors ******************** */
-    // Complete configuration
+    /** Create a new instance of Player with <b>complete configuration</b>. */
     public Player(int id, String name, String skin, boolean isIa, double x, double y, KeyCode keyUp, KeyCode keyDown,
             KeyCode keyLeft, KeyCode keyRight) {
         this.id = id;
@@ -26,7 +43,7 @@ public final class Player {
         this.keyRight = keyRight;
     }
 
-    // Human player, control with ARROWS, default configuration
+    /** Create a new instance of <b>human Player</b>. */
     public Player(int id, String name, String skin, double x, double y) {
         this.id = id;
         this.name = name;
@@ -34,7 +51,9 @@ public final class Player {
         this.snake = new Snake(skin, x, y);
     }
 
-    // Human player, control with ARROWS, complete configuration
+    /**
+     * Create a new instance of <b>human Player</b> with <b>keyboard controls</b>.
+     */
     public Player(int id, String name, String skin, double x, double y, KeyCode keyUp, KeyCode keyDown, KeyCode keyLeft,
             KeyCode keyRight) {
         this(id, name, skin, x, y);
@@ -44,26 +63,17 @@ public final class Player {
         this.keyRight = keyRight;
     }
 
-    // Human player, control with ARROWS, SlitherIo configuration
-    public Player(int id, String name, String skin, double x, double y, KeyCode keyLeft, KeyCode keyRight) {
-        this(id, name, skin, x, y);
-        this.keyLeft = keyLeft;
-        this.keyRight = keyRight;
-    }
-
-    // Human player, control with MOUSE
+    /** Create a new instance of <b>human Player</b> with <b>mouse controls</b>. */
     public Player(int id, String name, String skin, double x, double y, boolean mouseControl) {
         this(id, name, skin, x, y);
         this.mouseControl = mouseControl;
     }
 
-    // Ia player
+    /** Create a new instance of <b>IA Player</b>. */
     public Player(boolean isIa, int id, String name, String skin, double x, double y) {
         this(id, name, skin, x, y);
         this.isIa = isIa;
     }
-
-    /* ******************** Getter & Setter ******************** */
 
     public final int getId() {
         return id;

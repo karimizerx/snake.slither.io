@@ -1,6 +1,6 @@
 package slitherio.gameobjects;
 
-/** Représente la nourriture du jeu. */
+/** Represents the game's food. */
 public final class Food extends GameObject {
 
     /** The default value of the food's width is 50.0 */

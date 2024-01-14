@@ -1,6 +1,6 @@
 package slitherio.gameobjects;
 
-/** Représente les segments d'un serpent dans le jeu. */
+/** Represents the segments of a snake. */
 public final class Segment extends GameObject {
 
     /** The default value of the segment's width is 50.0 */

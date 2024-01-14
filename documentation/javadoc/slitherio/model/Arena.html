@@ -81,6 +81,20 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public abstract class </span><span class="element-name type-name-label">Arena</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">Représente un jeu. Une Arena s'occupe de gérer les différents éléments du
+ jeu, d'appliquer les règles. C'est la classe principale des jeux.
+ 
+ Le jeu se déroule sur une arène appelée <b>WORLD</b>, avec ses dimensions
+ <a href="#worldWidth"><code>worldWidth</code></a> et <a href="#worldHeight"><code>worldHeight</code></a>.</div>
+<dl class="notes">
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list">
+<li><code>ListProperty</code></li>
+<li><code>SimpleListProperty</code></li>
+</ul>
+</dd>
+</dl>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -95,25 +109,39 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><code>private final javafx.beans.property.ListProperty&lt;<a href="../gameobjects/Food.html" title="class in slitherio.gameobjects">Food</a>&gt;</code></div>
 <div class="col-second even-row-color"><code><a href="#foods" class="member-name-link">foods</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Defines the list of <a href="../gameobjects/Food.html" title="class in slitherio.gameobjects"><code>foods</code></a>.</div>
+</div>
 <div class="col-first odd-row-color"><code>private double</code></div>
 <div class="col-second odd-row-color"><code><a href="#height" class="member-name-link">height</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Defines the window's height.</div>
+</div>
 <div class="col-first even-row-color"><code>private final javafx.beans.property.ListProperty&lt;<a href="Player.html" title="class in slitherio.model">Player</a>&gt;</code></div>
 <div class="col-second even-row-color"><code><a href="#players" class="member-name-link">players</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Defines the list of <a href="Player.html" title="class in slitherio.model"><code>players</code></a>.</div>
+</div>
 <div class="col-first odd-row-color"><code>private final javafx.beans.property.ListProperty&lt;<a href="../gameobjects/Snake.html" title="class in slitherio.gameobjects">Snake</a>&gt;</code></div>
 <div class="col-second odd-row-color"><code><a href="#snakes" class="member-name-link">snakes</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Defines the list of <a href="../gameobjects/Snake.html" title="class in slitherio.gameobjects"><code>snakes</code></a>.</div>
+</div>
 <div class="col-first even-row-color"><code>private double</code></div>
 <div class="col-second even-row-color"><code><a href="#width" class="member-name-link">width</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Defines the window's width.</div>
+</div>
 <div class="col-first odd-row-color"><code>private double</code></div>
 <div class="col-second odd-row-color"><code><a href="#worldHeight" class="member-name-link">worldHeight</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Defines the world's height.</div>
+</div>
 <div class="col-first even-row-color"><code>private double</code></div>
 <div class="col-second even-row-color"><code><a href="#worldWidth" class="member-name-link">worldWidth</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Defines the world's width.</div>
+</div>
 </div>
 </section>
 </li>
@@ -129,7 +157,9 @@ loadScripts(document, 'script');</script>
  double&nbsp;worldHeight,
  double&nbsp;width,
  double&nbsp;height)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Create a new instance of <a href="Arena.html" title="class in slitherio.model"><code>Arena</code></a>.</div>
+</div>
 </div>
 </section>
 </li>
@@ -146,68 +176,110 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>private final void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#bindPlayers()" class="member-name-link">bindPlayers</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Bind <a href="#players"><code>players</code></a> and <a href="#snakes"><code>snakes</code></a>.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>abstract boolean</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#endGame()" class="member-name-link">endGame</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Return true if the game is over.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>final javafx.collections.ObservableList&lt;<a href="../gameobjects/Food.html" title="class in slitherio.gameobjects">Food</a>&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getFoods()" class="member-name-link">getFoods</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Get the value of property foods.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>final javafx.beans.property.ListProperty&lt;<a href="../gameobjects/Food.html" title="class in slitherio.gameobjects">Food</a>&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getFoodsProperty()" class="member-name-link">getFoodsProperty</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Get the property foods.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>final double</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getHeight()" class="member-name-link">getHeight</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Get the window's height.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>final javafx.collections.ObservableList&lt;<a href="Player.html" title="class in slitherio.model">Player</a>&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getPlayers()" class="member-name-link">getPlayers</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Get the value of property players.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>final javafx.beans.property.ListProperty&lt;<a href="Player.html" title="class in slitherio.model">Player</a>&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getPlayersProperty()" class="member-name-link">getPlayersProperty</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Get the property players.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>final javafx.collections.ObservableList&lt;<a href="../gameobjects/Snake.html" title="class in slitherio.gameobjects">Snake</a>&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getSnakes()" class="member-name-link">getSnakes</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Get the value of property snakes.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>final javafx.beans.property.ListProperty&lt;<a href="../gameobjects/Snake.html" title="class in slitherio.gameobjects">Snake</a>&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getSnakesProperty()" class="member-name-link">getSnakesProperty</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Get the property snakes.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected final <a href="../gameobjects/Food.html" title="class in slitherio.gameobjects">Food</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getValidRandomFood()" class="member-name-link">getValidRandomFood</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Return a food that is at a valid position.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>final double</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getWidth()" class="member-name-link">getWidth</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Get the window's width.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>final double</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getWorldHeight()" class="member-name-link">getWorldHeight</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Get the world's height.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>final double</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getWorldtWidth()" class="member-name-link">getWorldtWidth</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Get the world's width.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected final boolean</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isValidFoodPosition(slitherio.gameobjects.Food)" class="member-name-link">isValidFoodPosition</a><wbr>(<a href="../gameobjects/Food.html" title="class in slitherio.gameobjects">Food</a>&nbsp;food)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Return true if the food is in a valid position.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>abstract void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#onKeyPressed(javafx.scene.input.KeyCode)" class="member-name-link">onKeyPressed</a><wbr>(javafx.scene.input.KeyCode&nbsp;key)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Manage action when a key is pressed, for each player.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>abstract void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#onMouseMoved(double,double)" class="member-name-link">onMouseMoved</a><wbr>(double&nbsp;pointerX,
  double&nbsp;pointerY)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Manage action when the mouse is moved, for each player.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>final void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setHeight(double)" class="member-name-link">setHeight</a><wbr>(double&nbsp;value)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Set the value of the window's height.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>final void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setWidth(double)" class="member-name-link">setWidth</a><wbr>(double&nbsp;value)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Set the value of the window's width.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>final void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setWorldHeight(double)" class="member-name-link">setWorldHeight</a><wbr>(double&nbsp;value)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Set the value of the world's height.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>final void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setWorldWidth(double)" class="member-name-link">setWorldWidth</a><wbr>(double&nbsp;value)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Set the value of the world's width.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code>abstract void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3"><code><a href="#update(double)" class="member-name-link">update</a><wbr>(double&nbsp;dt)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab3">
+<div class="block">Update all values of the game.</div>
+</div>
 </div>
 </div>
 </div>
@@ -229,42 +301,59 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="players">
 <h3>players</h3>
 <div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type">javafx.beans.property.ListProperty&lt;<a href="Player.html" title="class in slitherio.model">Player</a>&gt;</span>&nbsp;<span class="element-name">players</span></div>
+<div class="block">Defines the list of <a href="Player.html" title="class in slitherio.model"><code>players</code></a>.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="foods">
 <h3>foods</h3>
 <div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type">javafx.beans.property.ListProperty&lt;<a href="../gameobjects/Food.html" title="class in slitherio.gameobjects">Food</a>&gt;</span>&nbsp;<span class="element-name">foods</span></div>
+<div class="block">Defines the list of <a href="../gameobjects/Food.html" title="class in slitherio.gameobjects"><code>foods</code></a>.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="snakes">
 <h3>snakes</h3>
 <div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type">javafx.beans.property.ListProperty&lt;<a href="../gameobjects/Snake.html" title="class in slitherio.gameobjects">Snake</a>&gt;</span>&nbsp;<span class="element-name">snakes</span></div>
+<div class="block">Defines the list of <a href="../gameobjects/Snake.html" title="class in slitherio.gameobjects"><code>snakes</code></a>. They all
+ belong to one player of <a href="#players"><code>players</code></a>, and they are bound to it.</div>
+<dl class="notes">
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list">
+<li><a href="Player.html" title="class in slitherio.model"><code>Player</code></a></li>
+<li><a href="#bindPlayers()"><code>bindPlayers()</code></a></li>
+</ul>
+</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="worldWidth">
 <h3>worldWidth</h3>
 <div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">worldWidth</span></div>
+<div class="block">Defines the world's width.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="worldHeight">
 <h3>worldHeight</h3>
 <div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">worldHeight</span></div>
+<div class="block">Defines the world's height.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="width">
 <h3>width</h3>
 <div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">width</span></div>
+<div class="block">Defines the window's width. The width of the displayed part of the world.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="height">
 <h3>height</h3>
 <div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">height</span></div>
+<div class="block">Defines the window's height. The height of the displayed part of the world.</div>
 </section>
 </li>
 </ul>
@@ -282,6 +371,15 @@ loadScripts(document, 'script');</script>
  double&nbsp;worldHeight,
  double&nbsp;width,
  double&nbsp;height)</span></div>
+<div class="block">Create a new instance of <a href="Arena.html" title="class in slitherio.model"><code>Arena</code></a>. This constructor calls
+ <a href="#bindPlayers()"><code>bindPlayers()</code></a>.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>worldWidth</code> - see <a href="#worldWidth"><code>worldWidth</code></a></dd>
+<dd><code>worldHeight</code> - see <a href="#worldHeight"><code>worldHeight</code></a></dd>
+<dd><code>width</code> - see <a href="#width"><code>width</code></a></dd>
+<dd><code>height</code> - see <a href="#height"><code>height</code></a></dd>
+</dl>
 </section>
 </li>
 </ul>
@@ -296,30 +394,55 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="bindPlayers()">
 <h3>bindPlayers</h3>
 <div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">bindPlayers</span>()</div>
+<div class="block">Bind <a href="#players"><code>players</code></a> and <a href="#snakes"><code>snakes</code></a>. When <a href="#players"><code>players</code></a> changes, i.e
+ a player is added or removed, then <a href="#snakes"><code>snakes</code></a> changes in the same way.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="isValidFoodPosition(slitherio.gameobjects.Food)">
 <h3>isValidFoodPosition</h3>
 <div class="member-signature"><span class="modifiers">protected final</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isValidFoodPosition</span><wbr><span class="parameters">(<a href="../gameobjects/Food.html" title="class in slitherio.gameobjects">Food</a>&nbsp;food)</span></div>
+<div class="block">Return true if the food is in a valid position. I.e if the food doesn't
+ collides with any snake.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>Return true if the food is in a valid position.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getValidRandomFood()">
 <h3>getValidRandomFood</h3>
 <div class="member-signature"><span class="modifiers">protected final</span>&nbsp;<span class="return-type"><a href="../gameobjects/Food.html" title="class in slitherio.gameobjects">Food</a></span>&nbsp;<span class="element-name">getValidRandomFood</span>()</div>
+<div class="block">Return a food that is at a valid position. This method try to create a food
+ in a valid position. If there is not valid position after 500 attemps, return
+ a food with random position.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>food with valid position or random position</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="update(double)">
 <h3>update</h3>
 <div class="member-signature"><span class="modifiers">public abstract</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">update</span><wbr><span class="parameters">(double&nbsp;dt)</span></div>
+<div class="block">Update all values of the game.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>dt</code> - the elapsed time</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="onKeyPressed(javafx.scene.input.KeyCode)">
 <h3>onKeyPressed</h3>
 <div class="member-signature"><span class="modifiers">public abstract</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">onKeyPressed</span><wbr><span class="parameters">(javafx.scene.input.KeyCode&nbsp;key)</span></div>
+<div class="block">Manage action when a key is pressed, for each player.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>key</code> - the key that has been pressed</dd>
+</dl>
 </section>
 </li>
 <li>
@@ -327,96 +450,201 @@ loadScripts(document, 'script');</script>
 <h3>onMouseMoved</h3>
 <div class="member-signature"><span class="modifiers">public abstract</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">onMouseMoved</span><wbr><span class="parameters">(double&nbsp;pointerX,
  double&nbsp;pointerY)</span></div>
+<div class="block">Manage action when the mouse is moved, for each player.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>pointerX</code> - X-coordinate of the mouse</dd>
+<dd><code>pointerY</code> - Y-coordinate of the mouse</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="endGame()">
 <h3>endGame</h3>
 <div class="member-signature"><span class="modifiers">public abstract</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">endGame</span>()</div>
+<div class="block">Return true if the game is over.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>true if the game is over</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getPlayersProperty()">
 <h3>getPlayersProperty</h3>
 <div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">javafx.beans.property.ListProperty&lt;<a href="Player.html" title="class in slitherio.model">Player</a>&gt;</span>&nbsp;<span class="element-name">getPlayersProperty</span>()</div>
+<div class="block">Get the property players.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>the property players.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getPlayers()">
 <h3>getPlayers</h3>
 <div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">javafx.collections.ObservableList&lt;<a href="Player.html" title="class in slitherio.model">Player</a>&gt;</span>&nbsp;<span class="element-name">getPlayers</span>()</div>
+<div class="block">Get the value of property players.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>the list of players.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getFoodsProperty()">
 <h3>getFoodsProperty</h3>
 <div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">javafx.beans.property.ListProperty&lt;<a href="../gameobjects/Food.html" title="class in slitherio.gameobjects">Food</a>&gt;</span>&nbsp;<span class="element-name">getFoodsProperty</span>()</div>
+<div class="block">Get the property foods.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>the property foods.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getFoods()">
 <h3>getFoods</h3>
 <div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">javafx.collections.ObservableList&lt;<a href="../gameobjects/Food.html" title="class in slitherio.gameobjects">Food</a>&gt;</span>&nbsp;<span class="element-name">getFoods</span>()</div>
+<div class="block">Get the value of property foods.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>the list of foods</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getSnakesProperty()">
 <h3>getSnakesProperty</h3>
 <div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">javafx.beans.property.ListProperty&lt;<a href="../gameobjects/Snake.html" title="class in slitherio.gameobjects">Snake</a>&gt;</span>&nbsp;<span class="element-name">getSnakesProperty</span>()</div>
+<div class="block">Get the property snakes.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>the property snakes</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getSnakes()">
 <h3>getSnakes</h3>
 <div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">javafx.collections.ObservableList&lt;<a href="../gameobjects/Snake.html" title="class in slitherio.gameobjects">Snake</a>&gt;</span>&nbsp;<span class="element-name">getSnakes</span>()</div>
+<div class="block">Get the value of property snakes.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>the list of snakes</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getWidth()">
 <h3>getWidth</h3>
 <div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">getWidth</span>()</div>
+<div class="block">Get the window's width.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>value of window's width</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="setWidth(double)">
 <h3>setWidth</h3>
 <div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setWidth</span><wbr><span class="parameters">(double&nbsp;value)</span></div>
+<div class="block">Set the value of the window's width.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>value</code> - the new value</dd>
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list">
+<li><a href="#getWidth()"><code>getWidth()</code></a></li>
+</ul>
+</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getHeight()">
 <h3>getHeight</h3>
 <div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">getHeight</span>()</div>
+<div class="block">Get the window's height.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>value of window's height</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="setHeight(double)">
 <h3>setHeight</h3>
 <div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setHeight</span><wbr><span class="parameters">(double&nbsp;value)</span></div>
+<div class="block">Set the value of the window's height.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>value</code> - the new value</dd>
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list">
+<li><a href="#getHeight()"><code>getHeight()</code></a></li>
+</ul>
+</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getWorldtWidth()">
 <h3>getWorldtWidth</h3>
 <div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">getWorldtWidth</span>()</div>
+<div class="block">Get the world's width.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>value of world's width</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="setWorldWidth(double)">
 <h3>setWorldWidth</h3>
 <div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setWorldWidth</span><wbr><span class="parameters">(double&nbsp;value)</span></div>
+<div class="block">Set the value of the world's width.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>value</code> - the new value</dd>
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list">
+<li><a href="#getWorldtWidth()"><code>getWorldtWidth()</code></a></li>
+</ul>
+</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getWorldHeight()">
 <h3>getWorldHeight</h3>
 <div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">double</span>&nbsp;<span class="element-name">getWorldHeight</span>()</div>
+<div class="block">Get the world's height.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>value of world's height</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="setWorldHeight(double)">
 <h3>setWorldHeight</h3>
 <div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setWorldHeight</span><wbr><span class="parameters">(double&nbsp;value)</span></div>
+<div class="block">Set the value of the world's height.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>value</code> - the new value</dd>
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list">
+<li><a href="#getWorldHeight()"><code>getWorldHeight()</code></a></li>
+</ul>
+</dd>
+</dl>
 </section>
 </li>
 </ul>

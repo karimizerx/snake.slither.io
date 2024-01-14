@@ -7,12 +7,28 @@ import javafx.scene.layout.*;
 import slitherio.model.*;
 import slitherio.gameobjects.*;
 
+/**
+ * Fait le lien entre la vue et le model. Cette classe contient la boucle
+ * principale du jeu ({@link #animate()}). Elle se charge de lier les éléments
+ * du model et leur vue ({@link #bind()}).
+ */
 public final class Controller {
+    /** The game's view. */
     private GameView view;
+    /** The game. */
     private Arena model;
+    /** Defines the statut of the game. True if game is running. */
     private boolean pause = false;
 
-    /* ******************** Constructor ******************** */
+    /**
+     * Create a new instance of Controller. This constructor also create player(s)
+     * and inisialize the game and it view.
+     * 
+     * @param root     the pane of {@link #view}
+     * @param width    the window's width
+     * @param height   the window's height
+     * @param nameGame the game's name
+     */
     protected Controller(Pane root, double width, double height, String nameGame) {
         switch (nameGame) {
         case "Snake" -> {
@@ -38,16 +54,17 @@ public final class Controller {
 
     }
 
-    /* ******************** Functions ******************** */
-
-    // Main function that initialize all values of game and launch it
+    /** Main function that initialize all values of game and launch it */
     protected final void startGame() {
         bind();
         defaultView();
         animate();
     }
 
-    // Run en continue...
+    /**
+     * Main loop, using the <b>"ups constant"</b> method. The game is update every
+     * <b>0.01 seconds</b>.
+     */
     protected final void animate() {
         new AnimationTimer() {
             long last = 0;
@@ -76,7 +93,11 @@ public final class Controller {
         }.start();
     }
 
-    // Manage pressed key
+    /**
+     * Manage pressed key
+     * 
+     * @param key the key that has been pressed
+     */
     protected final void onKeyPressed(KeyCode key) {
         if (key == KeyCode.P)
             pause = !pause;
@@ -84,15 +105,31 @@ public final class Controller {
             model.onKeyPressed(key);
     }
 
+    /**
+     * Manage action when the mouse is moved.
+     * 
+     * @param mouseX X-coordinate of the mouse
+     * @param mouseY Y-coordinate of the mouse
+     */
     protected final void onMouseMoved(double mouseX, double mouseY) {
         model.onMouseMoved(mouseX, mouseY);
     }
 
+    /**
+     * Bind the properties {@link GameView#getWidthProperty() view.width} and
+     * {@link GameView#getHeightProperty() view.height} with
+     * {@link slitherio.model.Arena#getWidth() model.width} and
+     * {@link slitherio.model.Arena#getHeight() model.height}.
+     */
     private void bindSize() {
         view.getWidthProperty().addListener((obs, oldVal, newVal) -> model.setWidth((double) newVal));
         view.getHeightProperty().addListener((obs, oldVal, newVal) -> model.setHeight((double) newVal));
     }
 
+    /**
+     * Bind the properties {@link slitherio.model.Arena#getFoods() model.foods} and
+     * {@link GameView#getFoodsToDisplay() view.foodsToDisplay}.
+     */
     private void bindFoods() {
         model.getFoodsProperty().addListener(new ListChangeListener<Food>() {
 
@@ -124,6 +161,10 @@ public final class Controller {
         });
     }
 
+    /**
+     * Bind the properties {@link slitherio.model.Arena#getSnakes() model.snakes}
+     * and {@link GameView#getSnakesToDisplay() view.snakesToDisplay}
+     */
     private void bindSnakes() {
         model.getSnakesProperty().addListener(new ListChangeListener<Snake>() {
 
@@ -150,23 +191,39 @@ public final class Controller {
         });
     }
 
+    /**
+     * Bind all objects of the model with the view.
+     * 
+     * @see #bindSize()
+     * @see #bindFoods()
+     * @see #bindSnakes()
+     */
     private void bind() {
         bindSize();
         bindFoods();
         bindSnakes();
     }
 
+    /** Initialize the defaut view. */
     protected final void defaultView() {
         model.getSnakes().forEach(snake -> view.addSnake(snake));
         model.getFoods().forEach(food -> view.addFood(food));
     }
 
-    /* ******************** Getter & Setter ******************** */
-
+    /**
+     * Get the model.
+     * 
+     * @return the model
+     */
     protected final Arena getModel() {
         return model;
     }
 
+    /**
+     * Get the view.
+     * 
+     * @return the view
+     */
     protected final GameView getView() {
         return view;
     }

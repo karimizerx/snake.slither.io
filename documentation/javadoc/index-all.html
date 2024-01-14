@@ -67,7 +67,9 @@ loadScripts(document, 'script');</script>
 <div class="block">Defines the angle of rotation about the object's center, measured in degrees.</div>
 </dd>
 <dt><a href="slitherio/view/Controller.html#animate()" class="member-name-link">animate()</a> - Method in class slitherio.view.<a href="slitherio/view/Controller.html" title="class in slitherio.view">Controller</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Main loop, using the <b>"ups constant"</b> method.</div>
+</dd>
 <dt><a href="slitherio/App.html" class="type-name-link" title="class in slitherio">App</a> - Class in <a href="slitherio/package-summary.html">slitherio</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="slitherio/App.html#%3Cinit%3E()" class="member-name-link">App()</a> - Constructor for class slitherio.<a href="slitherio/App.html" title="class in slitherio">App</a></dt>
@@ -90,21 +92,34 @@ loadScripts(document, 'script');</script>
 <dt><a href="slitherio/view/Framegame.html#backgroundMenu" class="member-name-link">backgroundMenu</a> - Variable in class slitherio.view.<a href="slitherio/view/Framegame.html" title="class in slitherio.view">Framegame</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="slitherio/view/Controller.html#bind()" class="member-name-link">bind()</a> - Method in class slitherio.view.<a href="slitherio/view/Controller.html" title="class in slitherio.view">Controller</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Bind all objects of the model with the view.</div>
+</dd>
 <dt><a href="slitherio/view/DisplayableObject.html#bind()" class="member-name-link">bind()</a> - Method in class slitherio.view.<a href="slitherio/view/DisplayableObject.html" title="class in slitherio.view">DisplayableObject</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="slitherio/view/SnakeView.html#bind(slitherio.view.GameView,slitherio.view.SnakeView)" class="member-name-link">bind(GameView, SnakeView)</a> - Method in class slitherio.view.<a href="slitherio/view/SnakeView.html" title="class in slitherio.view">SnakeView</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="slitherio/view/Controller.html#bindFoods()" class="member-name-link">bindFoods()</a> - Method in class slitherio.view.<a href="slitherio/view/Controller.html" title="class in slitherio.view">Controller</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Bind the properties <a href="slitherio/model/Arena.html#getFoods()"><code>model.foods</code></a> and
+ <a href="slitherio/view/GameView.html#getFoodsToDisplay()"><code>view.foodsToDisplay</code></a>.</div>
+</dd>
 <dt><a href="slitherio/model/Arena.html#bindPlayers()" class="member-name-link">bindPlayers()</a> - Method in class slitherio.model.<a href="slitherio/model/Arena.html" title="class in slitherio.model">Arena</a></dt>
 <dd>
 <div class="block">Bind <a href="slitherio/model/Arena.html#players"><code>Arena.players</code></a> and <a href="slitherio/model/Arena.html#snakes"><code>Arena.snakes</code></a>.</div>
 </dd>
 <dt><a href="slitherio/view/Controller.html#bindSize()" class="member-name-link">bindSize()</a> - Method in class slitherio.view.<a href="slitherio/view/Controller.html" title="class in slitherio.view">Controller</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Bind the properties <a href="slitherio/view/GameView.html#getWidthProperty()"><code>view.width</code></a> and
+ <a href="slitherio/view/GameView.html#getHeightProperty()"><code>view.height</code></a> with
+ <a href="slitherio/model/Arena.html#getWidth()"><code>model.width</code></a> and
+ <a href="slitherio/model/Arena.html#getHeight()"><code>model.height</code></a>.</div>
+</dd>
 <dt><a href="slitherio/view/Controller.html#bindSnakes()" class="member-name-link">bindSnakes()</a> - Method in class slitherio.view.<a href="slitherio/view/Controller.html" title="class in slitherio.view">Controller</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Bind the properties <a href="slitherio/model/Arena.html#getSnakes()"><code>model.snakes</code></a>
+ and <a href="slitherio/view/GameView.html#getSnakesToDisplay()"><code>view.snakesToDisplay</code></a></div>
+</dd>
 <dt><a href="slitherio/gameobjects/Snake.html#body" class="member-name-link">body</a> - Variable in class slitherio.gameobjects.<a href="slitherio/gameobjects/Snake.html" title="class in slitherio.gameobjects">Snake</a></dt>
 <dd>
 <div class="block">Defines the snake's body.</div>
@@ -139,9 +154,13 @@ loadScripts(document, 'script');</script>
 <div class="block">Return true if this snake's head collides [snake].</div>
 </dd>
 <dt><a href="slitherio/view/Controller.html" class="type-name-link" title="class in slitherio.view">Controller</a> - Class in <a href="slitherio/view/package-summary.html">slitherio.view</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Fait le lien entre la vue et le model.</div>
+</dd>
 <dt><a href="slitherio/view/Controller.html#%3Cinit%3E(javafx.scene.layout.Pane,double,double,java.lang.String)" class="member-name-link">Controller(Pane, double, double, String)</a> - Constructor for class slitherio.view.<a href="slitherio/view/Controller.html" title="class in slitherio.view">Controller</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Create a new instance of Controller.</div>
+</dd>
 <dt><a href="slitherio/view/Framegame.html#controlName" class="member-name-link">controlName</a> - Variable in class slitherio.view.<a href="slitherio/view/Framegame.html" title="class in slitherio.view">Framegame</a></dt>
 <dd>&nbsp;</dd>
 </dl>
@@ -180,7 +199,9 @@ loadScripts(document, 'script');</script>
 <div class="block">The default value of the segment's height is 50.0</div>
 </dd>
 <dt><a href="slitherio/view/Controller.html#defaultView()" class="member-name-link">defaultView()</a> - Method in class slitherio.view.<a href="slitherio/view/Controller.html" title="class in slitherio.view">Controller</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Initialize the defaut view.</div>
+</dd>
 <dt><a href="slitherio/gameobjects/Food.html#defaultWidth" class="member-name-link">defaultWidth</a> - Static variable in class slitherio.gameobjects.<a href="slitherio/gameobjects/Food.html" title="class in slitherio.gameobjects">Food</a></dt>
 <dd>
 <div class="block">The default value of the food's width is 50.0</div>
@@ -351,7 +372,9 @@ loadScripts(document, 'script');</script>
 <div class="block">Defines the X coordinate of the top-left corner of the object.</div>
 </dd>
 <dt><a href="slitherio/view/Controller.html#getModel()" class="member-name-link">getModel()</a> - Method in class slitherio.view.<a href="slitherio/view/Controller.html" title="class in slitherio.view">Controller</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Get the model.</div>
+</dd>
 <dt><a href="slitherio/model/Player.html#getName()" class="member-name-link">getName()</a> - Method in class slitherio.model.<a href="slitherio/model/Player.html" title="class in slitherio.model">Player</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="slitherio/view/DisplayableObject.html#getObject()" class="member-name-link">getObject()</a> - Method in class slitherio.view.<a href="slitherio/view/DisplayableObject.html" title="class in slitherio.view">DisplayableObject</a></dt>
@@ -415,7 +438,9 @@ loadScripts(document, 'script');</script>
 <div class="block">Return a food that is at a valid position.</div>
 </dd>
 <dt><a href="slitherio/view/Controller.html#getView()" class="member-name-link">getView()</a> - Method in class slitherio.view.<a href="slitherio/view/Controller.html" title="class in slitherio.view">Controller</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Get the view.</div>
+</dd>
 <dt><a href="slitherio/gameobjects/GameObject.html#getWidth()" class="member-name-link">getWidth()</a> - Method in class slitherio.gameobjects.<a href="slitherio/gameobjects/GameObject.html" title="class in slitherio.gameobjects">GameObject</a></dt>
 <dd>
 <div class="block">Get the value of the property width.</div>
@@ -500,7 +525,9 @@ loadScripts(document, 'script');</script>
 <dt><a href="slitherio/App.html#main(java.lang.String%5B%5D)" class="member-name-link">main(String[])</a> - Static method in class slitherio.<a href="slitherio/App.html" title="class in slitherio">App</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="slitherio/view/Controller.html#model" class="member-name-link">model</a> - Variable in class slitherio.view.<a href="slitherio/view/Controller.html" title="class in slitherio.view">Controller</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">The game.</div>
+</dd>
 <dt><a href="slitherio/model/Player.html#mouseControl" class="member-name-link">mouseControl</a> - Variable in class slitherio.model.<a href="slitherio/model/Player.html" title="class in slitherio.model">Player</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="slitherio/gameobjects/Snake.html#move(double)" class="member-name-link">move(double)</a> - Method in class slitherio.gameobjects.<a href="slitherio/gameobjects/Snake.html" title="class in slitherio.gameobjects">Snake</a></dt>
@@ -532,7 +559,9 @@ loadScripts(document, 'script');</script>
 <dt><a href="slitherio/model/SnakeSlitherGame.html#onKeyPressed(javafx.scene.input.KeyCode)" class="member-name-link">onKeyPressed(KeyCode)</a> - Method in class slitherio.model.<a href="slitherio/model/SnakeSlitherGame.html" title="class in slitherio.model">SnakeSlitherGame</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="slitherio/view/Controller.html#onKeyPressed(javafx.scene.input.KeyCode)" class="member-name-link">onKeyPressed(KeyCode)</a> - Method in class slitherio.view.<a href="slitherio/view/Controller.html" title="class in slitherio.view">Controller</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Manage pressed key</div>
+</dd>
 <dt><a href="slitherio/model/Arena.html#onMouseMoved(double,double)" class="member-name-link">onMouseMoved(double, double)</a> - Method in class slitherio.model.<a href="slitherio/model/Arena.html" title="class in slitherio.model">Arena</a></dt>
 <dd>
 <div class="block">Manage action when the mouse is moved, for each player.</div>
@@ -544,7 +573,9 @@ loadScripts(document, 'script');</script>
 <dt><a href="slitherio/model/SnakeSlitherGame.html#onMouseMoved(double,double)" class="member-name-link">onMouseMoved(double, double)</a> - Method in class slitherio.model.<a href="slitherio/model/SnakeSlitherGame.html" title="class in slitherio.model">SnakeSlitherGame</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="slitherio/view/Controller.html#onMouseMoved(double,double)" class="member-name-link">onMouseMoved(double, double)</a> - Method in class slitherio.view.<a href="slitherio/view/Controller.html" title="class in slitherio.view">Controller</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Manage action when the mouse is moved.</div>
+</dd>
 <dt><a href="slitherio/view/GameView.html#ox" class="member-name-link">ox</a> - Variable in class slitherio.view.<a href="slitherio/view/GameView.html" title="class in slitherio.view">GameView</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="slitherio/view/GameView.html#oy" class="member-name-link">oy</a> - Variable in class slitherio.view.<a href="slitherio/view/GameView.html" title="class in slitherio.view">GameView</a></dt>
@@ -553,7 +584,9 @@ loadScripts(document, 'script');</script>
 <h2 class="title" id="I:P">P</h2>
 <dl class="index">
 <dt><a href="slitherio/view/Controller.html#pause" class="member-name-link">pause</a> - Variable in class slitherio.view.<a href="slitherio/view/Controller.html" title="class in slitherio.view">Controller</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Defines the statut of the game.</div>
+</dd>
 <dt><a href="slitherio/model/Player.html" class="type-name-link" title="class in slitherio.model">Player</a> - Class in <a href="slitherio/model/package-summary.html">slitherio.model</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="slitherio/model/Player.html#%3Cinit%3E(boolean,int,java.lang.String,java.lang.String,double,double)" class="member-name-link">Player(boolean, int, String, String, double, double)</a> - Constructor for class slitherio.model.<a href="slitherio/model/Player.html" title="class in slitherio.model">Player</a></dt>
@@ -722,7 +755,9 @@ loadScripts(document, 'script');</script>
 <dt><a href="slitherio/view/Framegame.html#start(javafx.stage.Stage)" class="member-name-link">start(Stage)</a> - Method in class slitherio.view.<a href="slitherio/view/Framegame.html" title="class in slitherio.view">Framegame</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="slitherio/view/Controller.html#startGame()" class="member-name-link">startGame()</a> - Method in class slitherio.view.<a href="slitherio/view/Controller.html" title="class in slitherio.view">Controller</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Main function that initialize all values of game and launch it</div>
+</dd>
 <dt><a href="slitherio/view/Framegame.html#startGame(javafx.stage.Stage,javafx.scene.layout.Pane)" class="member-name-link">startGame(Stage, Pane)</a> - Method in class slitherio.view.<a href="slitherio/view/Framegame.html" title="class in slitherio.view">Framegame</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="slitherio/view/Framegame.html#startMenu(javafx.stage.Stage)" class="member-name-link">startMenu(Stage)</a> - Method in class slitherio.view.<a href="slitherio/view/Framegame.html" title="class in slitherio.view">Framegame</a></dt>
@@ -754,7 +789,9 @@ loadScripts(document, 'script');</script>
 <h2 class="title" id="I:V">V</h2>
 <dl class="index">
 <dt><a href="slitherio/view/Controller.html#view" class="member-name-link">view</a> - Variable in class slitherio.view.<a href="slitherio/view/Controller.html" title="class in slitherio.view">Controller</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">The game's view.</div>
+</dd>
 </dl>
 <h2 class="title" id="I:W">W</h2>
 <dl class="index">

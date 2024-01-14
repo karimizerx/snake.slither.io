@@ -77,6 +77,9 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public final class </span><span class="element-name type-name-label">Controller</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
+<div class="block">Fait le lien entre la vue et le model. Cette classe contient la boucle
+ principale du jeu (<a href="#animate()"><code>animate()</code></a>). Elle se charge de lier les éléments
+ du model et leur vue (<a href="#bind()"><code>bind()</code></a>).</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -91,13 +94,19 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><code>private <a href="../model/Arena.html" title="class in slitherio.model">Arena</a></code></div>
 <div class="col-second even-row-color"><code><a href="#model" class="member-name-link">model</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">The game.</div>
+</div>
 <div class="col-first odd-row-color"><code>private boolean</code></div>
 <div class="col-second odd-row-color"><code><a href="#pause" class="member-name-link">pause</a></code></div>
-<div class="col-last odd-row-color">&nbsp;</div>
+<div class="col-last odd-row-color">
+<div class="block">Defines the statut of the game.</div>
+</div>
 <div class="col-first even-row-color"><code>private <a href="GameView.html" title="class in slitherio.view">GameView</a></code></div>
 <div class="col-second even-row-color"><code><a href="#view" class="member-name-link">view</a></code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">The game's view.</div>
+</div>
 </div>
 </section>
 </li>
@@ -115,7 +124,9 @@ loadScripts(document, 'script');</script>
  double&nbsp;width,
  double&nbsp;height,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;nameGame)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Create a new instance of Controller.</div>
+</div>
 </div>
 </section>
 </li>
@@ -132,38 +143,65 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected final void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#animate()" class="member-name-link">animate</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Main loop, using the <b>"ups constant"</b> method.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>private void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#bind()" class="member-name-link">bind</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Bind all objects of the model with the view.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>private void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#bindFoods()" class="member-name-link">bindFoods</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Bind the properties <a href="../model/Arena.html#getFoods()"><code>model.foods</code></a> and
+ <a href="GameView.html#getFoodsToDisplay()"><code>view.foodsToDisplay</code></a>.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>private void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#bindSize()" class="member-name-link">bindSize</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Bind the properties <a href="GameView.html#getWidthProperty()"><code>view.width</code></a> and
+ <a href="GameView.html#getHeightProperty()"><code>view.height</code></a> with
+ <a href="../model/Arena.html#getWidth()"><code>model.width</code></a> and
+ <a href="../model/Arena.html#getHeight()"><code>model.height</code></a>.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>private void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#bindSnakes()" class="member-name-link">bindSnakes</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Bind the properties <a href="../model/Arena.html#getSnakes()"><code>model.snakes</code></a>
+ and <a href="GameView.html#getSnakesToDisplay()"><code>view.snakesToDisplay</code></a></div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected final void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#defaultView()" class="member-name-link">defaultView</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Initialize the defaut view.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected final <a href="../model/Arena.html" title="class in slitherio.model">Arena</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getModel()" class="member-name-link">getModel</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Get the model.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected final <a href="GameView.html" title="class in slitherio.view">GameView</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getView()" class="member-name-link">getView</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Get the view.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected final void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#onKeyPressed(javafx.scene.input.KeyCode)" class="member-name-link">onKeyPressed</a><wbr>(javafx.scene.input.KeyCode&nbsp;key)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Manage pressed key</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected final void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#onMouseMoved(double,double)" class="member-name-link">onMouseMoved</a><wbr>(double&nbsp;mouseX,
  double&nbsp;mouseY)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Manage action when the mouse is moved.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected final void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#startGame()" class="member-name-link">startGame</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Main function that initialize all values of game and launch it</div>
+</div>
 </div>
 </div>
 </div>
@@ -185,18 +223,21 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="view">
 <h3>view</h3>
 <div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type"><a href="GameView.html" title="class in slitherio.view">GameView</a></span>&nbsp;<span class="element-name">view</span></div>
+<div class="block">The game's view.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="model">
 <h3>model</h3>
 <div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type"><a href="../model/Arena.html" title="class in slitherio.model">Arena</a></span>&nbsp;<span class="element-name">model</span></div>
+<div class="block">The game.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="pause">
 <h3>pause</h3>
 <div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">pause</span></div>
+<div class="block">Defines the statut of the game. True if game is running.</div>
 </section>
 </li>
 </ul>
@@ -214,6 +255,15 @@ loadScripts(document, 'script');</script>
  double&nbsp;width,
  double&nbsp;height,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;nameGame)</span></div>
+<div class="block">Create a new instance of Controller. This constructor also create player(s)
+ and inisialize the game and it view.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>root</code> - the pane of <a href="#view"><code>view</code></a></dd>
+<dd><code>width</code> - the window's width</dd>
+<dd><code>height</code> - the window's height</dd>
+<dd><code>nameGame</code> - the game's name</dd>
+</dl>
 </section>
 </li>
 </ul>
@@ -228,18 +278,26 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="startGame()">
 <h3>startGame</h3>
 <div class="member-signature"><span class="modifiers">protected final</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">startGame</span>()</div>
+<div class="block">Main function that initialize all values of game and launch it</div>
 </section>
 </li>
 <li>
 <section class="detail" id="animate()">
 <h3>animate</h3>
 <div class="member-signature"><span class="modifiers">protected final</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">animate</span>()</div>
+<div class="block">Main loop, using the <b>"ups constant"</b> method. The game is update every
+ <b>0.01 seconds</b>.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="onKeyPressed(javafx.scene.input.KeyCode)">
 <h3>onKeyPressed</h3>
 <div class="member-signature"><span class="modifiers">protected final</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">onKeyPressed</span><wbr><span class="parameters">(javafx.scene.input.KeyCode&nbsp;key)</span></div>
+<div class="block">Manage pressed key</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>key</code> - the key that has been pressed</dd>
+</dl>
 </section>
 </li>
 <li>
@@ -247,48 +305,84 @@ loadScripts(document, 'script');</script>
 <h3>onMouseMoved</h3>
 <div class="member-signature"><span class="modifiers">protected final</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">onMouseMoved</span><wbr><span class="parameters">(double&nbsp;mouseX,
  double&nbsp;mouseY)</span></div>
+<div class="block">Manage action when the mouse is moved.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>mouseX</code> - X-coordinate of the mouse</dd>
+<dd><code>mouseY</code> - Y-coordinate of the mouse</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="bindSize()">
 <h3>bindSize</h3>
 <div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">bindSize</span>()</div>
+<div class="block">Bind the properties <a href="GameView.html#getWidthProperty()"><code>view.width</code></a> and
+ <a href="GameView.html#getHeightProperty()"><code>view.height</code></a> with
+ <a href="../model/Arena.html#getWidth()"><code>model.width</code></a> and
+ <a href="../model/Arena.html#getHeight()"><code>model.height</code></a>.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="bindFoods()">
 <h3>bindFoods</h3>
 <div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">bindFoods</span>()</div>
+<div class="block">Bind the properties <a href="../model/Arena.html#getFoods()"><code>model.foods</code></a> and
+ <a href="GameView.html#getFoodsToDisplay()"><code>view.foodsToDisplay</code></a>.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="bindSnakes()">
 <h3>bindSnakes</h3>
 <div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">bindSnakes</span>()</div>
+<div class="block">Bind the properties <a href="../model/Arena.html#getSnakes()"><code>model.snakes</code></a>
+ and <a href="GameView.html#getSnakesToDisplay()"><code>view.snakesToDisplay</code></a></div>
 </section>
 </li>
 <li>
 <section class="detail" id="bind()">
 <h3>bind</h3>
 <div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">bind</span>()</div>
+<div class="block">Bind all objects of the model with the view.</div>
+<dl class="notes">
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list">
+<li><a href="#bindSize()"><code>bindSize()</code></a></li>
+<li><a href="#bindFoods()"><code>bindFoods()</code></a></li>
+<li><a href="#bindSnakes()"><code>bindSnakes()</code></a></li>
+</ul>
+</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="defaultView()">
 <h3>defaultView</h3>
 <div class="member-signature"><span class="modifiers">protected final</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">defaultView</span>()</div>
+<div class="block">Initialize the defaut view.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="getModel()">
 <h3>getModel</h3>
 <div class="member-signature"><span class="modifiers">protected final</span>&nbsp;<span class="return-type"><a href="../model/Arena.html" title="class in slitherio.model">Arena</a></span>&nbsp;<span class="element-name">getModel</span>()</div>
+<div class="block">Get the model.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>the model</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="getView()">
 <h3>getView</h3>
 <div class="member-signature"><span class="modifiers">protected final</span>&nbsp;<span class="return-type"><a href="GameView.html" title="class in slitherio.view">GameView</a></span>&nbsp;<span class="element-name">getView</span>()</div>
+<div class="block">Get the view.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>the view</dd>
+</dl>
 </section>
 </li>
 </ul>

@@ -33,7 +33,6 @@ public final class Utils {
         return newAngle;
     }
 
-    // Return angle formed by Origin, yAxis, (x,y)
     /**
      * Return angle formed by pivot Origin, yAxis and (x,y).
      * 

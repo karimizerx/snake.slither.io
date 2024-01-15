@@ -44,7 +44,7 @@ public final class Food extends GameObject {
      */
     public static Food FoodRandom(double maxX, double maxY) {
         double rx = defaultWidth / 2 + Math.random() * (maxX - defaultWidth);
-        double ry = defaultHeight / 2 + Math.random() * (maxX - defaultHeight);
+        double ry = defaultHeight / 2 + Math.random() * (maxY - defaultHeight);
         return new Food(rx, ry);
     }
 }

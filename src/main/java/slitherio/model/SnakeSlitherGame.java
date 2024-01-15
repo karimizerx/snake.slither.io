@@ -48,7 +48,11 @@ public final class SnakeSlitherGame extends Arena {
             if (snake.getHead().collides(food)) {
                 getFoods().remove(food);
                 snake.addSegment(dt);
+                snake.addSegment(dt);
+                snake.addSegment(dt);
                 getFoods().add(getValidRandomFood());
+                if (getFoods().size() < 2)
+                    getFoods().add(getValidRandomFood());
                 break;
             }
         }
@@ -79,17 +83,40 @@ public final class SnakeSlitherGame extends Arena {
 
     @Override
     public final void onKeyPressed(KeyCode key) {
+        if (endGame() || getSnakes().size() < 2)
+            return;
+
+        Player player = getPlayers().get(1);
+        Snake snake = player.getSnake();
+        if (!snake.getBody().isEmpty()) {
+            double angle = snake.getHead().getAngle();
+            if (angle == 90 || angle == 270) {
+                if (key == player.getKeyUp())
+                    snake.getHead().setAngle(180);
+                else if (key == player.getKeyDown())
+                    snake.getHead().setAngle(0);
+            } else if (angle == 0 || angle == 360 || angle == 180) {
+                if (key == player.getKeyLeft())
+                    snake.getHead().setAngle(90);
+                else if (key == player.getKeyRight())
+                    snake.getHead().setAngle(270);
+            }
+        }
+
     }
 
     @Override
     public final void onMouseMoved(double pointerX, double pointerY) {
-        for (Snake snake : getSnakes()) {
-            if (!snake.getBody().isEmpty()) {
-                double angle = Utils.getAngle(snake.getHead().getCenterX(), snake.getHead().getCenterY(), pointerX,
-                        pointerY);
-                snake.getHead().setAngle(angle);
-            }
+        if (endGame())
+            return;
+
+        Snake snake = getSnakes().get(0);
+        if (!snake.getBody().isEmpty()) {
+            double angle = Utils.getAngle(snake.getHead().getCenterX(), snake.getHead().getCenterY(), pointerX,
+                    pointerY);
+            snake.getHead().setAngle(angle);
         }
+
     }
 
     @Override

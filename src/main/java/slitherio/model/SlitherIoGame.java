@@ -47,6 +47,9 @@ public final class SlitherIoGame extends Arena {
 
         // Manage collides with others snakes
         for (Snake snake2 : getSnakes()) {
+            if (snake2.getBody().isEmpty())
+                continue;
+
             // Mutual collides
             if (snake2.collides(snake) && snake.getHead().collides(snake2.getHead())) {
                 if (snake.getBody().size() == snake2.getBody().size()) {

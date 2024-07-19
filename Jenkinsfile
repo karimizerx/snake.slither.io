@@ -1,23 +1,25 @@
 pipeline {
-    agent any // Exécute le pipeline sur n'importe quel agent disponible
-
+    agent any
+    options {
+        skipStagesAfterUnstable()
+    }
     stages {
-        stage('Build') { // Étape de construction
+        stage('Build') {
             steps {
                 echo 'Building..'
-                ./gradlew build
+                sh 'make build'
             }
         }
-        stage('Test') { // Étape de test
+        stage('Test'){
             steps {
                 echo 'Testing..'
-                ./gradlew test
+                sh 'make test'
             }
         }
-        stage('Deploy') { // Étape de déploiement
+        stage('Deploy') {
             steps {
                 echo 'Deploying..'
-                echo "Deploye succeed"
+                sh 'make doc'
             }
         }
     }

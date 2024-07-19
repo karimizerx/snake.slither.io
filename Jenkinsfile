@@ -19,7 +19,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying..'
-                sh 'make javadoc'
+                sh 'make initjavadoc'
             }
         }
     }

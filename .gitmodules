@@ -1,0 +1,3 @@
+[submodule "mlaidouni"]
+	path = mlaidouni
+	url = git@github.com:mlaidouni/mlaidouni.git
